@@ -4,10 +4,10 @@ ODIR = obj
 CC = gcc
 CFLAGS = -g -Wall -O3 -I$(IDIR)
 
-_DEPS = estado.h
+_DEPS = headers.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = estado.o main.o
+_OBJ = state.o main.o menu.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 

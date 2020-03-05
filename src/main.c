@@ -1,21 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "estado.h"
+#include "headers.h"
 
 int main()
 {
-    //char linha[100];
-    //ESTADO e;
+    char buffer[MAX];
+    STATE* e = malloc(sizeof(STATE));
 
-    printf("\n>>>>>>>>REVERSI<<<<<<<<\n");
-    /*
-    while(toupper(linha[0])!='Q')
+    while(toupper(buffer[0])!='Q')
     {
-        menu ();
-        fgets(linha, 100, stdin);
-        executa_opcao(linha, &e);
+        menu();
+        fgets(buffer, MAX, stdin);
+        //executa_opcao(linha, &e);
     }
-    */
+
     return 0;
 }
