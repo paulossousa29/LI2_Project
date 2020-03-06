@@ -9,6 +9,7 @@ int main()
   {
     menu();
     fgets(buffer, MAX, stdin);
+    printf("\n");
     execute(buffer, e);
   }
 

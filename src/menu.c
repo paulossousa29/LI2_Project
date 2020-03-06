@@ -22,11 +22,12 @@ void execute(char* buffer, STATE* e)
   }
 
   else if(strcmp(s, "gr") == 0) {
-    printf("%s\n", s);
+    s = strsep(&buffer, "\n");
+    output(e,s);
   }
 
   else if(strcmp(s, "ler") == 0) {
-    s = strsep(&buffer, "\0");
+    s = strsep(&buffer, "\n");
     input(e, s);
   }
 

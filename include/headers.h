@@ -14,6 +14,12 @@
 
 typedef enum {EMPTY, CURRENT, OCCUPIED} VALUE;
 
+typedef struct coord
+{
+  int x;
+  int y;
+} COORD;
+
 typedef struct state
 {
     VALUE table[8][8];
@@ -22,6 +28,7 @@ typedef struct state
 // Functions
 
 void input(STATE* e, char* name);
+void output(STATE* e, char* name);
 
 void printa(STATE *e);
 void gamestart(STATE *e);

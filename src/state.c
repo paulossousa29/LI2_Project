@@ -7,30 +7,31 @@ void printa(STATE *e)
 
     printf("  1 2 3 4 5 6 7 8\n");
 
-    for(i=0; i<8; i++)
-    {
-        printf ("%c ", k--);
+    for (i=0; i<8; i++) {
+      printf("%c ", k--);
 
-        for (j=0; j<8; j++)
-        {
-            if(i==7 && j==0)
-              c='1';
+      for (j=0; j<8; j++) {
+        switch(e->table[i][j]) {
+          case OCCUPIED:
+            c = '#';
+            break;
 
-            else if(i==0 && j==7)
-              c='2';
+          case CURRENT:
+            c='*';
+            break;
 
-            else if(e->table[i][j]==CURRENT)
-              c='*';
+          case EMPTY:
+            if(i == 7 && j == 0) c = '1';
+            else if  (i == 0 && j == 7) c = '2';
+            else c = '.';
+            break;
 
-            else if(e->table[i][j]==OCCUPIED)
-              c='#';
-
-            else if(e->table[i][j]==EMPTY)
-              c='.';
-
-            printf("%c ", c);
+          default:
+            break;
         }
-        printf("\n");
+        printf("%c ", c);
+      }
+      printf("\n");
     }
 }
 
