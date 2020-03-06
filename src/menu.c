@@ -17,9 +17,6 @@ void execute(char* buffer, STATE* e)
 {
   char* s = strsep(&buffer, " ");
 
-  printf("%d\n", strcmp(s, "coordenada"));
-
-  /*
   if(strcmp(s, "coordenada") == 0) {
     printf("%s\n", s);
   }
@@ -29,7 +26,8 @@ void execute(char* buffer, STATE* e)
   }
 
   else if(strcmp(s, "ler") == 0) {
-    printf("%s\n", s);
+    s = strsep(&buffer, "\0");
+    input(e, s);
   }
 
   else if(strcmp(s, "movs") == 0) {
@@ -44,12 +42,12 @@ void execute(char* buffer, STATE* e)
     printf("%s\n", s);
   }
 
-  else if(strcmp(s, "Q") == 0) {
+  else if(toupper(s[0]) == 'Q') {
     printf("A sair do jogo\n");
   }
 
   else {
     printf("Comando Inválido\n");
   }
-  */
+
 }

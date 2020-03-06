@@ -2,11 +2,40 @@
 
 void input(STATE* e, char* name)
 {
-  char* aux = "../files/";
+  int i, j, k;
+  char buffer[MAX], aux[MAX]="../files/";
 
-  strcat(name, aux);
+  strcat(aux, name);
 
-  printf("%s\n", name);
+  FILE* ftable = fopen(aux, "r");
 
-  //FILE* = fopen()
+  for (i = 1; fgets(buffer, MAX, ftable); i++)
+  {
+    k=0;
+
+    for (j=0; buffer[j]; j++)
+    {
+      if (buffer[j]=='#')
+      {
+        e->table[i-2][k]=OCCUPIED;
+        k++;
+      }
+
+      else if (buffer[j]=='*')
+      {
+        e->table[i-2][k]=CURRENT;
+        k++;
+      }
+
+      else if (buffer[j]=='.' || buffer[j]=='1' || buffer[j]=='2')
+      {
+        e->table[i-2][k]=EMPTY;
+        k++;
+      }
+    }
+  }
+
+  printa(e);
+
+  fclose(ftable);
 }

@@ -8,6 +8,7 @@
 // Define
 
 #define MAX 40
+#define SMAX 20
 
 // Structs
 
@@ -26,3 +27,4 @@ void printa(STATE *e);
 void gamestart(STATE *e);
 
 void menu();
+void execute(char* buffer, STATE* e);
