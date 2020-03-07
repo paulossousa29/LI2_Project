@@ -63,8 +63,11 @@ void input(STATE* e, char* name)
       if (buffer[j]=='#')
         e->table[i][j]=OCCUPIED;
 
-      else if (buffer[j]=='*')
+      else if (buffer[j]=='*') {
         e->table[i][j]=CURRENT;
+        e->curr.line = i;
+        e->curr.col = j;
+      }
 
       else if (buffer[j]=='.' || buffer[j]=='1' || buffer[j]=='2')
         e->table[i][j]=EMPTY;

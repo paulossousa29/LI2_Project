@@ -13,21 +13,27 @@ void menu()
   printf("\nIntroduza o seu comando: ");
 }
 
-void execute(char* buffer, STATE* e)
+void execute(char* buffer, STATE* e, COORD* c)
 {
   char* s = strsep(&buffer, " ");
+  char *line, *col;
 
   if(strcmp(s, "coordenada") == 0) {
-    printf("%s\n", s);
+    col = strsep(&buffer, " ");
+    line = strsep(&buffer, "\n");
+
+    place(e, c, col, line);
   }
 
   else if(strcmp(s, "gr") == 0) {
     s = strsep(&buffer, "\n");
+
     output(e,s);
   }
 
   else if(strcmp(s, "ler") == 0) {
     s = strsep(&buffer, "\n");
+
     input(e, s);
   }
 
@@ -43,7 +49,7 @@ void execute(char* buffer, STATE* e)
     printf("%s\n", s);
   }
 
-  else if(toupper(s[0]) == 'Q') {
+  else if(toupper(s[0]) == 'Q' && s[1] == '\n') {
     printf("A sair do jogo\n");
   }
 

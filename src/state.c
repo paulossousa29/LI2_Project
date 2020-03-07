@@ -33,6 +33,7 @@ void printa(STATE *e)
       }
       printf("\n");
     }
+    printf("Jogador: %d\n", e->player);
 }
 
 void gamestart(STATE *e)
@@ -44,6 +45,11 @@ void gamestart(STATE *e)
         e->table[i][j] = EMPTY;
 
     e->table[4][3] = CURRENT;
+
+    e->curr.line = 4;
+    e->curr.col = 3;
+
+    e->player = 1;
 
     printa(e);
 }
