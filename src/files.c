@@ -3,7 +3,8 @@
 void output(ESTADO* e, char* name)
 {
   int i, j;
-  char aux[MAX]="../files/", c;
+  char aux[MAX]="../files/";
+  char c = '\0';
 
   strcat(aux, name);
 

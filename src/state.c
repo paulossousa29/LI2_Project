@@ -2,7 +2,7 @@
 
 void printa(ESTADO *e)
 {
-    int i, j, k=104;
+    int i, j;
     char c = ' ';
 
     printf("  a b c d e f g h\n");
