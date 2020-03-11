@@ -57,22 +57,30 @@ void menu()
 // Intrepertador
 void execute(ESTADO* e, COORDENADA* c)
 {
-  char buffer[MAX];
-  char* s;
-  char *line, *col;
+  char *buffer = NULL;
+  buffer = malloc(MAX*sizeof(char));
+  char* s = NULL;
+  char *line = NULL, *col = NULL;
+  buffer[0] = 'a';
 
   while(toupper(buffer[0])!='Q')
   {
+    //printa(e);
     menu();
     fgets(buffer, MAX, stdin);
-    
+
     s = strsep(&buffer, " ");
 
     if(strcmp(s, "coordenada") == 0) {
+      if (isOver(e) == 1) {
+        printf("\n O vencedor é o jogador %d\n", e->jogador_atual);
+      }
+      else {
       col = strsep(&buffer, " ");
       line = strsep(&buffer, "\n");
 
       place(e, c, col, line);
+      }
     }
 
     else if(strcmp(s, "gr") == 0) {
@@ -86,8 +94,7 @@ void execute(ESTADO* e, COORDENADA* c)
 
       input(e, s);
     }
-
-    else if(strcmp(s, "imprimir") == 0) {
+    else if(strcmp(s, "imprimir\n") == 0) {
       printa(e);
     }
 
@@ -110,13 +117,16 @@ void execute(ESTADO* e, COORDENADA* c)
     else {
       printf("Comando Inválido\n");
     }
-
+/*
     if (isOver(e) == 1) {
+
       if (e->jogador_atual == 1) e->jogador_atual = 2;
       else if (e->jogador_atual == 2) e->jogador_atual = 1;
 
       printf("\n O vencedor é o jogador %d\n", e->jogador_atual);
       return;
     }
+    */
   }
+  printf("A sair do jogo\n");
 }

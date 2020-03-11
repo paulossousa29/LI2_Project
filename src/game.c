@@ -64,58 +64,62 @@ int isOver(ESTADO* e)
 {
   int c = e->ultima_jogada.coluna;
   int l = e->ultima_jogada.linha;
-  if (e->tab[7][0] == BRANCA) return 1;
-
-  else if (e->tab[0][7] == BRANCA) return 1;
-
-  else if (l == 0 && c == 0) {
-    if (e->tab[l+1][c+1] == PRETA && e->tab[l+1][c] == PRETA && e->tab[l][c+1] == PRETA)
+  if (e->tab[7][0] == BRANCA) {
+    e->jogador_atual = 1;
+    return 1;
+  }
+  else if (e->tab[0][7] == BRANCA) {
+    e->jogador_atual = 2;
+    return 1;
+  }
+  else if (l == 8 && c == 0) {
+    if (e->tab[1][c+1] == PRETA && e->tab[1][c] == PRETA && e->tab[0][c+1] == PRETA)
       return 1;
   }
 
-  else if (l==7 && c ==7) {
-    if (e->tab[l-1][c-1] == PRETA && e->tab[l-1][c] == PRETA && e->tab[l][c-1] == PRETA)
+  else if (l==1 && c ==7) {
+    if (e->tab[6][c-1] == PRETA && e->tab[6][c] == PRETA && e->tab[7][c-1] == PRETA)
       return 1;
   }
 
-  else if (l == 0) {
-    if ((e->tab[l][c+1] == PRETA || c+1 == 7) && e->tab[l][c-1] == PRETA
-    && e->tab[l+1][c+1] == PRETA
-    && e->tab[l+1][c] == PRETA && e->tab[l+1][c-1] == PRETA)
+  else if (l == 8) {
+    if ((e->tab[0][c+1] == PRETA || c+1 == 7) && e->tab[0][c-1] == PRETA
+    && e->tab[1][c+1] == PRETA
+    && e->tab[1][c] == PRETA && e->tab[1][c-1] == PRETA)
       return 1;
   }
 
-  else if (l == 7) {
-    if (e->tab[l][c+1] == PRETA && (e->tab[l][c-1] == PRETA || c-1 == 0)
-    && e->tab[l-1][c+1] == PRETA
-    && e->tab[l-1][c] == PRETA && e->tab[l-1][c-1] == PRETA)
+  else if (l == 1) {
+    if (e->tab[7][c+1] == PRETA && (e->tab[7][c-1] == PRETA || c-1 == 0)
+    && e->tab[6][c+1] == PRETA
+    && e->tab[6][c] == PRETA && e->tab[6][c-1] == PRETA)
       return 1;
   }
 
   else if (c == 0) {
-    if (e->tab[l-1][c] == PRETA && (e->tab[l+1][c] == PRETA || l+1 == 7)
-    && e->tab[l-1][c+1] == PRETA
-    && e->tab[l][c+1] == PRETA && e->tab[l+1][c+1] == PRETA)
+    if (e->tab[8-l-1][c] == PRETA && (e->tab[8-l+1][c] == PRETA || 8-l+1 == 7)
+    && e->tab[8-l-1][c+1] == PRETA
+    && e->tab[8-l][c+1] == PRETA && e->tab[8-l+1][c+1] == PRETA)
       return 1;
   }
 
   else if (c == 7) {
-    if (e->tab[l+1][c] == PRETA && (e->tab[l-1][c] == PRETA || ((l-1) == 0))
-    && e->tab[l-1][c-1] == PRETA
-    && e->tab[l][c-1] == PRETA && e->tab[l+1][c-1] == PRETA)
+    if (e->tab[8-l+1][c] == PRETA && (e->tab[8-l-1][c] == PRETA || ((8-l-1) == 0))
+    && e->tab[8-l-1][c-1] == PRETA
+    && e->tab[8-l][c-1] == PRETA && e->tab[8-l+1][c-1] == PRETA)
       return 1;
   }
 
   else if
-    ((e->tab[l-1][c] == PRETA
-    && (e->tab[l-1][c+1] == PRETA || (l-1 == 0 && c+1 == 7))
-    && e->tab[l][c+1] == PRETA
-    && e->tab[l-1][c] == PRETA
-    && e->tab[l+1][c+1] == PRETA
-    && e->tab[l+1][c] == PRETA
-    && (e->tab[l+1][c-1] == PRETA || (l+1 == 7 && c-1 == 0))
-    && e->tab[l][c-1] == PRETA
-    && e->tab[l-1][c-1] == PRETA))
+    ((e->tab[8-l-1][c] == PRETA
+    && (e->tab[8-l-1][c+1] == PRETA || (8-l-1 == 0 && c+1 == 7))
+    && e->tab[8-l][c+1] == PRETA
+    && e->tab[8-l-1][c] == PRETA
+    && e->tab[8-l+1][c+1] == PRETA
+    && e->tab[8-l+1][c] == PRETA
+    && (e->tab[8-l+1][c-1] == PRETA || (8-l+1 == 7 && c-1 == 0))
+    && e->tab[8-l][c-1] == PRETA
+    && e->tab[8-l-1][c-1] == PRETA))
       return 1;
 
   return 0;
