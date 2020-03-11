@@ -3,8 +3,8 @@
 int main()
 {
   char buffer[MAX];
-  STATE* e = malloc(sizeof(STATE));
-  COORD* c = malloc(sizeof(COORD));
+  ESTADO* e = malloc(sizeof(ESTADO));
+  COORDENADA* c = malloc(sizeof(COORDENADA));
 
   gamestart(e);
 

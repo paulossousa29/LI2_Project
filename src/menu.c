@@ -13,7 +13,7 @@ void menu()
   printf("\nIntroduza o seu comando: ");
 }
 
-void execute(char* buffer, STATE* e, COORD* c)
+void execute(char* buffer, ESTADO* e, COORDENADA* c)
 {
   char* s = strsep(&buffer, " ");
   char *line, *col;

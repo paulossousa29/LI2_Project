@@ -1,26 +1,26 @@
 #include "headers.h"
 
-void printa(STATE *e)
+void printa(ESTADO *e)
 {
     int i, j, k=104;
     char c = ' ';
 
-    printf("  1 2 3 4 5 6 7 8\n");
+    printf("  a b c d e f g h\n");
 
     for (i=0; i<8; i++) {
-      printf("%c ", k--);
+      printf("%d ", 8-i);
 
       for (j=0; j<8; j++) {
-        switch(e->table[i][j]) {
-          case OCCUPIED:
+        switch(e->tab[i][j]) {
+          case PRETA:
             c = '#';
             break;
 
-          case CURRENT:
+          case BRANCA:
             c='*';
             break;
 
-          case EMPTY:
+          case VAZIO:
             if(i == 7 && j == 0) c = '1';
             else if  (i == 0 && j == 7) c = '2';
             else c = '.';
@@ -33,23 +33,23 @@ void printa(STATE *e)
       }
       printf("\n");
     }
-    printf("Jogador: %d\n", e->player);
+    printf("Jogador: %d\n", e->jogador_atual);
 }
 
-void gamestart(STATE *e)
+void gamestart(ESTADO *e)
 {
     int i, j;
 
     for(i=0; i<8; i++)
       for(j=0; j<8; j++)
-        e->table[i][j] = EMPTY;
+        e->tab[i][j] = VAZIO;
 
-    e->table[4][3] = CURRENT;
+    e->tab[3][4] = BRANCA;
 
-    e->curr.line = 4;
-    e->curr.col = 3;
-
-    e->player = 1;
+    e->ultima_jogada.linha = 5;
+    e->ultima_jogada.coluna = 4;
+    e->num_jogadas = 0;
+    e->jogador_atual = 1;
 
     printa(e);
 }
