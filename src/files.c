@@ -1,4 +1,5 @@
-#include "headers.h"
+#include "data.h"
+#include "interface.h"
 
 void output(ESTADO* e, char* name)
 {
@@ -41,6 +42,7 @@ void output(ESTADO* e, char* name)
   }
   //lista de movimentos
   fprintf(ftable, " \n");
+
   for(i = 1;i <= e->num_jogadas;i++) {
     if(i < 10)
       fprintf(ftable, "0%d: ",i);
@@ -56,6 +58,7 @@ void output(ESTADO* e, char* name)
       e->jogadas[i-1].jogador2.coluna + 'a',e->jogadas[i-1].jogador2.linha);
     }
   }
+  
   printf("Ficheiro %s gravado\n", name);
 
   fclose(ftable);
@@ -117,18 +120,6 @@ void input(ESTADO* e, char* name)
         e-> jogador_atual = 2;
     }
   }
-/*
-  if(e->num_jogadas) {
-    if(e->jogador_atual == 1) {
-      e->ultima_jogada.linha = e->jogadas[e->num_jogadas - 1].jogador2.linha;
-      e->ultima_jogada.coluna = e->jogadas[e->num_jogadas - 1].jogador2.coluna;
-    }
-    else {
-      e->ultima_jogada.linha = e->jogadas[e->num_jogadas - 1].jogador1.linha;
-      e->ultima_jogada.coluna = e->jogadas[e->num_jogadas - 1].jogador1.coluna;
-    }
-  }
-  */
 
   fclose(ftable);
 

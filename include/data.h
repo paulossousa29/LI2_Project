@@ -11,23 +11,9 @@
 #define SMAX 20
 
 // Structs
-/*
-typedef enum {EMPTY, CURRENT, OCCUPIED} VALUE;
 
-typedef struct coord
-{
-  int line;
-  int col;
-} COORD;
-
-typedef struct state
-{
-    int player;
-    COORD curr;
-    VALUE table[8][8];
-} STATE;
-*/
 typedef enum {VAZIO, BRANCA, PRETA} CASA;
+
 typedef struct {
     int coluna;
     int linha;
@@ -47,15 +33,7 @@ typedef struct {
     int num_jogadas;
     int jogador_atual;
 } ESTADO;
+
 // Functions
 
-void place(ESTADO* e, COORDENADA* c, char* col, char* line);
-
-void input(ESTADO* e, char* name);
-void output(ESTADO* e, char* name);
-
-void printa(ESTADO *e);
 void gamestart(ESTADO *e);
-
-void menu();
-void execute(char* buffer, ESTADO* e, COORDENADA* c);
