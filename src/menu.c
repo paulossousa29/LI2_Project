@@ -23,6 +23,14 @@ void execute(char* buffer, ESTADO* e, COORDENADA* c)
     line = strsep(&buffer, "\n");
 
     place(e, c, col, line);
+
+    if (isOver(e) == 1) {
+      if (e->jogador_atual == 1) e->jogador_atual = 2;
+      else if (e->jogador_atual == 2) e->jogador_atual = 1;
+
+      printf("\n O vencedor é o jogador %d\n", e->jogador_atual);
+      return;
+    }
   }
 
   else if(strcmp(s, "gr") == 0) {

@@ -42,6 +42,65 @@ int fromCL(char col, char line, COORDENADA* c) {
   return 1;
 }
 */
+int isOver(ESTADO* e){
+  int c = e->ultima_jogada.coluna;
+  int l = e->ultima_jogada.linha;
+  if (e->tab[7][0] == BRANCA) return 1;
+
+  else if (e->tab[0][7] == BRANCA) return 1;
+
+  else if (l == 0 && c == 0) {
+    if (e->tab[l+1][c+1] == PRETA && e->tab[l+1][c] == PRETA && e->tab[l][c+1] == PRETA)
+      return 1;
+  }
+
+  else if (l==7 && c ==7) {
+    if (e->tab[l-1][c-1] == PRETA && e->tab[l-1][c] == PRETA && e->tab[l][c-1] == PRETA)
+      return 1;
+  }
+
+  else if (l == 0) {
+    if ((e->tab[l][c+1] == PRETA || c+1 == 7) && e->tab[l][c-1] == PRETA
+    && e->tab[l+1][c+1] == PRETA
+    && e->tab[l+1][c] == PRETA && e->tab[l+1][c-1] == PRETA)
+      return 1;
+  }
+
+  else if (l == 7) {
+    if (e->tab[l][c+1] == PRETA && (e->tab[l][c-1] == PRETA || c-1 == 0)
+    && e->tab[l-1][c+1] == PRETA
+    && e->tab[l-1][c] == PRETA && e->tab[l-1][c-1] == PRETA)
+      return 1;
+  }
+
+  else if (c == 0) {
+    if (e->tab[l-1][c] == PRETA && (e->tab[l+1][c] == PRETA || l+1 == 7)
+    && e->tab[l-1][c+1] == PRETA
+    && e->tab[l][c+1] == PRETA && e->tab[l+1][c+1] == PRETA)
+      return 1;
+  }
+
+  else if (c == 7) {
+    if (e->tab[l+1][c] == PRETA && (e->tab[l-1][c] == PRETA || ((l-1) == 0))
+    && e->tab[l-1][c-1] == PRETA
+    && e->tab[l][c-1] == PRETA && e->tab[l+1][c-1] == PRETA)
+      return 1;
+  }
+
+  else if
+    ((e->tab[l-1][c] == PRETA
+    && (e->tab[l-1][c+1] == PRETA || (l-1 == 0 && c+1 == 7))
+    && e->tab[l][c+1] == PRETA
+    && e->tab[l-1][c] == PRETA
+    && e->tab[l+1][c+1] == PRETA
+    && e->tab[l+1][c] == PRETA
+    && (e->tab[l+1][c-1] == PRETA || (l+1 == 7 && c-1 == 0))
+    && e->tab[l][c-1] == PRETA
+    && e->tab[l-1][c-1] == PRETA))
+      return 1;
+
+  return 0;
+}
 
 void place(ESTADO* e, COORDENADA* c, char* col, char* line)
 {
