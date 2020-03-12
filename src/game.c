@@ -1,6 +1,19 @@
 #include "data.h"
 #include "interface.h"
 
+int toCord(COORDENADA* c, char* col, char* line)
+{
+  if(col[1]!='\0' || line[1]!='\0') {
+    printf("Argumentos inválidos\n");
+    return 0;
+  }
+
+  c->coluna = col[0] - 'a';
+  c->linha = line[0] - '0';
+
+  return 1;
+}
+
 int isValid(ESTADO* e, int col, int line)
 {
   if (col < 0 || col > 7 || line < 1 || line > 8) {
@@ -26,16 +39,8 @@ int isValid(ESTADO* e, int col, int line)
   return -1;
 }
 
-void place(ESTADO* e, COORDENADA* c, char* col, char* line)
+void place(ESTADO* e, COORDENADA* c)
 {
-  if(col[1]!='\0' || line[1]!='\0') {
-    printf("Argumentos inválidos\n");
-    return;
-  }
-
-  c -> coluna = col[0] - 'a';
-  c -> linha = line[0] - '0';
-
   if(!(isValid(e, c->coluna, c->linha))) {
 
     e->tab[8 - e->ultima_jogada.linha][e->ultima_jogada.coluna] = PRETA;
@@ -55,8 +60,6 @@ void place(ESTADO* e, COORDENADA* c, char* col, char* line)
       e->jogadas[e->num_jogadas-1].jogador2.linha = c -> linha;
       e->jogadas[e->num_jogadas-1].jogador2.coluna = c -> coluna;
     }
-
-  printa(e);
   }
 }
 
@@ -87,6 +90,28 @@ void movimentos(ESTADO* e)
       e->jogadas[i-1].jogador2.coluna + 'a',e->jogadas[i-1].jogador2.linha);
     }
   }
+}
+
+void posicao(ESTADO* e, char* pos)
+{
+  int i, jog;
+  ESTADO* aux = malloc(sizeof(ESTADO));
+
+  gamestart(aux);
+
+  if((jog = atoi(pos)) == 0)
+    printf("Argumento inválido\n");
+
+  if(jog >= e->num_jogadas)
+    printf("A jogada %d não existe\n", jog);
+
+  for(i=0; i<jog; i++)
+  {
+    place(aux, &(e->jogadas[i].jogador1));
+    place(aux, &(e->jogadas[i].jogador2));
+  }
+
+  printa(aux);
 }
 
 int isOver(ESTADO* e)

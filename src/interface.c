@@ -81,7 +81,10 @@ void execute(ESTADO* e, COORDENADA* c)
       col = strsep(&buffer, " ");
       line = strsep(&buffer, "\n");
 
-      place(e, c, col, line);
+      if(toCord(c, col, line)) {
+        place(e, c);
+        printa(e);
+      }
     }
 
     else if(strcmp(s, "gr") == 0) {
@@ -104,7 +107,9 @@ void execute(ESTADO* e, COORDENADA* c)
     }
 
     else if(strcmp(s, "pos") == 0) {
-      printf("%s\n", s);
+      s = strsep(&buffer, "\n");
+
+      posicao(e, s);
     }
 
     else if((strcmp(s, "q") == 0) || (strcmp(s, "Q") == 0)) {
