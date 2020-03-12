@@ -60,18 +60,46 @@ void place(ESTADO* e, COORDENADA* c, char* col, char* line)
   }
 }
 
+void movimentos(ESTADO* e)
+{
+  int i;
+
+  printf("\nMovimentos:\n");
+
+  if(e->num_jogadas == 0)
+    printf("Não existem jogadas\n");
+
+  for(i=0; i<e->num_jogadas; i++) {
+
+    if(i < 10)
+      printf("0%d: ",i);
+
+    else
+      printf("%d: ",i);
+
+    if(i == e->num_jogadas && e->jogador_atual == 2) {
+      printf("%c%d\n",e->ultima_jogada.coluna + 'a',e->ultima_jogada.linha);
+    }
+
+    else {
+      printf("%c%d %c%d\n",
+      e->jogadas[i-1].jogador1.coluna + 'a',e->jogadas[i-1].jogador1.linha,
+      e->jogadas[i-1].jogador2.coluna + 'a',e->jogadas[i-1].jogador2.linha);
+    }
+  }
+}
+
 int isOver(ESTADO* e)
 {
   int c = e->ultima_jogada.coluna;
   int l = e->ultima_jogada.linha;
-  if (e->tab[7][0] == BRANCA) {
-    e->jogador_atual = 1;
+
+  if (e->tab[7][0] == BRANCA)
     return 1;
-  }
-  else if (e->tab[0][7] == BRANCA) {
-    e->jogador_atual = 2;
+
+  else if (e->tab[0][7] == BRANCA)
     return 1;
-  }
+
   else if (l == 8 && c == 0) {
     if (e->tab[1][c+1] == PRETA && e->tab[1][c] == PRETA && e->tab[0][c+1] == PRETA)
       return 1;
@@ -123,4 +151,17 @@ int isOver(ESTADO* e)
       return 1;
 
   return 0;
+}
+
+void winner(ESTADO* e)
+{
+  int c = e->jogador_atual;
+
+  if(e->tab[7][0] == BRANCA)
+    c = 1;
+
+  else if(e->tab[0][7] == BRANCA)
+    c = 2;
+
+  printf("\nO vencedor é o jogador %d\n", c);
 }

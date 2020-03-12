@@ -8,7 +8,7 @@ void printa(ESTADO *e)
     int i, j;
     char c = ' ';
 
-    printf("  a b c d e f g h\n");
+    printf("\n  a b c d e f g h\n");
 
     for (i=0; i<8; i++) {
       printf("%d ", 8-i);
@@ -46,7 +46,6 @@ void menu()
   printf("- coordenada <coluna> <linha>\n");
   printf("- gr <nome>\n");
   printf("- ler <nome>\n");
-  printf("- imprimir\n");
   printf("- movs\n");
   printf("- jog\n");
   printf("- pos <numero_da_jogada>\n");
@@ -63,24 +62,26 @@ void execute(ESTADO* e, COORDENADA* c)
   char *line = NULL, *col = NULL;
   buffer[0] = 'a';
 
-  while(toupper(buffer[0])!='Q')
+  printa(e); // imprime o estado inicial
+
+  while(1)
   {
-    //printa(e);
     menu();
     fgets(buffer, MAX, stdin);
 
-    s = strsep(&buffer, " ");
+    // Intrepertação do comando
+    if(toupper(buffer[0])=='Q' || buffer[0]=='j' || buffer[0]=='m')
+      s = strsep(&buffer, "\n");
 
+    else
+      s=strsep(&buffer, " ");
+
+    // Execução do comando
     if(strcmp(s, "coordenada") == 0) {
-      if (isOver(e) == 1) {
-        printf("\n O vencedor é o jogador %d\n", e->jogador_atual);
-      }
-      else {
       col = strsep(&buffer, " ");
       line = strsep(&buffer, "\n");
 
       place(e, c, col, line);
-      }
     }
 
     else if(strcmp(s, "gr") == 0) {
@@ -94,13 +95,9 @@ void execute(ESTADO* e, COORDENADA* c)
 
       input(e, s);
     }
-    else if(strcmp(s, "imprimir\n") == 0) {
-      printa(e);
-    }
 
-    else if(strcmp(s, "movs") == 0) {
-      printf("%s\n", s);
-    }
+    else if(strcmp(s, "movs") == 0)
+      movimentos(e);
 
     else if(strcmp(s, "jog") == 0) {
       printf("%s\n", s);
@@ -110,23 +107,19 @@ void execute(ESTADO* e, COORDENADA* c)
       printf("%s\n", s);
     }
 
-    else if(toupper(s[0]) == 'Q' && s[1] == '\n') {
-      printf("A sair do jogo\n");
-    }
-
-    else {
-      printf("Comando Inválido\n");
-    }
-/*
-    if (isOver(e) == 1) {
-
-      if (e->jogador_atual == 1) e->jogador_atual = 2;
-      else if (e->jogador_atual == 2) e->jogador_atual = 1;
-
-      printf("\n O vencedor é o jogador %d\n", e->jogador_atual);
+    else if((strcmp(s, "q") == 0) || (strcmp(s, "Q") == 0)) {
+      printf("A Sair do Jogo!\n");
       return;
     }
-    */
+
+    else
+      printf("Comando Inválido\n");
+
+    // O teste do jogo acabar tem de estar fora, porque se não só na jogada a seguir é que valida
+
+    if (isOver(e)) {
+      winner(e);
+      return;
+    }
   }
-  printf("A sair do jogo\n");
 }
