@@ -190,3 +190,32 @@ void winner(ESTADO* e)
 
   printf("\nO vencedor é o jogador %d\n", c);
 }
+
+typedef struct {
+    int validas;
+    COORDENADA coords[8];
+} CVAL;
+
+void jogadasValidas(CVAL *cr,ESTADO *e)
+{
+  int l = e -> ultima_jogada.linha,l2 = l;
+  int c = e -> ultima_jogada.coluna;
+  int i = 0;
+
+  if(l2 == 1) l2++;
+
+  for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l++) {
+    for(int c2 = c - 1;c2 <= c + 1;c++)
+      if(c2 >= 0 && c2 <=7 && e->tab[8 - l2][c2] == VAZIO) {
+        cr -> coords[i].linha = l2;
+        cr -> coords[i].coluna = c2;
+        i++;
+      }
+  }
+  cr->validas = i;
+}
+
+void Bot(ESTADO *e) {
+  CVAL cr;
+  jogadasValidas(&cr,e);
+}
