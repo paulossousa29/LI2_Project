@@ -214,8 +214,58 @@ void jogadasValidas(CVAL *cr,ESTADO *e)
   }
   cr->validas = i;
 }
+ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
+  e.tab[8 - e.ultima_jogada.linha][e.ultima_jogada.coluna] = PRETA;
+  e.tab[8 - c->linha][c->coluna] = BRANCA;
+  e.ultima_jogada.linha = c->linha;
+  e.ultima_jogada.coluna = c->coluna;
 
-void Bot(ESTADO *e) {
+  if(e.jogador_atual == 1)
+    e.jogador_atual = 2;
+  else
+    e.jogador_atual = 1;
+
+  return e;
+}
+
+int pertoFim(COORDENADA c,int jogador) {
+  if(((c.linha == 8 && c.coluna == 6) || (c.linha == 7 && c.coluna == 6) ||
+    (c.linha == 7 && c.coluna == 7)) && jogador == 1)
+    return 1;
+
+  if(((c.linha == 2 && c.coluna == 0) || (c.linha == 2 && c.coluna == 1) ||
+    (c.linha == 1 && c.coluna == 1)) && jogador == 2)
+    return 1;
+
+  return 0;
+}
+int avaliaJogada(ESTADO *e,COORDENADA c) {
+  int j = e -> jogador_atual;
+  ESTADO a = jogadaBot(*e,&c);
+
+  if((c.linha == 8 && c.coluna == 7 && j == 1) ||
+    (c.linha == 1 && c.coluna == 0 && j == 2))
+    return 0;
+  if(isOver(&a))
+    return 10;
+  if((pertoFim(c,j)))
+      return 1;
+
   CVAL cr;
+
+  jogadasValidas(&cr,&a);
+
+  return 5;
+}
+
+COORDENADA Bot(ESTADO *e) {
+  CVAL cr;
+  COORDENADA c;
+  int r = 1;
+
   jogadasValidas(&cr,e);
+  for(int i = 0; i < cr.validas && r;i++)
+
+
+  return c;
 }

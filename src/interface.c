@@ -36,7 +36,7 @@ void printa(ESTADO *e)
       }
       printf("\n");
     }
-    printf("Jogador: %d\n", e->jogador_atual);
+    printf("(%d) Jogador: %d\n", e->num_jogadas,e->jogador_atual);
 }
 
 // Função que mostra o menu de comandos
@@ -52,7 +52,13 @@ void menu()
   printf("- Q\n");
   printf("\nIntroduza o seu comando: ");
 }
+int temEspaco(char *s) {
+  int r = 0;
+  for(int i = 0;s[i] != '\0' && !r;i++)
+    if(s[i] == ' ') r = 1;
 
+  return r;
+}
 // Intrepertador
 void execute(ESTADO* e, COORDENADA* c)
 {
@@ -70,7 +76,7 @@ void execute(ESTADO* e, COORDENADA* c)
     fgets(buffer, MAX, stdin);
 
     // Intrepertação do comando
-    if(toupper(buffer[0])=='Q' || buffer[0]=='j' || buffer[0]=='m')
+    if(!temEspaco(buffer))
       s = strsep(&buffer, "\n");
 
     else
@@ -78,12 +84,16 @@ void execute(ESTADO* e, COORDENADA* c)
 
     // Execução do comando
     if(strcmp(s, "coordenada") == 0) {
-      col = strsep(&buffer, " ");
-      line = strsep(&buffer, "\n");
+      if(!temEspaco(buffer))
+        printf("coordenada inválida\n");
+      else {
+        col = strsep(&buffer, " ");
+        line = strsep(&buffer, "\n");
 
-      if(toCord(c, col, line)) {
-        place(e, c);
-        printa(e);
+        if(toCord(c, col, line)) {
+          place(e, c);
+          printa(e);
+        }
       }
     }
 
