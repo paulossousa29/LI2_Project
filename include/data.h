@@ -34,6 +34,11 @@ typedef struct {
     int jogador_atual;
 } ESTADO;
 
+typedef struct {
+    int validas;
+    COORDENADA coords[8];
+} CVAL;
+
 // Functions
 
 void gamestart(ESTADO *e);

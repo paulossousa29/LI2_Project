@@ -113,7 +113,10 @@ void execute(ESTADO* e, COORDENADA* c)
       movimentos(e);
 
     else if(strcmp(s, "jog") == 0) {
-      printf("%s\n", s);
+      //printf("%s\n", s);
+      COORDENADA c;
+      c = Bot(e);
+      printf("coordenada sugerida %c %d\n", 'a' + c.coluna,c.linha);
     }
 
     else if(strcmp(s, "pos") == 0) {

@@ -1,5 +1,6 @@
 #include "data.h"
 #include "interface.h"
+#include "game.h"
 
 int toCord(COORDENADA* c, char* col, char* line)
 {
@@ -191,29 +192,29 @@ void winner(ESTADO* e)
   printf("\nO vencedor é o jogador %d\n", c);
 }
 
-typedef struct {
-    int validas;
-    COORDENADA coords[8];
-} CVAL;
 
-void jogadasValidas(CVAL *cr,ESTADO *e)
+
+CVAL jogadasValidas(ESTADO *e)
 {
+  CVAL cr;
   int l = e -> ultima_jogada.linha,l2 = l;
   int c = e -> ultima_jogada.coluna;
   int i = 0;
 
   if(l2 == 1) l2++;
 
-  for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l++) {
-    for(int c2 = c - 1;c2 <= c + 1;c++)
+  for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l2++) {
+    for(int c2 = c - 1;c2 <= c + 1;c2++)
       if(c2 >= 0 && c2 <=7 && e->tab[8 - l2][c2] == VAZIO) {
-        cr -> coords[i].linha = l2;
-        cr -> coords[i].coluna = c2;
+        cr.coords[i].linha = l2;
+        cr.coords[i].coluna = c2;
         i++;
       }
   }
-  cr->validas = i;
+  cr.validas = i;
+  return cr;
 }
+
 ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
   e.tab[8 - e.ultima_jogada.linha][e.ultima_jogada.coluna] = PRETA;
   e.tab[8 - c->linha][c->coluna] = BRANCA;
@@ -239,33 +240,90 @@ int pertoFim(COORDENADA c,int jogador) {
 
   return 0;
 }
-int avaliaJogada(ESTADO *e,COORDENADA c) {
-  int j = e -> jogador_atual;
-  ESTADO a = jogadaBot(*e,&c);
+
+int avaliaJogada(ESTADO e,COORDENADA c) {
+  int j = e.jogador_atual,p;
+  ESTADO a = jogadaBot(e,&c);
+  int l = e.ultima_jogada.linha;
+  int cl = e.ultima_jogada.coluna;
 
   if((c.linha == 8 && c.coluna == 7 && j == 1) ||
     (c.linha == 1 && c.coluna == 0 && j == 2))
-    return 0;
-  if(isOver(&a))
-    return 10;
-  if((pertoFim(c,j)))
-      return 1;
+    p = 1;
+  else if(isOver(&a))
+          p = 8;
+  else if((pertoFim(c,j)))
+          p = 2;
+  else if((j == 2 && c.linha == l + 1 && c.coluna == cl + 1) ||
+          (j == 1 && c.linha == l - 1 && c.coluna == cl - 1))
+          p = 7;
+  else if((l == c.linha) && ((j == 2 && c.coluna == cl + 1) ||
+          (j == 1 && c.coluna == cl - 1)))
+          p = 5;
+  else if((cl == c.coluna) && ((j == 2 && c.linha == l + 1) ||
+          (j == 1 && c.linha == l - 1)))
+          p = 6;
+  else if((c.linha == l + 1 && c.coluna == cl - 1) ||
+          (c.linha == l - 1 && c.coluna == cl + 1))
+          p = 4;
+  else p = 3;
 
-  CVAL cr;
+  return p;
+  }
 
-  jogadasValidas(&cr,&a);
+int minmax(CVAL cr,ESTADO e,int isMax,int p) {
+  int pontos,max,min;
+  ESTADO a;
 
-  return 5;
+  if (isMax) {
+    max = -100;
+    for(int i = 0;i < cr.validas;i++) {
+      a = jogadaBot(e,&cr.coords[i]);
+      if(!p || isOver(&a))
+        pontos = avaliaJogada(e,cr.coords[i]);
+      else
+        pontos = minmax(jogadasValidas(&a),a,0,p-1);
+
+      if(pontos > max)
+        max = pontos;
+      //printf("-%d%c%d \n", pontos,'a' + cr.coords[i].coluna,cr.coords[i].linha);
+    }
+    pontos = max;
+  }
+  else {
+    min = 100;
+    for(int i = 0;i < cr.validas;i++) {
+      a = jogadaBot(e,&cr.coords[i]);
+      if(!p || isOver(&a))
+        pontos = avaliaJogada(e,cr.coords[i]);
+      else
+        pontos = minmax(jogadasValidas(&a),a,1,p-1);
+
+      if(pontos < min)
+        min = pontos;
+    }
+    pontos = min;
+  }
+  return pontos;
 }
 
 COORDENADA Bot(ESTADO *e) {
   CVAL cr;
   COORDENADA c;
   int r = 1;
+  int best = -100,curr;
+  ESTADO a;
 
-  jogadasValidas(&cr,e);
-  for(int i = 0; i < cr.validas && r;i++)
+  cr = jogadasValidas(e);
 
-
+  for(int i = 0; i < cr.validas && r;i++) {
+    a = jogadaBot(*e,&cr.coords[i]);
+    curr = minmax(jogadasValidas(&a),a,0,1);
+    //printf(",%d%c%d ", curr,'a' + cr.coords[i].coluna,cr.coords[i].linha);
+    if(curr > best) {
+      best = curr;
+      c = cr.coords[i];
+    }
+  }
   return c;
 }
