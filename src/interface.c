@@ -134,9 +134,9 @@ void execute(ESTADO* e, COORDENADA* c)
       printf("Comando Inválido\n");
 
     // O teste do jogo acabar tem de estar fora, porque se não só na jogada a seguir é que valida
-
-    if (isOver(e)) {
-      winner(e);
+    int j;
+    if ((j = isOver(e))) {
+      printf("\nO vencedor é o jogador %d\n", j);
       return;
     }
   }

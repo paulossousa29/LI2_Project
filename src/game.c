@@ -73,7 +73,7 @@ void movimentos(ESTADO* e)
   if(e->num_jogadas == 0)
     printf("Não existem jogadas\n");
 
-  for(i=0; i<e->num_jogadas; i++) {
+  for(i=1; i<=e->num_jogadas; i++) {
 
     if(i < 10)
       printf("0%d: ",i);
@@ -118,14 +118,29 @@ void posicao(ESTADO* e, char* pos)
 int isOver(ESTADO* e)
 {
   int c = e->ultima_jogada.coluna;
-  int l = e->ultima_jogada.linha;
+  int l = e->ultima_jogada.linha,l2 = l;
 
   if (e->tab[7][0] == BRANCA)
     return 1;
 
   else if (e->tab[0][7] == BRANCA)
-    return 1;
+    return 2;
 
+  if(l2 == 1) l2++;
+
+  for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l2++) {
+    for(int c2 = c - 1;c2 <= c + 1;c2++)
+      if(c2 >= 0 && c2 <=7 && e->tab[8 - l2][c2] == VAZIO)
+        return 0;
+  }
+
+  if(e -> jogador_atual == 1)
+    return 2;
+
+  return 1;
+
+}
+/*
   else if (l == 8 && c == 0) {
     if (e->tab[1][c+1] == PRETA && e->tab[1][c] == PRETA && e->tab[0][c+1] == PRETA)
       return 1;
@@ -176,8 +191,8 @@ int isOver(ESTADO* e)
     && e->tab[8-l-1][c-1] == PRETA))
       return 1;
 
-  return 0;
-}
+  //return 0;
+
 
 void winner(ESTADO* e)
 {
@@ -191,7 +206,7 @@ void winner(ESTADO* e)
 
   printf("\nO vencedor é o jogador %d\n", c);
 }
-
+*/
 
 
 CVAL jogadasValidas(ESTADO *e)
@@ -244,13 +259,12 @@ int pertoFim(COORDENADA c,int jogador) {
 int avaliaJogada(ESTADO e,COORDENADA c) {
   int j = e.jogador_atual,p;
   ESTADO a = jogadaBot(e,&c);
-  int l = e.ultima_jogada.linha;
-  int cl = e.ultima_jogada.coluna;
+  int l = e.ultima_jogada.linha,cl = e.ultima_jogada.coluna;
 
-  if((c.linha == 8 && c.coluna == 7 && j == 1) ||
-    (c.linha == 1 && c.coluna == 0 && j == 2))
+  p = isOver(&a);
+  if(p != j && p)
     p = 1;
-  else if(isOver(&a))
+  else if(p == j)
           p = 8;
   else if((pertoFim(c,j)))
           p = 2;
@@ -295,7 +309,7 @@ int minmax(CVAL cr,ESTADO e,int isMax,int p) {
     for(int i = 0;i < cr.validas;i++) {
       a = jogadaBot(e,&cr.coords[i]);
       if(!p || isOver(&a))
-        pontos = avaliaJogada(e,cr.coords[i]);
+        pontos = avaliaJogada(e,cr.coords[i]) - 7;
       else
         pontos = minmax(jogadasValidas(&a),a,1,p-1);
 
@@ -311,19 +325,24 @@ COORDENADA Bot(ESTADO *e) {
   CVAL cr;
   COORDENADA c;
   int r = 1;
-  int best = -100,curr;
+  int best = -100,curr,p;
   ESTADO a;
 
   cr = jogadasValidas(e);
 
   for(int i = 0; i < cr.validas && r;i++) {
     a = jogadaBot(*e,&cr.coords[i]);
+    if(isOver(&a) == e -> jogador_atual)
+      return cr.coords[i];
+
     curr = minmax(jogadasValidas(&a),a,0,1);
-    //printf(",%d%c%d ", curr,'a' + cr.coords[i].coluna,cr.coords[i].linha);
-    if(curr > best) {
+
+    if(curr > best || (curr == best && avaliaJogada(*e,cr.coords[i]) > p)) {
       best = curr;
       c = cr.coords[i];
+      p = avaliaJogada(*e,cr.coords[i]);
     }
+    printf("%d%c%d\n", curr,'a' + cr.coords[i].coluna,cr.coords[i].linha);
   }
   return c;
 }
