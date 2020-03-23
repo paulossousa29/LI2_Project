@@ -178,6 +178,28 @@ int isOver(ESTADO* e)
   return 0;
 }
 
+int replay()
+{
+  char* buffer = NULL;
+  buffer = malloc(sizeof(char) * MAX);
+
+  printf("Jogar outra vez? (S/N)\n");
+
+  while(1)
+  {
+    fgets(buffer, MAX, stdin);
+
+    if(strcmp(buffer, "S\n")==0)
+      return 1;
+
+    else if(strcmp(buffer, "N\n")==0)
+      return 0;
+
+    else
+      printf("Comando inválido. Jogar outra vez? (S/N)\n");
+  }
+}
+
 void winner(ESTADO* e)
 {
   int c = e->jogador_atual;
@@ -257,7 +279,7 @@ int avaliaJogada(ESTADO *e,COORDENADA c) {
 
   return 5;
 }
-
+/*
 COORDENADA Bot(ESTADO *e) {
   CVAL cr;
   COORDENADA c;
@@ -269,3 +291,4 @@ COORDENADA Bot(ESTADO *e) {
 
   return c;
 }
+*/

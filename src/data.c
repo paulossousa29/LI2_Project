@@ -15,3 +15,5 @@ void gamestart(ESTADO *e)
     e->num_jogadas = 0;
     e->jogador_atual = 1;
 }
+
+

@@ -62,6 +62,7 @@ int temEspaco(char *s) {
 // Intrepertador
 void execute(ESTADO* e, COORDENADA* c)
 {
+  int r;
   char *buffer = NULL;
   buffer = malloc(MAX*sizeof(char));
   char* s = NULL;
@@ -134,7 +135,16 @@ void execute(ESTADO* e, COORDENADA* c)
 
     if (isOver(e)) {
       winner(e);
-      return;
+
+      r = replay();
+
+      if(r==0)
+        return;
+
+      else {
+        printf("\nNovo Jogo\n");
+        gamestart(e);
+      }
     }
   }
 }
