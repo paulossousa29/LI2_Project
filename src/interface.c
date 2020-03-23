@@ -62,7 +62,7 @@ int temEspaco(char *s) {
 // Intrepertador
 void execute(ESTADO* e, COORDENADA* c)
 {
-  int r;
+  int j, r;
   char *buffer = NULL;
   buffer = malloc(MAX*sizeof(char));
   char* s = NULL;
@@ -114,7 +114,10 @@ void execute(ESTADO* e, COORDENADA* c)
       movimentos(e);
 
     else if(strcmp(s, "jog") == 0) {
-      printf("%s\n", s);
+      //printf("%s\n", s);
+      COORDENADA c;
+      c = Bot(e);
+      printf("coordenada sugerida %c %d\n", 'a' + c.coluna,c.linha);
     }
 
     else if(strcmp(s, "pos") == 0) {
@@ -132,9 +135,8 @@ void execute(ESTADO* e, COORDENADA* c)
       printf("Comando Inválido\n");
 
     // O teste do jogo acabar tem de estar fora, porque se não só na jogada a seguir é que valida
-
-    if (isOver(e)) {
-      winner(e);
+    if ((j = isOver(e))) {
+      printf("\nO vencedor é o jogador %d\n", j);
 
       r = replay();
 
