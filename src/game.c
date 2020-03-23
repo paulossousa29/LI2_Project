@@ -115,6 +115,30 @@ void posicao(ESTADO* e, char* pos)
   printa(aux);
 }
 
+
+int replay()
+{
+  char* buffer = NULL;
+  buffer = malloc(sizeof(char) * MAX);
+
+  printf("\nJogar outra vez? (S/N)\n");
+
+  while(1)
+  {
+    fgets(buffer, MAX, stdin);
+
+    if(strcmp(buffer, "S\n")==0)
+      return 1;
+
+    else if(strcmp(buffer, "N\n")==0)
+      return 0;
+
+    else
+      printf("\nComando inválido. Jogar outra vez? (S/N)\n");
+  }
+}
+
+
 int isOver(ESTADO* e)
 {
   int c = e->ultima_jogada.coluna;
@@ -140,95 +164,6 @@ int isOver(ESTADO* e)
   return 1;
 
 }
-/*
-  else if (l == 8 && c == 0) {
-    if (e->tab[1][c+1] == PRETA && e->tab[1][c] == PRETA && e->tab[0][c+1] == PRETA)
-      return 1;
-  }
-
-  else if (l==1 && c ==7) {
-    if (e->tab[6][c-1] == PRETA && e->tab[6][c] == PRETA && e->tab[7][c-1] == PRETA)
-      return 1;
-  }
-
-  else if (l == 8) {
-    if ((e->tab[0][c+1] == PRETA || c+1 == 7) && e->tab[0][c-1] == PRETA
-    && e->tab[1][c+1] == PRETA
-    && e->tab[1][c] == PRETA && e->tab[1][c-1] == PRETA)
-      return 1;
-  }
-
-  else if (l == 1) {
-    if (e->tab[7][c+1] == PRETA && (e->tab[7][c-1] == PRETA || c-1 == 0)
-    && e->tab[6][c+1] == PRETA
-    && e->tab[6][c] == PRETA && e->tab[6][c-1] == PRETA)
-      return 1;
-  }
-
-  else if (c == 0) {
-    if (e->tab[8-l-1][c] == PRETA && (e->tab[8-l+1][c] == PRETA || 8-l+1 == 7)
-    && e->tab[8-l-1][c+1] == PRETA
-    && e->tab[8-l][c+1] == PRETA && e->tab[8-l+1][c+1] == PRETA)
-      return 1;
-  }
-
-  else if (c == 7) {
-    if (e->tab[8-l+1][c] == PRETA && (e->tab[8-l-1][c] == PRETA || ((8-l-1) == 0))
-    && e->tab[8-l-1][c-1] == PRETA
-    && e->tab[8-l][c-1] == PRETA && e->tab[8-l+1][c-1] == PRETA)
-      return 1;
-  }
-
-  else if
-    ((e->tab[8-l-1][c] == PRETA
-    && (e->tab[8-l-1][c+1] == PRETA || (8-l-1 == 0 && c+1 == 7))
-    && e->tab[8-l][c+1] == PRETA
-    && e->tab[8-l-1][c] == PRETA
-    && e->tab[8-l+1][c+1] == PRETA
-    && e->tab[8-l+1][c] == PRETA
-    && (e->tab[8-l+1][c-1] == PRETA || (8-l+1 == 7 && c-1 == 0))
-    && e->tab[8-l][c-1] == PRETA
-    && e->tab[8-l-1][c-1] == PRETA))
-      return 1;
-
-  //return 0;
-
-
-int replay()
-{
-  char* buffer = NULL;
-  buffer = malloc(sizeof(char) * MAX);
-
-  printf("Jogar outra vez? (S/N)\n");
-
-  while(1)
-  {
-    fgets(buffer, MAX, stdin);
-
-    if(strcmp(buffer, "S\n")==0)
-      return 1;
-
-    else if(strcmp(buffer, "N\n")==0)
-      return 0;
-
-    else
-      printf("Comando inválido. Jogar outra vez? (S/N)\n");
-  }
-}
-
-void winner(ESTADO* e)
-{
-  int c = e->jogador_atual;
-
-  if(e->tab[7][0] == BRANCA)
-    c = 1;
-
-  else if(e->tab[0][7] == BRANCA)
-    c = 2;
-
-  printf("\nO vencedor é o jogador %d\n", c);
-}
-*/
 
 
 CVAL jogadasValidas(ESTADO *e)
@@ -342,7 +277,7 @@ int minmax(CVAL cr,ESTADO e,int isMax,int p) {
   }
   return pontos;
 }
-/*
+
 COORDENADA Bot(ESTADO *e) {
   CVAL cr;
   COORDENADA c;
@@ -368,4 +303,3 @@ COORDENADA Bot(ESTADO *e) {
   }
   return c;
 }
-*/
