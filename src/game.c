@@ -21,19 +21,21 @@ int isValid(ESTADO* e, int col, int line)
     printf("A posição não faz parte da grelha\n");
     return -1;
   }
-  int l = e->ultima_jogada.linha;
-  int c = e->ultima_jogada.coluna;
+  int l = ultimaJogLinha(e);
+  int c = ultimaJogColuna(e);
 
-  if(e->tab[8 - line][col] == VAZIO) {
+  if(estadoCasa(e, 8-line, col) == VAZIO) {
     if((l == line && (col == c + 1 || col == c - 1))||
     (c == col && (line == l + 1 || line == l - 1))||
     (line == l + 1 && (col == c - 1 || col == c + 1))||
     (line == l - 1 && (col == c - 1 || col == c + 1)))
       return 0;
+    
     else {
       printf("A posição %c %d não é adjacente %c %d\n", col + 'a',line,c+'a',l);
     }
   }
+
   else
     printf("A posição %c %d é inválida\n", col + 'a',line);
 
@@ -43,37 +45,34 @@ int isValid(ESTADO* e, int col, int line)
 void place(ESTADO* e, COORDENADA* c)
 {
   if(!(isValid(e, c->coluna, c->linha))) {
+    alteraCasa(e, PRETA, 8 - e->ultima_jogada.linha, e->ultima_jogada.coluna);
+    alteraCasa(e, BRANCA, 8 - c->linha, c->coluna);
+    alteraUltimaJog(e, c->linha, c->coluna);
 
-    e->tab[8 - e->ultima_jogada.linha][e->ultima_jogada.coluna] = PRETA;
-    e->tab[8 - c->linha][c->coluna] = BRANCA;
-    e->ultima_jogada.linha = c->linha;
-    e->ultima_jogada.coluna = c->coluna;
-
-    if(e->jogador_atual == 1) {
-      e->jogador_atual = 2;
-      e->num_jogadas++;
-      e->jogadas[e->num_jogadas-1].jogador1.linha = c -> linha;
-      e->jogadas[e->num_jogadas-1].jogador1.coluna = c -> coluna;
+    if(jogAtual(e) == 1) {
+      alteraJog(e, 2);
+      incJogadas(e);
+      e->jogadas[numJogadas(e)-1].jogador1.linha = c -> linha;
+      e->jogadas[numJogadas(e)-1].jogador1.coluna = c -> coluna;
     }
 
     else {
-      e->jogador_atual = 1;
-      e->jogadas[e->num_jogadas-1].jogador2.linha = c -> linha;
-      e->jogadas[e->num_jogadas-1].jogador2.coluna = c -> coluna;
+      alteraJog(e, 1);
+      e->jogadas[numJogadas(e)-1].jogador2.linha = c -> linha;
+      e->jogadas[numJogadas(e)-1].jogador2.coluna = c -> coluna;
     }
   }
 }
 
-void movimentos(ESTADO* e)
-{
+void movimentos(ESTADO* e) {
   int i;
 
   printf("\nMovimentos:\n");
 
-  if(e->num_jogadas == 0)
+  if(numJogadas(e) == 0)
     printf("Não existem jogadas\n");
 
-  for(i=1; i<=e->num_jogadas; i++) {
+  for(i=1; i<=numJogadas(e); i++) {
 
     if(i < 10)
       printf("0%d: ",i);
@@ -81,8 +80,8 @@ void movimentos(ESTADO* e)
     else
       printf("%d: ",i);
 
-    if(i == e->num_jogadas && e->jogador_atual == 2) {
-      printf("%c%d\n",e->ultima_jogada.coluna + 'a',e->ultima_jogada.linha);
+    if(i == numJogadas(e) && jogAtual(e) == 2) {
+      printf("%c%d\n",ultimaJogColuna(e) + 'a', ultimaJogLinha(e));
     }
 
     else {
@@ -93,8 +92,7 @@ void movimentos(ESTADO* e)
   }
 }
 
-void posicao(ESTADO* e, char* pos)
-{
+void posicao(ESTADO* e, char* pos) {
   int i, jog;
   ESTADO* aux = malloc(sizeof(ESTADO));
 
@@ -103,7 +101,7 @@ void posicao(ESTADO* e, char* pos)
   if((jog = atoi(pos)) == 0)
     printf("Argumento inválido\n");
 
-  if(jog >= e->num_jogadas)
+  if(jog >= numJogadas(e))
     printf("A jogada %d não existe\n", jog);
 
   for(i=0; i<jog; i++)
@@ -115,9 +113,32 @@ void posicao(ESTADO* e, char* pos)
   printa(aux);
 }
 
+int isOver(ESTADO* e) {
+  int c = ultimaJogColuna(e);
+  int l = ultimaJogLinha(e);
+  int l2 = l;
 
-int replay()
-{
+  if (estadoCasa(e, 7, 0) == BRANCA)
+    return 1;
+
+  else if (estadoCasa(e, 0, 7) == BRANCA)
+    return 2;
+
+  if(l2 == 1) l2++;
+
+  for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l2++) {
+    for(int c2 = c - 1;c2 <= c + 1;c2++)
+      if(c2 >= 0 && c2 <=7 && estadoCasa(e, 8-l2, c2) == VAZIO)
+        return 0;
+  }
+
+  if(jogAtual(e) == 1)
+    return 2;
+
+  return 1;
+}
+
+int replay() {
   char* buffer = NULL;
   buffer = malloc(sizeof(char) * MAX);
 
@@ -138,46 +159,19 @@ int replay()
   }
 }
 
+// Funções para seleção da melhor jogada (BOT)
 
-int isOver(ESTADO* e)
-{
-  int c = e->ultima_jogada.coluna;
-  int l = e->ultima_jogada.linha,l2 = l;
-
-  if (e->tab[7][0] == BRANCA)
-    return 1;
-
-  else if (e->tab[0][7] == BRANCA)
-    return 2;
-
-  if(l2 == 1) l2++;
-
-  for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l2++) {
-    for(int c2 = c - 1;c2 <= c + 1;c2++)
-      if(c2 >= 0 && c2 <=7 && e->tab[8 - l2][c2] == VAZIO)
-        return 0;
-  }
-
-  if(e -> jogador_atual == 1)
-    return 2;
-
-  return 1;
-
-}
-
-
-CVAL jogadasValidas(ESTADO *e)
-{
+CVAL jogadasValidas(ESTADO *e) {
   CVAL cr;
-  int l = e -> ultima_jogada.linha,l2 = l;
-  int c = e -> ultima_jogada.coluna;
-  int i = 0;
+  int l = ultimaJogLinha(e);
+  int c = ultimaJogColuna(e);
+  int i = 0, l2 = l;
 
   if(l2 == 1) l2++;
 
   for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l2++) {
     for(int c2 = c - 1;c2 <= c + 1;c2++)
-      if(c2 >= 0 && c2 <=7 && e->tab[8 - l2][c2] == VAZIO) {
+      if(c2 >= 0 && c2 <=7 && estadoCasa(e, 8-l2, c2) == VAZIO) {
         cr.coords[i].linha = l2;
         cr.coords[i].coluna = c2;
         i++;
@@ -240,7 +234,7 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
   else p = 3;
 
   return p;
-  }
+}
 
 int minmax(CVAL cr,ESTADO e,int isMax,int p) {
   int pontos,max,min;

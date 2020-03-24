@@ -14,7 +14,7 @@ void printa(ESTADO *e)
       printf("%d ", 8-i);
 
       for (j=0; j<8; j++) {
-        switch(e->tab[i][j]) {
+        switch(estadoCasa(e, i, j)) {
           case PRETA:
             c = '#';
             break;
@@ -36,7 +36,7 @@ void printa(ESTADO *e)
       }
       printf("\n");
     }
-    printf("(%d) Jogador: %d\n", e->num_jogadas,e->jogador_atual);
+    printf("(%d) Jogador: %d\n", numJogadas(e), jogAtual(e));
 }
 
 // Função que mostra o menu de comandos
@@ -52,6 +52,7 @@ void menu()
   printf("- Q\n");
   printf("\nIntroduza o seu comando: ");
 }
+
 int temEspaco(char *s) {
   int r = 0;
   for(int i = 0;s[i] != '\0' && !r;i++)
@@ -59,6 +60,7 @@ int temEspaco(char *s) {
 
   return r;
 }
+
 // Intrepertador
 void execute(ESTADO* e, COORDENADA* c)
 {
@@ -127,7 +129,7 @@ void execute(ESTADO* e, COORDENADA* c)
     }
 
     else if((strcmp(s, "q") == 0) || (strcmp(s, "Q") == 0)) {
-      printf("A Sair do Jogo!\n");
+      printf("\nA Sair do Jogo!\n");
       return;
     }
 
@@ -140,12 +142,15 @@ void execute(ESTADO* e, COORDENADA* c)
 
       r = replay();
 
-      if(r==0)
+      if(r==0) {
+        printf("\nA Sair do Jogo!\n");
         return;
+      }
 
       else {
         printf("\nNovo Jogo\n");
         gamestart(e);
+        printa(e);
       }
     }
   }

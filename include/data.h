@@ -12,7 +12,11 @@
 
 // Structs
 
-typedef enum {VAZIO, BRANCA, PRETA} CASA;
+typedef enum {
+    VAZIO, 
+    BRANCA, 
+    PRETA
+} CASA;
 
 typedef struct {
     int coluna;
@@ -42,3 +46,12 @@ typedef struct {
 // Functions
 
 void gamestart(ESTADO *e);
+int jogAtual(ESTADO *e);
+void alteraJog(ESTADO *e, int jog);
+int numJogadas(ESTADO *e);
+void incJogadas(ESTADO *e);
+CASA estadoCasa(ESTADO *e, int col, int linha);
+void alteraCasa(ESTADO *e, CASA a, int col, int linha);
+int ultimaJogLinha(ESTADO *e);
+int ultimaJogColuna(ESTADO *e);
+void alteraUltimaJog(ESTADO *e, int linha, int col);
