@@ -52,3 +52,18 @@ void alteraUltimaJog(ESTADO *e, int linha, int col) {
   e->ultima_jogada.coluna = col;
 }
 
+int getJog1Col(ESTADO* e, int i) {
+  return e->jogadas[i-1].jogador1.coluna;
+}
+
+int getJog1Line(ESTADO* e, int i) {
+  return e->jogadas[i-1].jogador1.linha;
+}
+
+int getJog2Col(ESTADO* e, int i) {
+  return e->jogadas[i-1].jogador2.coluna;
+}
+
+int getJog2Line(ESTADO* e, int i) {
+  return e->jogadas[i-1].jogador2.linha;
+}

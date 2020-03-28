@@ -30,7 +30,7 @@ int isValid(ESTADO* e, int col, int line)
     (line == l + 1 && (col == c - 1 || col == c + 1))||
     (line == l - 1 && (col == c - 1 || col == c + 1)))
       return 0;
-    
+
     else {
       printf("A posição %c %d não é adjacente %c %d\n", col + 'a',line,c+'a',l);
     }
@@ -86,8 +86,8 @@ void movimentos(ESTADO* e) {
 
     else {
       printf("%c%d %c%d\n",
-      e->jogadas[i-1].jogador1.coluna + 'a',e->jogadas[i-1].jogador1.linha,
-      e->jogadas[i-1].jogador2.coluna + 'a',e->jogadas[i-1].jogador2.linha);
+      getJog1Col(e, i) + 'a',getJog1Line(e, i),
+      getJog2Col(e, i) + 'a',getJog2Line(e, i);
     }
   }
 }
