@@ -119,7 +119,7 @@ void execute(ESTADO* e, COORDENADA* c)
       //printf("%s\n", s);
       COORDENADA c;
       c = Bot(e);
-      printf("coordenada sugerida %c %d\n", 'a' + c.coluna,c.linha);
+      printf("coordenada sugerida %c %d\n", 'a' + getCol(&c), getLine(&c));
     }
 
     else if(strcmp(s, "pos") == 0) {

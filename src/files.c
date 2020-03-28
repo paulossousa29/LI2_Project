@@ -18,7 +18,7 @@ void output(ESTADO* e, char* name)
 
   for (i=0; i<8; i++) {
     for (j=0; j<8; j++) {
-      switch(e->tab[i][j]) {
+      switch(estadoCasa(e, i, j)) {
         case PRETA:
           c = '#';
           break;
@@ -43,22 +43,22 @@ void output(ESTADO* e, char* name)
   //lista de movimentos
   fprintf(ftable, " \n");
 
-  for(i = 1;i <= e->num_jogadas;i++) {
+  for(i = 1;i <= numJogadas(e);i++) {
     if(i < 10)
       fprintf(ftable, "0%d: ",i);
     else
       fprintf(ftable, "%d: ",i);
 
-    if(i == e->num_jogadas && e->jogador_atual == 2) {
-      fprintf(ftable, "%c%d\n",e->ultima_jogada.coluna + 'a',e->ultima_jogada.linha);
+    if(i == numJogadas(e) && jogAtual(e) == 2) {
+      fprintf(ftable, "%c%d\n", ultimaJogColuna(e) + 'a',ultimaJogLinha(e));
     }
     else {
       fprintf(ftable, "%c%d %c%d\n",
-      e->jogadas[i-1].jogador1.coluna + 'a',e->jogadas[i-1].jogador1.linha,
-      e->jogadas[i-1].jogador2.coluna + 'a',e->jogadas[i-1].jogador2.linha);
+      getJog1Col(e, i) + 'a',getJog1Line(e, i),
+      getJog2Col(e, i) + 'a',getJog2Col(e, i));
     }
   }
-  
+
   printf("Ficheiro %s gravado\n", name);
 
   fclose(ftable);
@@ -106,15 +106,15 @@ void input(ESTADO* e, char* name)
       e->jogadas[jogada - 1].jogador1.linha = buffer[5] - '0';
       e->jogadas[jogada - 1].jogador1.coluna = buffer[4] - 'a';
       e->num_jogadas = jogada;
-      e->ultima_jogada.linha = e->jogadas[e->num_jogadas - 1].jogador1.linha;
-      e->ultima_jogada.coluna = e->jogadas[e->num_jogadas - 1].jogador1.coluna;
+      e->ultima_jogada.linha = e->jogadas[numJogadas(e) - 1].jogador1.linha;
+      e->ultima_jogada.coluna = e->jogadas[numJogadas(e) - 1].jogador1.coluna;
 
       if(strlen(buffer) > 8) {
         e->jogadas[jogada - 1].jogador2.linha = buffer[8] - '0';
         e->jogadas[jogada - 1].jogador2.coluna = buffer[7] - 'a';
         e->jogador_atual = 1;
-        e->ultima_jogada.linha = e->jogadas[e->num_jogadas - 1].jogador2.linha;
-        e->ultima_jogada.coluna = e->jogadas[e->num_jogadas - 1].jogador2.coluna;
+        e->ultima_jogada.linha = e->jogadas[numJogadas(e) - 1].jogador2.linha;
+        e->ultima_jogada.coluna = e->jogadas[numJogadas(e) - 1].jogador2.coluna;
       }
       else
         e-> jogador_atual = 2;

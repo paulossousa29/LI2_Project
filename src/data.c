@@ -87,7 +87,7 @@ COORDENADA getCoord(CVAL* cr, int i) {
   return cr->coords[i];
 }
 
-/*
+
 COORDENADA getJogada1(ESTADO* e, int i) {
   return e->jogadas[i].jogador1;
 }
