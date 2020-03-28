@@ -67,3 +67,32 @@ int getJog2Col(ESTADO* e, int i) {
 int getJog2Line(ESTADO* e, int i) {
   return e->jogadas[i-1].jogador2.linha;
 }
+
+int getCol(COORDENADA* c) {
+  return c->coluna;
+}
+
+int getLine(COORDENADA* c) {
+  return c->linha;
+}
+
+int getValidas(CVAL* cr) {
+  return cr->validas;
+}
+
+
+
+/*
+COORDENADA getCoord(CVAL* cr, int i) {
+  return cr->coords[i];
+}
+
+/*
+COORDENADA getJogada1(ESTADO* e, int i) {
+  return e->jogadas[i].jogador1;
+}
+
+COORDENADA getJogada2(ESTADO* e, int i) {
+  return e->jogadas[i].jogador2;
+}
+*/
