@@ -80,13 +80,9 @@ int getValidas(CVAL* cr) {
   return cr->validas;
 }
 
-
-
-/*
 COORDENADA getCoord(CVAL* cr, int i) {
   return cr->coords[i];
 }
-
 
 COORDENADA getJogada1(ESTADO* e, int i) {
   return e->jogadas[i].jogador1;
@@ -95,4 +91,3 @@ COORDENADA getJogada1(ESTADO* e, int i) {
 COORDENADA getJogada2(ESTADO* e, int i) {
   return e->jogadas[i].jogador2;
 }
-*/

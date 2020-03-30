@@ -46,6 +46,7 @@ void menu()
   printf("- coordenada <coluna> <linha>\n");
   printf("- gr <nome>\n");
   printf("- ler <nome>\n");
+  printf("- tabuleiro\n");
   printf("- movs\n");
   printf("- jog\n");
   printf("- pos <numero_da_jogada>\n");
@@ -111,6 +112,9 @@ void execute(ESTADO* e, COORDENADA* c)
 
       input(e, s);
     }
+
+    else if(strcmp(s, "tabuleiro") == 0) 
+      printa(e);
 
     else if(strcmp(s, "movs") == 0)
       movimentos(e);
