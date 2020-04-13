@@ -19,8 +19,7 @@ int toCord(COORDENADA* c, char* col, char* line)
     return 0;
   }
 
-  c->coluna = col[0] - 'a';
-  c->linha = line[0] - '0';
+  setCoord(c, line[0] - '0', col[0] - 'a');
 
   return 1;
 }
@@ -74,14 +73,12 @@ void place(ESTADO* e, COORDENADA* c)
     if(jogAtual(e) == 1) {
       alteraJog(e, 2);
       incJogadas(e);
-      e->jogadas[numJogadas(e)-1].jogador1.linha = getLine(c);
-      e->jogadas[numJogadas(e)-1].jogador1.coluna = getCol(c);
+      setJog1(e, numJogadas(e)-1, getLine(c), getCol(c));
     }
 
     else {
       alteraJog(e, 1);
-      e->jogadas[numJogadas(e)-1].jogador2.linha = getLine(c);
-      e->jogadas[numJogadas(e)-1].jogador2.coluna = getCol(c);
+      setJog1(e, numJogadas(e)-1, getLine(c), getCol(c));
     }
   }
 }
@@ -123,6 +120,7 @@ void movimentos(ESTADO* e) {
  * @param e   Apontador para Estado
  * @param pos Jogada a ser apresentada
  */
+/*
 void posicao(ESTADO* e, char* pos) {
   int i, jog;
   ESTADO* aux = initEstado();
@@ -137,12 +135,13 @@ void posicao(ESTADO* e, char* pos) {
 
   for(i=0; i<jog; i++)
   {
-    place(aux, &(e->jogadas[i].jogador1));
+    place(aux, &get);
     place(aux, &(e->jogadas[i].jogador2));
   }
 
   printa(aux);
 }
+*/
 
 /**
  * @brief   Função que verifica se o jogo acabou

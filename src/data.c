@@ -193,6 +193,30 @@ int getJog2Line(ESTADO* e, int i) {
 }
 
 /**
+ * @brief       Função que atualiza adiciona a Jogada do Jogador 1
+ * @param e     Apontador para Estado 
+ * @param i     Inteiro com Jogada
+ * @param line  Inteiro com a linha
+ * @param col   Inteiro com a coluna
+ */
+void setJog1(ESTADO* e, int i, int line, int col) {
+  e->jogadas[i-1].jogador1.linha = line;
+  e->jogadas[i-1].jogador1.coluna = col;
+}
+
+/**
+ * @brief       Função que atualiza adiciona a Jogada do Jogador 2
+ * @param e     Apontador para Estado 
+ * @param i     Inteiro com Jogada
+ * @param line  Inteiro com a linha
+ * @param col   Inteiro com a coluna
+ */
+void setJog2(ESTADO* e, int i, int line, int col) {
+  e->jogadas[i-1].jogador2.linha = line;
+  e->jogadas[i-1].jogador2.coluna = col;
+}
+
+/**
  * @brief   Devolve a coluna de uma coordenada
  * @param c Apontador para Coordenada
  * @return  Inteiro com a coluna
@@ -208,6 +232,17 @@ int getCol(COORDENADA* c) {
  */
 int getLine(COORDENADA* c) {
   return c->linha;
+}
+
+/**
+ * @brief       Função atualiza uma coordenada
+ * @param c     Apontador para Coordenada
+ * @param line  Inteiro com a linha
+ * @param col   Inteiro com a coluna
+ */
+void setCoord(COORDENADA* c, int line, int col) {
+  c->coluna = col;
+  c->linha = line;
 }
 
 /**
