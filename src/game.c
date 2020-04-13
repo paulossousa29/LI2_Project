@@ -30,7 +30,7 @@ int isValid(ESTADO* e, int col, int line)
     (line == l + 1 && (col == c - 1 || col == c + 1))||
     (line == l - 1 && (col == c - 1 || col == c + 1)))
       return 0;
-    
+
     else {
       printf("A posição %c %d não é adjacente %c %d\n", col + 'a',line,c+'a',l);
     }
@@ -275,18 +275,22 @@ int minmax(CVAL cr,ESTADO e,int isMax,int p) {
 COORDENADA Bot(ESTADO *e) {
   CVAL cr;
   COORDENADA c;
-  int r = 1;
+  int r = 1, t;
   int best = -100,curr,p;
   ESTADO a;
 
   cr = jogadasValidas(e);
 
   for(int i = 0; i < cr.validas && r;i++) {
-    a = jogadaBot(*e,&cr.coords[i]);
-    if(isOver(&a) == e -> jogador_atual)
+    t = isOver(&a);
+    if(t == e -> jogador_atual)
       return cr.coords[i];
-
-    curr = minmax(jogadasValidas(&a),a,0,1);
+    else if (t != 0)
+      curr = avaliaJogada(*e,cr.coords[i])
+    else {
+      a = jogadaBot(*e,&cr.coords[i]);
+      curr = minmax(jogadasValidas(&a),a,0,3);
+    }
 
     if(curr > best || (curr == best && avaliaJogada(*e,cr.coords[i]) > p)) {
       best = curr;
