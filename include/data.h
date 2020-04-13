@@ -10,42 +10,23 @@
 #define MAX 40
 #define SMAX 20
 
-// Structs
-
 typedef enum {
     VAZIO, 
     BRANCA, 
     PRETA
 } CASA;
 
-typedef struct {
-    int coluna;
-    int linha;
-} COORDENADA;
-
-typedef struct {
-    COORDENADA jogador1;
-    COORDENADA jogador2;
-} JOGADA;
-
+typedef struct coordenanda COORDENADA;
+typedef struct jogada JOGADA;
 typedef JOGADA JOGADAS[32];
-
-typedef struct {
-    CASA tab[8][8];
-    COORDENADA ultima_jogada;
-    JOGADAS jogadas;
-    int num_jogadas;
-    int jogador_atual;
-} ESTADO;
-
-typedef struct {
-    int validas;
-    COORDENADA coords[8];
-} CVAL;
+typedef struct estado ESTADO;
+typedef struct cval CVAL;
 
 // Functions
 
 void gamestart(ESTADO *e);
+ESTADO* initEstado();
+COORDENADA* initCoordenada();
 int jogAtual(ESTADO *e);
 void alteraJog(ESTADO *e, int jog);
 int numJogadas(ESTADO *e);
@@ -55,3 +36,16 @@ void alteraCasa(ESTADO *e, CASA a, int col, int linha);
 int ultimaJogLinha(ESTADO *e);
 int ultimaJogColuna(ESTADO *e);
 void alteraUltimaJog(ESTADO *e, int linha, int col);
+int getJog1Col(ESTADO* e, int i);
+int getJog1Line(ESTADO* e, int i);
+int getJog2Col(ESTADO* e, int i);
+int getJog2Line(ESTADO* e, int i);
+void setJog1(ESTADO* e, int i, int line, int col);
+void setJog2(ESTADO* e, int i, int line, int col);
+int getCol(COORDENADA* c);
+int getLine(COORDENADA* c);
+void setCoord(COORDENADA* c, int line, int col);
+int getValidas(CVAL* cr);
+COORDENADA getCoord(CVAL* cr, int i);
+COORDENADA getJogada1(ESTADO* e, int i);
+COORDENADA getJogada2(ESTADO* e, int i);

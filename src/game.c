@@ -1,7 +1,17 @@
-#include "data.h"
-#include "interface.h"
+/**
+ * @file  game.c
+ * @brief Ficheiro com funções da lógica do programa
+ */
+
 #include "game.h"
 
+/**
+ * @brief       Função que passa o input do utilizador para uma Coordenada
+ * @param c     Apontador para Coordenada
+ * @param col   Inteiro com a coluna
+ * @param line  Inteiro com a linha
+ * @return      Inteiro com resultado booleano
+ */
 int toCord(COORDENADA* c, char* col, char* line)
 {
   if(col[1]!='\0' || line[1]!='\0') {
@@ -9,12 +19,18 @@ int toCord(COORDENADA* c, char* col, char* line)
     return 0;
   }
 
-  c->coluna = col[0] - 'a';
-  c->linha = line[0] - '0';
+  setCoord(c, line[0] - '0', col[0] - 'a');
 
   return 1;
 }
 
+/**
+ * @brief       Função que verifica se uma coordenada é válida
+ * @param e     Apontador para Estado
+ * @param col   Inteiro com a linha
+ * @param line  Inteiro com a coluna
+ * @return      Inteiro com resultado booleano
+ */
 int isValid(ESTADO* e, int col, int line)
 {
   if (col < 0 || col > 7 || line < 1 || line > 8) {
@@ -42,28 +58,35 @@ int isValid(ESTADO* e, int col, int line)
   return -1;
 }
 
+/**
+ * @brief   Função que efetua uma jogada
+ * @param e Apontador para Estado
+ * @param c Apontador para Coordenada
+ */
 void place(ESTADO* e, COORDENADA* c)
 {
-  if(!(isValid(e, c->coluna, c->linha))) {
-    alteraCasa(e, PRETA, 8 - e->ultima_jogada.linha, e->ultima_jogada.coluna);
-    alteraCasa(e, BRANCA, 8 - c->linha, c->coluna);
-    alteraUltimaJog(e, c->linha, c->coluna);
+  if(!(isValid(e, getCol(c), getLine(c)))) {
+    alteraCasa(e, PRETA, 8 - ultimaJogLinha(e), ultimaJogColuna(e));
+    alteraCasa(e, BRANCA, 8 - getLine(c), getCol(c));
+    alteraUltimaJog(e, getLine(c), getCol(c));
 
     if(jogAtual(e) == 1) {
       alteraJog(e, 2);
       incJogadas(e);
-      e->jogadas[numJogadas(e)-1].jogador1.linha = c -> linha;
-      e->jogadas[numJogadas(e)-1].jogador1.coluna = c -> coluna;
+      setJog1(e, numJogadas(e)-1, getLine(c), getCol(c));
     }
 
     else {
       alteraJog(e, 1);
-      e->jogadas[numJogadas(e)-1].jogador2.linha = c -> linha;
-      e->jogadas[numJogadas(e)-1].jogador2.coluna = c -> coluna;
+      setJog1(e, numJogadas(e)-1, getLine(c), getCol(c));
     }
   }
 }
 
+/**
+ * @brief   Função que imprime a Lista de Movimentos
+ * @param e Apontador para Estado
+ */
 void movimentos(ESTADO* e) {
   int i;
 
@@ -86,15 +109,21 @@ void movimentos(ESTADO* e) {
 
     else {
       printf("%c%d %c%d\n",
-      e->jogadas[i-1].jogador1.coluna + 'a',e->jogadas[i-1].jogador1.linha,
-      e->jogadas[i-1].jogador2.coluna + 'a',e->jogadas[i-1].jogador2.linha);
+      getJog1Col(e, i) + 'a',getJog1Line(e, i),
+      getJog2Col(e, i) + 'a',getJog2Line(e, i));
     }
   }
 }
 
+/**
+ * @brief     Função que imprime o estado numa determinada posição
+ * @param e   Apontador para Estado
+ * @param pos Jogada a ser apresentada
+ */
+/*
 void posicao(ESTADO* e, char* pos) {
   int i, jog;
-  ESTADO* aux = malloc(sizeof(ESTADO));
+  ESTADO* aux = initEstado();
 
   gamestart(aux);
 
@@ -106,13 +135,19 @@ void posicao(ESTADO* e, char* pos) {
 
   for(i=0; i<jog; i++)
   {
-    place(aux, &(e->jogadas[i].jogador1));
+    place(aux, &get);
     place(aux, &(e->jogadas[i].jogador2));
   }
 
   printa(aux);
 }
+*/
 
+/**
+ * @brief   Função que verifica se o jogo acabou
+ * @param e Apontador para Estado
+ * @return  Inteiro com resultado booleano
+ */
 int isOver(ESTADO* e) {
   int c = ultimaJogColuna(e);
   int l = ultimaJogLinha(e);
@@ -138,27 +173,6 @@ int isOver(ESTADO* e) {
   return 1;
 }
 
-int replay() {
-  char* buffer = NULL;
-  buffer = malloc(sizeof(char) * MAX);
-
-  printf("\nJogar outra vez? (S/N)\n");
-
-  while(1)
-  {
-    fgets(buffer, MAX, stdin);
-
-    if(strcmp(buffer, "S\n")==0)
-      return 1;
-
-    else if(strcmp(buffer, "N\n")==0)
-      return 0;
-
-    else
-      printf("\nComando inválido. Jogar outra vez? (S/N)\n");
-  }
-}
-
 // Funções para seleção da melhor jogada (BOT)
 
 CVAL jogadasValidas(ESTADO *e) {
@@ -182,35 +196,34 @@ CVAL jogadasValidas(ESTADO *e) {
 }
 
 ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
-  e.tab[8 - e.ultima_jogada.linha][e.ultima_jogada.coluna] = PRETA;
-  e.tab[8 - c->linha][c->coluna] = BRANCA;
-  e.ultima_jogada.linha = c->linha;
-  e.ultima_jogada.coluna = c->coluna;
+  e.tab[8 - ultimaJogLinha(&e)][ultimaJogColuna(&e)] = PRETA;
+  e.tab[8 - getLine(c)][getCol(c)] = BRANCA;
+  alteraUltimaJog(&e, getLine(c), getCol(c));
 
-  if(e.jogador_atual == 1)
-    e.jogador_atual = 2;
+  if(jogAtual(&e) == 1)
+    alteraJog(&e, 1);
   else
-    e.jogador_atual = 1;
+    alteraJog(&e, 2);
 
   return e;
 }
 
 int pertoFim(COORDENADA c,int jogador) {
-  if(((c.linha == 8 && c.coluna == 6) || (c.linha == 7 && c.coluna == 6) ||
-    (c.linha == 7 && c.coluna == 7)) && jogador == 1)
+  if(((getLine(&c) == 8 && getCol(&c) == 6) || (getLine(&c) == 7 && getCol(&c) == 6) ||
+    (getLine(&c) == 7 && getCol(&c) == 7)) && jogador == 1)
     return 1;
 
-  if(((c.linha == 2 && c.coluna == 0) || (c.linha == 2 && c.coluna == 1) ||
-    (c.linha == 1 && c.coluna == 1)) && jogador == 2)
+  if(((getLine(&c) == 2 && getCol(&c) == 0) || (getLine(&c) == 2 && getCol(&c) == 1) ||
+    (getLine(&c) == 1 && getCol(&c) == 1)) && jogador == 2)
     return 1;
 
   return 0;
 }
 
 int avaliaJogada(ESTADO e,COORDENADA c) {
-  int j = e.jogador_atual,p;
+  int j = jogAtual(&e),p;
   ESTADO a = jogadaBot(e,&c);
-  int l = e.ultima_jogada.linha,cl = e.ultima_jogada.coluna;
+  int l = ultimaJogLinha(&e),cl = ultimaJogColuna(&e);
 
   p = isOver(&a);
   if(p != j && p)
@@ -219,17 +232,17 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
           p = 8;
   else if((pertoFim(c,j)))
           p = 2;
-  else if((j == 2 && c.linha == l + 1 && c.coluna == cl + 1) ||
-          (j == 1 && c.linha == l - 1 && c.coluna == cl - 1))
+  else if((j == 2 && getLine(&c) == l + 1 && getCol(&c) == cl + 1) ||
+          (j == 1 && getLine(&c) == l - 1 && getCol(&c) == cl - 1))
           p = 7;
-  else if((l == c.linha) && ((j == 2 && c.coluna == cl + 1) ||
-          (j == 1 && c.coluna == cl - 1)))
+  else if((l == getLine(&c)) && ((j == 2 && getCol(&c) == cl + 1) ||
+          (j == 1 && getCol(&c) == cl - 1)))
           p = 5;
-  else if((cl == c.coluna) && ((j == 2 && c.linha == l + 1) ||
-          (j == 1 && c.linha == l - 1)))
+  else if((cl == getCol(&c)) && ((j == 2 && getLine(&c) == l + 1) ||
+          (j == 1 && getLine(&c) == l - 1)))
           p = 6;
-  else if((c.linha == l + 1 && c.coluna == cl - 1) ||
-          (c.linha == l - 1 && c.coluna == cl + 1))
+  else if((getLine(&c) == l + 1 && getCol(&c) == cl - 1) ||
+          (getLine(&c) == l - 1 && getCol(&c) == cl + 1))
           p = 4;
   else p = 3;
 
@@ -242,10 +255,10 @@ int minmax(CVAL cr,ESTADO e,int isMax,int p) {
 
   if (isMax) {
     max = -100;
-    for(int i = 0;i < cr.validas;i++) {
-      a = jogadaBot(e,&cr.coords[i]);
+    for(int i = 0;i < getValidas(&cr);i++) {
+      a = jogadaBot(e, &cr.coords[i]);
       if(!p || isOver(&a))
-        pontos = avaliaJogada(e,cr.coords[i]);
+        pontos = avaliaJogada(e,  cr.coords[i]);
       else
         pontos = minmax(jogadasValidas(&a),a,0,p-1);
 
@@ -257,10 +270,10 @@ int minmax(CVAL cr,ESTADO e,int isMax,int p) {
   }
   else {
     min = 100;
-    for(int i = 0;i < cr.validas;i++) {
-      a = jogadaBot(e,&cr.coords[i]);
+    for(int i = 0;i < getValidas(&cr);i++) {
+      a = jogadaBot(e, &cr.coords[i]);
       if(!p || isOver(&a))
-        pontos = avaliaJogada(e,cr.coords[i]) - 7;
+        pontos = avaliaJogada(e,  cr.coords[i]) - 7;
       else
         pontos = minmax(jogadasValidas(&a),a,1,p-1);
 
@@ -281,6 +294,7 @@ COORDENADA Bot(ESTADO *e) {
 
   cr = jogadasValidas(e);
 
+<<<<<<< HEAD
   for(int i = 0; i < cr.validas && r;i++) {
     t = isOver(&a);
     if(t == e -> jogador_atual)
@@ -291,13 +305,21 @@ COORDENADA Bot(ESTADO *e) {
       a = jogadaBot(*e,&cr.coords[i]);
       curr = minmax(jogadasValidas(&a),a,0,3);
     }
+=======
+  for(int i = 0; i < getValidas(&cr) && r;i++) {
+    a = jogadaBot(*e, &cr.coords[i]);
+    if(isOver(&a) == jogAtual(e))
+      return  cr.coords[i];
 
-    if(curr > best || (curr == best && avaliaJogada(*e,cr.coords[i]) > p)) {
+    curr = minmax(jogadasValidas(&a),a,0,1);
+>>>>>>> 90bdcc7b6c3a94f12654aa1188bd14034f47511c
+
+    if(curr > best || (curr == best && avaliaJogada(*e,  cr.coords[i]) > p)) {
       best = curr;
-      c = cr.coords[i];
-      p = avaliaJogada(*e,cr.coords[i]);
+      c =   cr.coords[i];
+      p = avaliaJogada(*e,  cr.coords[i]);
     }
-    printf("%d%c%d\n", curr,'a' + cr.coords[i].coluna,cr.coords[i].linha);
+    printf("%d%c%d\n", curr,'a' +   cr.coords[i].coluna,  cr.coords[i].linha);
   }
   return c;
 }

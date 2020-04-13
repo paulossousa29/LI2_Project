@@ -1,8 +1,16 @@
+/**
+ * @file  interface.c
+ * @brief Ficheiro com funções que devolvem resultados visuais para o utilizador 
+ */
+
 #include "data.h"
 #include "files.h"
 #include "game.h"
 
-// Função que imprime o Estado
+/**
+ * @brief   Função que imprime o estado do jogo
+ * @param e Apontador para o estado
+ */
 void printa(ESTADO *e)
 {
     int i, j;
@@ -39,13 +47,16 @@ void printa(ESTADO *e)
     printf("(%d) Jogador: %d\n", numJogadas(e), jogAtual(e));
 }
 
-// Função que mostra o menu de comandos
+/**
+ * @brief Função que imprime o menu de comandos
+ */
 void menu()
 {
   printf("\nSelecione a sua opção:\n");
   printf("- coordenada <coluna> <linha>\n");
   printf("- gr <nome>\n");
   printf("- ler <nome>\n");
+  printf("- tabuleiro\n");
   printf("- movs\n");
   printf("- jog\n");
   printf("- pos <numero_da_jogada>\n");
@@ -53,6 +64,12 @@ void menu()
   printf("\nIntroduza o seu comando: ");
 }
 
+
+/**
+ * @brief   Função que verifica se uma String tem espaço
+ * @param s String a testa
+ * @return  Inteiro com resultado booleano
+ */
 int temEspaco(char *s) {
   int r = 0;
   for(int i = 0;s[i] != '\0' && !r;i++)
@@ -61,7 +78,36 @@ int temEspaco(char *s) {
   return r;
 }
 
-// Intrepertador
+/**
+ * @brief   Função que pergunta ao utilizador se quer voltar a jogar
+ * @return  Inteiro com resultado booleano
+ */
+int replay() {
+  char* buffer = NULL;
+  buffer = malloc(sizeof(char) * MAX);
+
+  printf("\nJogar outra vez? (S/N)\n");
+
+  while(1)
+  {
+    fgets(buffer, MAX, stdin);
+
+    if(strcmp(buffer, "S\n")==0 || strcmp(buffer, "s\n")==0)
+      return 1;
+
+    else if(strcmp(buffer, "N\n")==0 || strcmp(buffer, "n\n")==0)
+      return 0;
+
+    else
+      printf("\nComando inválido. Jogar outra vez? (S/N)\n");
+  }
+}
+
+/**
+ * @brief   Função que executa o interpretador de comandos
+ * @param e Apontador para Estado
+ * @param c Apontador para Coordenada
+ */
 void execute(ESTADO* e, COORDENADA* c)
 {
   int j, r;
@@ -70,6 +116,8 @@ void execute(ESTADO* e, COORDENADA* c)
   char* s = NULL;
   char *line = NULL, *col = NULL;
   buffer[0] = 'a';
+
+  gamestart(e);
 
   printa(e); // imprime o estado inicial
 
@@ -112,6 +160,9 @@ void execute(ESTADO* e, COORDENADA* c)
       input(e, s);
     }
 
+    else if(strcmp(s, "tabuleiro") == 0) 
+      printa(e);
+
     else if(strcmp(s, "movs") == 0)
       movimentos(e);
 
@@ -119,7 +170,7 @@ void execute(ESTADO* e, COORDENADA* c)
       //printf("%s\n", s);
       COORDENADA c;
       c = Bot(e);
-      printf("coordenada sugerida %c %d\n", 'a' + c.coluna,c.linha);
+      printf("coordenada sugerida %c %d\n", 'a' + getCol(&c), getLine(&c));
     }
 
     else if(strcmp(s, "pos") == 0) {
