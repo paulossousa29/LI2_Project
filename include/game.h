@@ -1,3 +1,6 @@
+#include "data.h"
+#include "interface.h"
+
 // Functions
 int toCord(COORDENADA* c, char* col, char* line);
 void place(ESTADO* e, COORDENADA* c);

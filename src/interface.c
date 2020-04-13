@@ -1,8 +1,16 @@
+/**
+ * @file  interface.c
+ * @brief Ficheiro com funções que devolvem resultados visuais para o utilizador 
+ */
+
 #include "data.h"
 #include "files.h"
 #include "game.h"
 
-// Função que imprime o Estado
+/**
+ * @brief   Função que imprime o estado do jogo
+ * @param e Apontador para o estado
+ */
 void printa(ESTADO *e)
 {
     int i, j;
@@ -39,7 +47,9 @@ void printa(ESTADO *e)
     printf("(%d) Jogador: %d\n", numJogadas(e), jogAtual(e));
 }
 
-// Função que mostra o menu de comandos
+/**
+ * @brief Função que imprime o menu de comandos
+ */
 void menu()
 {
   printf("\nSelecione a sua opção:\n");
@@ -54,6 +64,12 @@ void menu()
   printf("\nIntroduza o seu comando: ");
 }
 
+
+/**
+ * @brief   Função que verifica se uma String tem espaço
+ * @param s String a testa
+ * @return  Inteiro com resultado booleano
+ */
 int temEspaco(char *s) {
   int r = 0;
   for(int i = 0;s[i] != '\0' && !r;i++)
@@ -62,7 +78,12 @@ int temEspaco(char *s) {
   return r;
 }
 
-// Intrepertador
+
+/**
+ * @brief   Função que executa o interpretador de comandos
+ * @param e Apontador para Estado
+ * @param c Apontador para Coordenada
+ */
 void execute(ESTADO* e, COORDENADA* c)
 {
   int j, r;

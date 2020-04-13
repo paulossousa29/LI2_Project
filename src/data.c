@@ -1,5 +1,28 @@
 #include "data.h"
 
+struct coordenanda{
+    int coluna;
+    int linha;
+};
+
+struct jogada{
+    COORDENADA jogador1;
+    COORDENADA jogador2;
+};
+
+struct estado{
+    CASA tab[8][8];
+    COORDENADA ultima_jogada;
+    JOGADAS jogadas;
+    int num_jogadas;
+    int jogador_atual;
+};
+
+struct cval{
+    int validas;
+    COORDENADA coords[8];
+};
+
 void gamestart(ESTADO *e) {
     int i, j;
 

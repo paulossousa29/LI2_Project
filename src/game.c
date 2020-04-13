@@ -1,7 +1,12 @@
-#include "data.h"
-#include "interface.h"
 #include "game.h"
 
+/**
+ * @brief       Função que passa o input do utilizador para uma Coordenada
+ * @param c     Apontador para Coordenada
+ * @param col   Inteiro com a coluna
+ * @param line  Inteiro com a linha
+ * @return      Inteiro com resultado booleano
+ */
 int toCord(COORDENADA* c, char* col, char* line)
 {
   if(col[1]!='\0' || line[1]!='\0') {
@@ -15,6 +20,14 @@ int toCord(COORDENADA* c, char* col, char* line)
   return 1;
 }
 
+
+/**
+ * @brief       Função que verifica se uma coordenada é válida
+ * @param e     Apontador para Estado
+ * @param col   Inteiro com a linha
+ * @param line  Inteiro com a coluna
+ * @return      Inteiro com resultado booleano
+ */
 int isValid(ESTADO* e, int col, int line)
 {
   if (col < 0 || col > 7 || line < 1 || line > 8) {
