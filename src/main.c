@@ -1,14 +1,20 @@
+/**
+ * @file  main.c
+ * @brief Ficheiro que contêm a função main
+ */
+
 #include "data.h"
 #include "interface.h"
 
 int main()
 {
-  ESTADO* e = malloc(sizeof(ESTADO));
-  COORDENADA* c = malloc(sizeof(COORDENADA));
-
-  gamestart(e);
+  ESTADO* e = initEstado();
+  COORDENADA* c = initCoordenada();
 
   execute(e, c);
+
+  free(e);
+  free(c);
 
   return 0;
 }

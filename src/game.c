@@ -1,3 +1,8 @@
+/**
+ * @file  game.c
+ * @brief Ficheiro com funções da lógica do programa
+ */
+
 #include "game.h"
 
 /**
@@ -19,7 +24,6 @@ int toCord(COORDENADA* c, char* col, char* line)
 
   return 1;
 }
-
 
 /**
  * @brief       Função que verifica se uma coordenada é válida
@@ -55,6 +59,11 @@ int isValid(ESTADO* e, int col, int line)
   return -1;
 }
 
+/**
+ * @brief   Função que efetua uma jogada
+ * @param e Apontador para Estado
+ * @param c Apontador para Coordenada
+ */
 void place(ESTADO* e, COORDENADA* c)
 {
   if(!(isValid(e, getCol(c), getLine(c)))) {
@@ -77,6 +86,10 @@ void place(ESTADO* e, COORDENADA* c)
   }
 }
 
+/**
+ * @brief   Função que imprime a Lista de Movimentos
+ * @param e Apontador para Estado
+ */
 void movimentos(ESTADO* e) {
   int i;
 
@@ -105,9 +118,14 @@ void movimentos(ESTADO* e) {
   }
 }
 
+/**
+ * @brief     Função que imprime o estado numa determinada posição
+ * @param e   Apontador para Estado
+ * @param pos Jogada a ser apresentada
+ */
 void posicao(ESTADO* e, char* pos) {
   int i, jog;
-  ESTADO* aux = malloc(sizeof(ESTADO));
+  ESTADO* aux = initEstado();
 
   gamestart(aux);
 
@@ -126,6 +144,11 @@ void posicao(ESTADO* e, char* pos) {
   printa(aux);
 }
 
+/**
+ * @brief   Função que verifica se o jogo acabou
+ * @param e Apontador para Estado
+ * @return  Inteiro com resultado booleano
+ */
 int isOver(ESTADO* e) {
   int c = ultimaJogColuna(e);
   int l = ultimaJogLinha(e);
@@ -149,27 +172,6 @@ int isOver(ESTADO* e) {
     return 2;
 
   return 1;
-}
-
-int replay() {
-  char* buffer = NULL;
-  buffer = malloc(sizeof(char) * MAX);
-
-  printf("\nJogar outra vez? (S/N)\n");
-
-  while(1)
-  {
-    fgets(buffer, MAX, stdin);
-
-    if(strcmp(buffer, "S\n")==0 || strcmp(buffer, "s\n")==0)
-      return 1;
-
-    else if(strcmp(buffer, "N\n")==0 || strcmp(buffer, "n\n")==0)
-      return 0;
-
-    else
-      printf("\nComando inválido. Jogar outra vez? (S/N)\n");
-  }
 }
 
 // Funções para seleção da melhor jogada (BOT)

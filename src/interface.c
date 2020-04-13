@@ -78,6 +78,30 @@ int temEspaco(char *s) {
   return r;
 }
 
+/**
+ * @brief   Função que pergunta ao utilizador se quer voltar a jogar
+ * @return  Inteiro com resultado booleano
+ */
+int replay() {
+  char* buffer = NULL;
+  buffer = malloc(sizeof(char) * MAX);
+
+  printf("\nJogar outra vez? (S/N)\n");
+
+  while(1)
+  {
+    fgets(buffer, MAX, stdin);
+
+    if(strcmp(buffer, "S\n")==0 || strcmp(buffer, "s\n")==0)
+      return 1;
+
+    else if(strcmp(buffer, "N\n")==0 || strcmp(buffer, "n\n")==0)
+      return 0;
+
+    else
+      printf("\nComando inválido. Jogar outra vez? (S/N)\n");
+  }
+}
 
 /**
  * @brief   Função que executa o interpretador de comandos
@@ -92,6 +116,8 @@ void execute(ESTADO* e, COORDENADA* c)
   char* s = NULL;
   char *line = NULL, *col = NULL;
   buffer[0] = 'a';
+
+  gamestart(e);
 
   printa(e); // imprime o estado inicial
 

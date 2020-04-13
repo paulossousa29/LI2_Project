@@ -25,6 +25,8 @@ typedef struct cval CVAL;
 // Functions
 
 void gamestart(ESTADO *e);
+ESTADO* initEstado();
+COORDENADA* initCoordenada();
 int jogAtual(ESTADO *e);
 void alteraJog(ESTADO *e, int jog);
 int numJogadas(ESTADO *e);
