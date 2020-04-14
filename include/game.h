@@ -1,5 +1,12 @@
+#ifndef __game_h
+#define __game_h
+
 #include "data.h"
-#include "interface.h"
+
+typedef struct cval{
+    int validas;
+    COORDENADA coords[8];
+}CVAL;
 
 // Functions
 int toCord(COORDENADA* c, char* col, char* line);
@@ -10,3 +17,5 @@ int isOver(ESTADO* e);
 void winner(ESTADO* e);
 COORDENADA Bot(ESTADO *e);
 int minmax(CVAL cr,ESTADO e,int isMax,int p);
+
+#endif

@@ -3,7 +3,6 @@
  * @brief Ficheiro que contêm a função main
  */
 
-#include "data.h"
 #include "interface.h"
 
 int main()

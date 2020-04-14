@@ -1,10 +1,49 @@
 /**
  * @file  files.c
- * @brief Ficheiro que contêm as funções que tratam do input e output de ficheiros 
+ * @brief Ficheiro que contêm as funções que tratam do input e output de ficheiros
  */
 
-#include "data.h"
-#include "interface.h"
+#include "files.h"
+
+/**
+ * @brief   Função que imprime o estado do jogo
+ * @param e Apontador para o estado
+ */
+void printa(ESTADO *e)
+{
+    int i, j;
+    char c = ' ';
+
+    printf("\n  a b c d e f g h\n");
+
+    for (i=0; i<8; i++) {
+      printf("%d ", 8-i);
+
+      for (j=0; j<8; j++) {
+        switch(getCasa(e, i, j)) {
+          case PRETA:
+            c = '#';
+            break;
+
+          case BRANCA:
+            c='*';
+            break;
+
+          case VAZIO:
+            if(i == 7 && j == 0) c = '1';
+            else if  (i == 0 && j == 7) c = '2';
+            else c = '.';
+            break;
+
+          default:
+            break;
+        }
+        printf("%c ", c);
+      }
+      printf("\n");
+    }
+    printf("(%d) Jogador: %d\n", getnumJogadas(e), getjogAtual(e));
+}
 
 /**
  * @brief       Função que escreve o estado do jogo num ficheiro
@@ -28,7 +67,7 @@ void output(ESTADO* e, char* name)
 
   for (i=0; i<8; i++) {
     for (j=0; j<8; j++) {
-      switch(estadoCasa(e, i, j)) {
+      switch(getCasa(e,8-i, j)) {
         case PRETA:
           c = '#';
           break;
@@ -53,14 +92,14 @@ void output(ESTADO* e, char* name)
   //lista de movimentos
   fprintf(ftable, " \n");
 
-  for(i = 1;i <= numJogadas(e);i++) {
+  for(i = 1;i <= getnumJogadas(e);i++) {
     if(i < 10)
       fprintf(ftable, "0%d: ",i);
     else
       fprintf(ftable, "%d: ",i);
 
-    if(i == numJogadas(e) && jogAtual(e) == 2) {
-      fprintf(ftable, "%c%d\n", ultimaJogColuna(e) + 'a',ultimaJogLinha(e));
+    if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
+      fprintf(ftable, "%c%d\n", getultimaJogColuna(e) + 'a',getultimaJogLinha(e));
     }
     else {
       fprintf(ftable, "%c%d %c%d\n",
@@ -78,7 +117,7 @@ void output(ESTADO* e, char* name)
  * @brief       Função que lê o estado de jogo de um ficheiro
  * @param e     Apontador para o Estado
  * @param name  Nome do ficheiro
- * 
+ *
  */
 void input(ESTADO* e, char* name)
 {
@@ -99,16 +138,15 @@ void input(ESTADO* e, char* name)
       for (j=0; buffer[j]; j++)
       {
         if (buffer[j]=='#')
-          e->tab[i][j]=PRETA;
+          setCasa(e,PRETA,8-i,j);
 
           else if (buffer[j]=='*') {
-            e->tab[i][j]=BRANCA;
-            e->ultima_jogada.linha = 8 - i;
-            e->ultima_jogada.coluna = j;
+            setCasa(e,BRANCA,i,j);
+            setUltimaJog(e,8-i,j);
           }
 
           else if (buffer[j]=='.' || buffer[j]=='1' || buffer[j]=='2')
-          e->tab[i][j]=VAZIO;
+          setCasa(e,VAZIO,8-i,j);;
         }
     }
     else if (i >= 9) {
@@ -119,21 +157,17 @@ void input(ESTADO* e, char* name)
       else
         jogada = (buffer[0] - '0') * 10 + (buffer[1] - '0');
 
-      e->jogadas[jogada - 1].jogador1.linha = buffer[5] - '0';
-      e->jogadas[jogada - 1].jogador1.coluna = buffer[4] - 'a';
-      e->num_jogadas = jogada;
-      e->ultima_jogada.linha = e->jogadas[numJogadas(e) - 1].jogador1.linha;
-      e->ultima_jogada.coluna = e->jogadas[numJogadas(e) - 1].jogador1.coluna;
+      setJog1(e,jogada,buffer[5] - '0',buffer[4] - 'a');
+      setNJogadas(e,jogada);
+      setUltimaJog(e,buffer[5] - '0',buffer[4] - 'a');
 
       if(strlen(buffer) > 8) {
-        e->jogadas[jogada - 1].jogador2.linha = buffer[8] - '0';
-        e->jogadas[jogada - 1].jogador2.coluna = buffer[7] - 'a';
-        e->jogador_atual = 1;
-        e->ultima_jogada.linha = e->jogadas[numJogadas(e) - 1].jogador2.linha;
-        e->ultima_jogada.coluna = e->jogadas[numJogadas(e) - 1].jogador2.coluna;
+        setJog2(e,jogada,buffer[8] - '0',buffer[7] - 'a');
+        setUltimaJog(e,buffer[8] - '0',buffer[7] - 'a');
+        setJogAtual(e,1);
       }
       else
-        e-> jogador_atual = 2;
+        setJogAtual(e,2);
     }
   }
 

@@ -1,51 +1,9 @@
 /**
  * @file  interface.c
- * @brief Ficheiro com funções que devolvem resultados visuais para o utilizador 
+ * @brief Ficheiro com funções que devolvem resultados visuais para o utilizador
  */
 
-#include "data.h"
-#include "files.h"
-#include "game.h"
-
-/**
- * @brief   Função que imprime o estado do jogo
- * @param e Apontador para o estado
- */
-void printa(ESTADO *e)
-{
-    int i, j;
-    char c = ' ';
-
-    printf("\n  a b c d e f g h\n");
-
-    for (i=0; i<8; i++) {
-      printf("%d ", 8-i);
-
-      for (j=0; j<8; j++) {
-        switch(estadoCasa(e, i, j)) {
-          case PRETA:
-            c = '#';
-            break;
-
-          case BRANCA:
-            c='*';
-            break;
-
-          case VAZIO:
-            if(i == 7 && j == 0) c = '1';
-            else if  (i == 0 && j == 7) c = '2';
-            else c = '.';
-            break;
-
-          default:
-            break;
-        }
-        printf("%c ", c);
-      }
-      printf("\n");
-    }
-    printf("(%d) Jogador: %d\n", numJogadas(e), jogAtual(e));
-}
+ #include "interface.h"
 
 /**
  * @brief Função que imprime o menu de comandos
@@ -160,7 +118,7 @@ void execute(ESTADO* e, COORDENADA* c)
       input(e, s);
     }
 
-    else if(strcmp(s, "tabuleiro") == 0) 
+    else if(strcmp(s, "tabuleiro") == 0)
       printa(e);
 
     else if(strcmp(s, "movs") == 0)

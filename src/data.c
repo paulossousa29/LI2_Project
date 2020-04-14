@@ -1,32 +1,9 @@
 /**
  * @file  data.c
- * @brief Ficheiro contém funções que tratam dos dados do programa 
+ * @brief Ficheiro contém funções que tratam dos dados do programa
  */
 
 #include "data.h"
-
-struct coordenanda{
-    int coluna;
-    int linha;
-};
-
-struct jogada{
-    COORDENADA jogador1;
-    COORDENADA jogador2;
-};
-
-struct estado{
-    CASA tab[8][8];
-    COORDENADA ultima_jogada;
-    JOGADAS jogadas;
-    int num_jogadas;
-    int jogador_atual;
-};
-
-struct cval{
-    int validas;
-    COORDENADA coords[8];
-};
 
 /**
  * @brief   Função que inicia um novo jogo
@@ -72,7 +49,7 @@ COORDENADA* initCoordenada() {
  * @param e Apontador para Estado
  * @return  Inteiro com o Jogador
  */
-int jogAtual(ESTADO *e) {
+int getjogAtual(ESTADO *e) {
   return e->jogador_atual;
 }
 
@@ -80,7 +57,7 @@ int jogAtual(ESTADO *e) {
  * @brief   Função que altera o Jogador Atual
  * @param e Apontador para Estado
  */
-void alteraJog(ESTADO *e, int jog) {
+void setJogAtual(ESTADO *e, int jog) {
   e->jogador_atual = jog;
 }
 
@@ -89,7 +66,7 @@ void alteraJog(ESTADO *e, int jog) {
  * @param e Apontador para Estado
  * @return  Inteiro com o Numero de jogadas
  */
-int numJogadas(ESTADO *e) {
+int getnumJogadas(ESTADO *e) {
   return e->num_jogadas;
 }
 
@@ -97,8 +74,8 @@ int numJogadas(ESTADO *e) {
  * @brief   Função que incrementa o Numero de jogadas
  * @param e Apontador para Estado
  */
-void incJogadas(ESTADO *e) {
-  e->num_jogadas++;
+void setNJogadas(ESTADO *e,int n) {
+  e->num_jogadas = n;
 }
 
 /**
@@ -108,8 +85,8 @@ void incJogadas(ESTADO *e) {
  * @param col   Inteiro com a coluna
  * @return      Estado da casa
  */
-CASA estadoCasa(ESTADO *e, int linha, int col) {
-  return e->tab[linha][col];
+CASA getCasa(ESTADO *e, int linha, int col) {
+  return e->tab[8-linha][col];
 }
 
 /**
@@ -119,8 +96,8 @@ CASA estadoCasa(ESTADO *e, int linha, int col) {
  * @param linha Inteiro com a linha
  * @param col   Inteiro com a coluna
  */
-void alteraCasa(ESTADO *e, CASA a, int linha, int col) {
-  e->tab[linha][col] = a;
+void setCasa(ESTADO *e, CASA a, int linha, int col) {
+  e->tab[8-linha][col] = a;
 }
 
 /**
@@ -128,7 +105,7 @@ void alteraCasa(ESTADO *e, CASA a, int linha, int col) {
  * @param e Apontador para Estado
  * @return  Inteiro com a linha
  */
-int ultimaJogLinha(ESTADO *e) {
+int getultimaJogLinha(ESTADO *e) {
   return e->ultima_jogada.linha;
 }
 
@@ -137,7 +114,7 @@ int ultimaJogLinha(ESTADO *e) {
  * @param e Apontador para Estado
  * @return  Inteiro com a coluna
  */
-int ultimaJogColuna(ESTADO *e) {
+int getultimaJogColuna(ESTADO *e) {
   return e->ultima_jogada.coluna;
 }
 
@@ -147,7 +124,7 @@ int ultimaJogColuna(ESTADO *e) {
  * @param linha Inteiro com a linha
  * @param col   Inteiro com a coluna
  */
-void alteraUltimaJog(ESTADO *e, int linha, int col) {
+void setUltimaJog(ESTADO *e, int linha, int col) {
   e->ultima_jogada.linha = linha;
   e->ultima_jogada.coluna = col;
 }
@@ -194,7 +171,7 @@ int getJog2Line(ESTADO* e, int i) {
 
 /**
  * @brief       Função que atualiza adiciona a Jogada do Jogador 1
- * @param e     Apontador para Estado 
+ * @param e     Apontador para Estado
  * @param i     Inteiro com Jogada
  * @param line  Inteiro com a linha
  * @param col   Inteiro com a coluna
@@ -206,7 +183,7 @@ void setJog1(ESTADO* e, int i, int line, int col) {
 
 /**
  * @brief       Função que atualiza adiciona a Jogada do Jogador 2
- * @param e     Apontador para Estado 
+ * @param e     Apontador para Estado
  * @param i     Inteiro com Jogada
  * @param line  Inteiro com a linha
  * @param col   Inteiro com a coluna
@@ -250,20 +227,22 @@ void setCoord(COORDENADA* c, int line, int col) {
  * @param cr  Apontador para CVAL
  * @return    Inteiro com o numero de validas
  */
+ /*
 int getValidas(CVAL* cr) {
   return cr->validas;
 }
-
+*/
 /**
  * @brief     Função que devolve uma Coordenada da estrutura CVAL
  * @param cr  Apontador para CVAL
  * @param i   Posição da coordenada no array
  * @return    Coordenada
  */
+ /*
 COORDENADA getCoord(CVAL* cr, int i) {
   return cr->coords[i];
 }
-
+*/
 /**
  * @brief   Função devolve Coordenada de uma jogada do Jogador 1
  * @param e Apontador para Estado
