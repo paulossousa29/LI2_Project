@@ -2,20 +2,13 @@
 #define __game_h
 
 #include "data.h"
-
-typedef struct cval{
-    int validas;
-    COORDENADA coords[8];
-}CVAL;
+#include "lista.h"
 
 // Functions
 int toCord(COORDENADA* c, char* col, char* line);
-void place(ESTADO* e, COORDENADA* c);
+void place(ESTADO* e, LISTA l, COORDENADA* c);
 void movimentos(ESTADO* e);
 void posicao(ESTADO* e, char* pos);
 int isOver(ESTADO* e);
-void winner(ESTADO* e);
-COORDENADA Bot(ESTADO *e);
-int minmax(CVAL cr,ESTADO e,int isMax,int p);
 
 #endif

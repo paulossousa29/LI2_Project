@@ -3,8 +3,15 @@
 
 #include "data.h"
 
-typedef struct lista LISTA;
+typedef struct lista {
+    void* value;
+    LISTA next;
+}*LISTA;
 
-LISTA* initLista();
+LISTA initLista();
+LISTA insere_cabeca(LISTA l, void *valor);
+LISTA proximo(LISTA l);
+LISTA remove_cabeca(LISTA l);
+int lista_esta_vazia(LISTA l);
 
 #endif

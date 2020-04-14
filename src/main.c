@@ -9,11 +9,13 @@ int main()
 {
   ESTADO* e = initEstado();
   COORDENADA* c = initCoordenada();
+  LISTA l = initLista();
 
-  execute(e, c);
+  execute(e, l, c);
 
   free(e);
   free(c);
+  free(l);
 
   return 0;
 }

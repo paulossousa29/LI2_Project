@@ -22,6 +22,45 @@ void menu()
   printf("\nIntroduza o seu comando: ");
 }
 
+/**
+ * @brief   Função que imprime o estado do jogo
+ * @param e Apontador para o estado
+ */
+void printa(ESTADO *e)
+{
+    int i, j;
+    char c = ' ';
+
+    printf("\n  a b c d e f g h\n");
+
+    for (i=0; i<8; i++) {
+      printf("%d ", 8-i);
+
+      for (j=0; j<8; j++) {
+        switch(getCasa(e, i, j)) {
+          case PRETA:
+            c = '#';
+            break;
+
+          case BRANCA:
+            c='*';
+            break;
+
+          case VAZIO:
+            if(i == 7 && j == 0) c = '1';
+            else if  (i == 0 && j == 7) c = '2';
+            else c = '.';
+            break;
+
+          default:
+            break;
+        }
+        printf("%c ", c);
+      }
+      printf("\n");
+    }
+    printf("(%d) Jogador: %d\n", getnumJogadas(e), getjogAtual(e));
+}
 
 /**
  * @brief   Função que verifica se uma String tem espaço
@@ -66,7 +105,7 @@ int replay() {
  * @param e Apontador para Estado
  * @param c Apontador para Coordenada
  */
-void execute(ESTADO* e, COORDENADA* c)
+void execute(ESTADO* e, LISTA l, COORDENADA* c)
 {
   int j, r;
   char *buffer = NULL;
@@ -100,7 +139,7 @@ void execute(ESTADO* e, COORDENADA* c)
         line = strsep(&buffer, "\n");
 
         if(toCord(c, col, line)) {
-          place(e, c);
+          place(e, l, c);
           printa(e);
         }
       }
@@ -116,6 +155,7 @@ void execute(ESTADO* e, COORDENADA* c)
       s = strsep(&buffer, "\n");
 
       input(e, s);
+      printa(e);
     }
 
     else if(strcmp(s, "tabuleiro") == 0)
@@ -125,10 +165,10 @@ void execute(ESTADO* e, COORDENADA* c)
       movimentos(e);
 
     else if(strcmp(s, "jog") == 0) {
-      //printf("%s\n", s);
-      COORDENADA c;
-      c = Bot(e);
-      printf("coordenada sugerida %c %d\n", 'a' + getCol(&c), getLine(&c));
+      COORDENADA c = bot(e);
+      place(e, &c);
+
+      printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&c), getLine(&c));
     }
 
     else if(strcmp(s, "pos") == 0) {

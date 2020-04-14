@@ -5,45 +5,6 @@
 
 #include "files.h"
 
-/**
- * @brief   Função que imprime o estado do jogo
- * @param e Apontador para o estado
- */
-void printa(ESTADO *e)
-{
-    int i, j;
-    char c = ' ';
-
-    printf("\n  a b c d e f g h\n");
-
-    for (i=0; i<8; i++) {
-      printf("%d ", 8-i);
-
-      for (j=0; j<8; j++) {
-        switch(getCasa(e, i, j)) {
-          case PRETA:
-            c = '#';
-            break;
-
-          case BRANCA:
-            c='*';
-            break;
-
-          case VAZIO:
-            if(i == 7 && j == 0) c = '1';
-            else if  (i == 0 && j == 7) c = '2';
-            else c = '.';
-            break;
-
-          default:
-            break;
-        }
-        printf("%c ", c);
-      }
-      printf("\n");
-    }
-    printf("(%d) Jogador: %d\n", getnumJogadas(e), getjogAtual(e));
-}
 
 /**
  * @brief       Função que escreve o estado do jogo num ficheiro
@@ -172,6 +133,4 @@ void input(ESTADO* e, char* name)
   }
 
   fclose(ftable);
-
-  printa(e);
 }
