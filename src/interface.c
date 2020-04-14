@@ -69,7 +69,7 @@ void printa(ESTADO *e)
  */
 int temEspaco(char *s) {
   int r = 0;
-  for(int i = 0;s[i] != '\0' && !r;i++)
+  for(int i = 0; s[i]!='\0' && !r; i++)
     if(s[i] == ' ') r = 1;
 
   return r;
@@ -167,14 +167,16 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     else if(strcmp(s, "jog") == 0) {
       COORDENADA caux = bot(e);
       place(e, l, &caux);
-
-      printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), getLine(&caux));
+      printa(e);
+      printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), 8 - getLine(&caux));
     }
 
     else if(strcmp(s, "pos") == 0) {
       s = strsep(&buffer, "\n");
 
-      posicao(e, l, s);
+      posicao(e, l, atoi(s));
+
+      printa(e);
     }
 
     else if((strcmp(s, "q") == 0) || (strcmp(s, "Q") == 0)) {

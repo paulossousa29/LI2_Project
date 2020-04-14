@@ -19,7 +19,7 @@ int toCord(COORDENADA* c, char* col, char* line)
     return 0;
   }
 
-  setCoord(c, line[0] - '0', col[0] - 'a');
+  setCoord(c, '8' - line[0], col[0] - 'a');
 
   return 1;
 }
@@ -33,7 +33,7 @@ int toCord(COORDENADA* c, char* col, char* line)
  */
 int isValid(ESTADO* e, int col, int line)
 {
-  if (col < 0 || col > 7 || line < 1 || line > 8) {
+  if (col < 0 || col > 7 || line < 0 || line > 7) {
     printf("A posição não faz parte da grelha\n");
     return -1;
   }
@@ -48,12 +48,12 @@ int isValid(ESTADO* e, int col, int line)
       return 0;
 
     else {
-      printf("A posição %c %d não é adjacente %c %d\n", col + 'a',line,c+'a',l);
+      printf("A posição %c %d não é adjacente %c %d\n", col + 'a', 8 - line,c+'a',l);
     }
   }
 
   else
-    printf("A posição %c %d é inválida\n", col + 'a',line);
+    printf("A posição %c %d é inválida\n", col + 'a', 8 - line);
 
   return -1;
 }
@@ -61,6 +61,7 @@ int isValid(ESTADO* e, int col, int line)
 /**
  * @brief   Função que efetua uma jogada
  * @param e Apontador para Estado
+ * @param l Lista de Estados
  * @param c Apontador para Coordenada
  */
 void place(ESTADO* e, LISTA l, COORDENADA* c)
@@ -105,13 +106,13 @@ void movimentos(ESTADO* e) {
       printf("%d: ",i);
 
     if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
-      printf("%c%d\n",getultimaJogColuna(e) + 'a', getultimaJogLinha(e));
+      printf("%c%d\n",getultimaJogColuna(e) + 'a', '8' - getultimaJogLinha(e));
     }
 
     else {
       printf("%c%d %c%d\n",
-      getJog1Col(e, i) + 'a',getJog1Line(e, i),
-      getJog2Col(e, i) + 'a',getJog2Line(e, i));
+      getJog1Col(e, i) + 'a', '8' - getJog1Line(e, i),
+      getJog2Col(e, i) + 'a', '8' - getJog2Line(e, i));
     }
   }
 }
@@ -119,10 +120,19 @@ void movimentos(ESTADO* e) {
 /**
  * @brief     Função que imprime o estado numa determinada posição
  * @param e   Apontador para Estado
+ * @param l   Lista de Estados
  * @param pos Jogada a ser apresentada
  */
-void posicao(ESTADO* e, LISTA l, char* pos) {
-  return;
+void posicao(ESTADO* e, LISTA l, int pos) {
+  int jog = getnumJogadas(e);
+  LISTA aux = l;
+  
+  while(jog>pos && aux) {
+    aux = aux->next;
+    jog--;
+  }
+
+  e = aux->value;
 }
 
 /**
@@ -133,21 +143,24 @@ void posicao(ESTADO* e, LISTA l, char* pos) {
 int isOver(ESTADO* e) {
   int c = getultimaJogColuna(e);
   int l = getultimaJogLinha(e);
-  int l2 = l,c2;
+  int l2 = l - 1, c2;
 
-  if (getCasa(e, 8, 0) == BRANCA)
+  printf("%d\n", l);
+
+  if (getCasa(e, 7, 0) == BRANCA)
     return 1;
 
-  else if (getCasa(e, 1, 7) == BRANCA)
+  else if (getCasa(e, 0, 7) == BRANCA)
     return 2;
 
-  if(l2 == 1) l2++;
+  if(l==0) 
+    l2++;
 
-  for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l2++) {
-    for(c2 = c - 1;c2 <= c + 1;c2++)
-      if(c2 >= 0 && c2 <=7 && getCasa(e, l2, c2) == VAZIO)
+  for(l2; l2<=l+1 && l2<8; l2++)
+    for(c2 = c-1; c2<=c+1; c2++)
+      if(c2 >= 0 && c2<8 && getCasa(e, l2, c2) == VAZIO) {
         return 0;
-  }
+      }
 
   if(getjogAtual(e) == 1)
     return 2;

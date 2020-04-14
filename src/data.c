@@ -18,7 +18,7 @@ void gamestart(ESTADO *e) {
 
     e->tab[3][4] = BRANCA;
 
-    e->ultima_jogada.linha = 5;
+    e->ultima_jogada.linha = 3;
     e->ultima_jogada.coluna = 4;
     e->num_jogadas = 0;
     e->jogador_atual = 1;
@@ -86,7 +86,7 @@ void setNJogadas(ESTADO *e,int n) {
  * @return      Estado da casa
  */
 CASA getCasa(ESTADO *e, int linha, int col) {
-  return e->tab[8-linha][col];
+  return e->tab[linha][col];
 }
 
 /**
@@ -97,7 +97,7 @@ CASA getCasa(ESTADO *e, int linha, int col) {
  * @param col   Inteiro com a coluna
  */
 void setCasa(ESTADO *e, CASA a, int linha, int col) {
-  e->tab[8-linha][col] = a;
+  e->tab[linha][col] = a;
 }
 
 /**
