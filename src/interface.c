@@ -165,16 +165,16 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
       movimentos(e);
 
     else if(strcmp(s, "jog") == 0) {
-      COORDENADA c = bot(e);
-      place(e, &c);
+      COORDENADA caux = bot(e);
+      place(e, l, &caux);
 
-      printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&c), getLine(&c));
+      printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), getLine(&caux));
     }
 
     else if(strcmp(s, "pos") == 0) {
       s = strsep(&buffer, "\n");
 
-      posicao(e, s);
+      posicao(e, l, s);
     }
 
     else if((strcmp(s, "q") == 0) || (strcmp(s, "Q") == 0)) {

@@ -8,6 +8,6 @@
 #include "minmax.h"
 
 // Functions
-void execute(ESTADO* e, COORDENADA* c);
+void execute(ESTADO* e, LISTA l, COORDENADA* c);
 
 #endif

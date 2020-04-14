@@ -5,7 +5,7 @@
 
 typedef struct lista {
     void* value;
-    LISTA next;
+    struct lista* next;
 }*LISTA;
 
 LISTA initLista();

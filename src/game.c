@@ -71,15 +71,15 @@ void place(ESTADO* e, LISTA l, COORDENADA* c)
     setUltimaJog(e, getLine(c), getCol(c));
 
     if(getjogAtual(e) == 1) {
-      setJogAtual(e, 2);
       setNJogadas(e,getnumJogadas(e)+1);
       setJog1(e, getnumJogadas(e)-1, getLine(c), getCol(c));
+      setJogAtual(e, 2);
     }
 
     else {
-      setJogAtual(e, 1);
       setJog2(e, getnumJogadas(e)-1, getLine(c), getCol(c));
       l = insere_cabeca(l, e);
+      setJogAtual(e, 1);
     }
   }
 }
@@ -123,7 +123,6 @@ void movimentos(ESTADO* e) {
  */
 void posicao(ESTADO* e, LISTA l, char* pos) {
   return;
-  
 }
 
 /**

@@ -33,6 +33,10 @@ LISTA insere_cabeca(LISTA l, void *valor) {
     return new;
 }
 
+void *devolve_cabeca(LISTA l) {
+    return l->value;
+}
+
 /**
  * @brief   Função devolve a cauda da Lista 
  * @param l Lista com a cauda a devolver     

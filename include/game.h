@@ -8,7 +8,7 @@
 int toCord(COORDENADA* c, char* col, char* line);
 void place(ESTADO* e, LISTA l, COORDENADA* c);
 void movimentos(ESTADO* e);
-void posicao(ESTADO* e, char* pos);
+void posicao(ESTADO* e, LISTA l, char* pos);
 int isOver(ESTADO* e);
 
 #endif
