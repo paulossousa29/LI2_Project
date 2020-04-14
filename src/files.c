@@ -14,7 +14,7 @@
 void output(ESTADO* e, char* name)
 {
   int i, j;
-  char aux[MAX]="../files/";
+  char aux[MAX]="files/";
   char c = '\0';
 
   strcat(aux, name);
@@ -28,7 +28,7 @@ void output(ESTADO* e, char* name)
 
   for (i=0; i<8; i++) {
     for (j=0; j<8; j++) {
-      switch(getCasa(e,8-i, j)) {
+      switch(getCasa(e,i, j)) {
         case PRETA:
           c = '#';
           break;
@@ -60,12 +60,12 @@ void output(ESTADO* e, char* name)
       fprintf(ftable, "%d: ",i);
 
     if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
-      fprintf(ftable, "%c%d\n", getultimaJogColuna(e) + 'a',getultimaJogLinha(e));
+      fprintf(ftable, "%c%d\n", getultimaJogColuna(e) + 'a', '8' - getultimaJogLinha(e));
     }
     else {
       fprintf(ftable, "%c%d %c%d\n",
-      getJog1Col(e, i) + 'a',getJog1Line(e, i),
-      getJog2Col(e, i) + 'a',getJog2Col(e, i));
+      getJog1Col(e, i) + 'a', '8' - getJog1Line(e, i),
+      getJog2Col(e, i) + 'a', '8' - getJog2Line(e, i));
     }
   }
 
@@ -83,7 +83,7 @@ void output(ESTADO* e, char* name)
 void input(ESTADO* e, char* name)
 {
   int i, j;
-  char buffer[MAX], aux[MAX]="../files/";
+  char buffer[MAX], aux[MAX]="files/";
 
   strcat(aux, name);
 
@@ -96,19 +96,18 @@ void input(ESTADO* e, char* name)
 
   for (i=0; fgets(buffer, MAX, ftable); i++) {
     if(i <= 7) {
-      for (j=0; buffer[j]; j++)
-      {
+      for (j=0; buffer[j]; j++) {
         if (buffer[j]=='#')
-          setCasa(e,PRETA,8-i,j);
+          setCasa(e,PRETA,i,j);
 
-          else if (buffer[j]=='*') {
-            setCasa(e,BRANCA,i,j);
-            setUltimaJog(e,8-i,j);
-          }
-
-          else if (buffer[j]=='.' || buffer[j]=='1' || buffer[j]=='2')
-          setCasa(e,VAZIO,8-i,j);;
+        else if (buffer[j]=='*') {
+          setCasa(e,BRANCA,i,j);
+          setUltimaJog(e,i,j);
         }
+
+        else if (buffer[j]=='.' || buffer[j]=='1' || buffer[j]=='2')
+          setCasa(e,VAZIO,i,j);;
+      }
     }
     else if (i >= 9) {
       int jogada = 0;
@@ -118,13 +117,13 @@ void input(ESTADO* e, char* name)
       else
         jogada = (buffer[0] - '0') * 10 + (buffer[1] - '0');
 
-      setJog1(e,jogada,buffer[5] - '0',buffer[4] - 'a');
+      setJog1(e,jogada,'8' - buffer[5],buffer[4] - 'a');
       setNJogadas(e,jogada);
-      setUltimaJog(e,buffer[5] - '0',buffer[4] - 'a');
+      setUltimaJog(e,'8' - buffer[5],buffer[4] - 'a');
 
       if(strlen(buffer) > 8) {
-        setJog2(e,jogada,buffer[8] - '0',buffer[7] - 'a');
-        setUltimaJog(e,buffer[8] - '0',buffer[7] - 'a');
+        setJog2(e,jogada,'8' - buffer[8],buffer[7] - 'a');
+        setUltimaJog(e,'8' - buffer[8],buffer[7] - 'a');
         setJogAtual(e,1);
       }
       else
