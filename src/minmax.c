@@ -6,7 +6,6 @@
 #include "minmax.h"
 
 LISTA jogadasValidas(ESTADO *e) {
-  //CVAL cr;
   LISTA list;
   int l = getultimaJogLinha(e);
   int c = getultimaJogColuna(e);
@@ -28,8 +27,6 @@ LISTA jogadasValidas(ESTADO *e) {
 }
 
 ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
-  //printf("%d\n", c -> linha);
-  //printf("%d.\n", c -> coluna);
   setCasa(&e,PRETA,getultimaJogLinha(&e),getultimaJogColuna(&e));
   setCasa(&e,BRANCA,c->linha, c->coluna);
   setUltimaJog(&e, c->linha, c->coluna);
@@ -86,13 +83,15 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
 int minmax(LISTA l,ESTADO e,int isMax,int p) {
   int pontos,max = -1000,min = 1000;
   ESTADO a;
+  COORDENADA *c;
   LISTA aux;
 
   if (isMax) {
     for(aux = l;aux;aux = proximo(aux)) {
-      a = jogadaBot(e, (COORDENADA*)devolve_cabeca(aux));
+      c = (COORDENADA*)devolve_cabeca(aux);
+      a = jogadaBot(e, c);
       if(!p || isOver(&a))
-        pontos = avaliaJogada(e, *(COORDENADA*)devolve_cabeca(aux));
+        pontos = avaliaJogada(e, *c);
       else
         pontos = minmax(jogadasValidas(&a),a,0,p-1);
 
@@ -104,9 +103,10 @@ int minmax(LISTA l,ESTADO e,int isMax,int p) {
   }
   else {
     for(aux = l;aux;aux = proximo(aux)) {
-      a = jogadaBot(e, (COORDENADA*)devolve_cabeca(aux));
+      c = (COORDENADA*)devolve_cabeca(aux);
+      a = jogadaBot(e, c);
       if(!p || isOver(&a))
-        pontos = avaliaJogada(e, *(COORDENADA*)devolve_cabeca(aux)) - 7;
+        pontos = avaliaJogada(e, *c) - 7;
       else
         pontos = minmax(jogadasValidas(&a),a,1,p-1);
 
@@ -127,24 +127,24 @@ COORDENADA bot(ESTADO *e) {
 
   l = jogadasValidas(e);
 
-  for(aux = l;aux;aux = proximo(aux)) {
-    //printf(".\n" );
+  for(aux = l;aux!= NULL;aux = proximo(aux)) {
     c2 = (COORDENADA*)devolve_cabeca(aux);
     a = jogadaBot(*e,c2);
+    printf(".\n" );
     t = isOver(&a);
     if(t == getjogAtual(e))
-      return *(COORDENADA*)devolve_cabeca(aux);
+      return *c2;
 
     else if (t != 0 || getnumJogadas(e) < 5)
-      curr = avaliaJogada(*e,*(COORDENADA*)devolve_cabeca(aux));
+      curr = avaliaJogada(*e,*c2);
 
-    else{printf(",,\n" );
-      curr = minmax(jogadasValidas(&a),a,0,3);printf(",,\n" );}
-      //printf("-\n" );
-    if(curr > best || (curr == best && avaliaJogada(*e, *(COORDENADA*)devolve_cabeca(aux)) > p)) {
+    else
+      curr = minmax(jogadasValidas(&a),a,0,3);
+
+    if(curr > best || (curr == best && avaliaJogada(*e, *c2) > p)) {
       best = curr;
-      c =   *(COORDENADA*)devolve_cabeca(aux);
-      p = avaliaJogada(*e, *(COORDENADA*)devolve_cabeca(aux));
+      c =   *c2;
+      p = avaliaJogada(*e, *c2);
     }
     //printf("%d%c%d\n", curr,'a' +   cr.coords[i].coluna,  cr.coords[i].linha);
   }

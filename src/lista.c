@@ -10,12 +10,7 @@
  * @return  Apontador para Lista
  */
 LISTA initLista() {
-    LISTA new = malloc(sizeof(LISTA));
-
-    new->value = NULL;
-    new->next = NULL;
-
-    return new;
+    return NULL;
 }
 
 /**
