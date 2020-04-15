@@ -141,7 +141,6 @@ COORDENADA bot(ESTADO *e) {
       c =   *(COORDENADA*)devolve_cabeca(aux);
       p = avaliaJogada(*e, *(COORDENADA*)devolve_cabeca(aux));
     }
-    //printf("%d%c%d\n", curr,'a' +   cr.coords[i].coluna,  cr.coords[i].linha);
   }
   return c;
 }
