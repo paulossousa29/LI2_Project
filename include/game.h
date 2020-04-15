@@ -6,9 +6,9 @@
 
 // Functions
 int toCord(COORDENADA* c, char* col, char* line);
-void place(ESTADO* e, LISTA l, COORDENADA* c);
+LISTA place(ESTADO* e, LISTA l, COORDENADA* c);
 void movimentos(ESTADO* e);
-ESTADO* posicao(ESTADO* e, LISTA l, int pos);
+LISTA posicao(ESTADO* e, LISTA l, int pos);
 int isOver(ESTADO* e);
 
 #endif

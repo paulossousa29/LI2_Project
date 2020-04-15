@@ -64,7 +64,7 @@ int isValid(ESTADO* e, int col, int line)
  * @param l Lista de Estados
  * @param c Apontador para Coordenada
  */
-void place(ESTADO* e, LISTA l, COORDENADA* c)
+LISTA place(ESTADO* e, LISTA l, COORDENADA* c)
 {
   if(!(isValid(e, getCol(c), getLine(c)))) {
     setCasa(e, PRETA, getultimaJogLinha(e), getultimaJogColuna(e));
@@ -75,14 +75,18 @@ void place(ESTADO* e, LISTA l, COORDENADA* c)
       setNJogadas(e,getnumJogadas(e)+1);
       setJog1(e, getnumJogadas(e)-1, getLine(c), getCol(c));
       setJogAtual(e, 2);
+      l = insere_cabeca(l, (void*)duplicaEstado(e));
     }
 
     else {
       setJog2(e, getnumJogadas(e)-1, getLine(c), getCol(c));
-      l = insere_cabeca(l, duplicaEstado(e));
+      l = remove_cabeca(l);
+      l = insere_cabeca(l, (void*)duplicaEstado(e));
       setJogAtual(e, 1);
     }
   }
+
+  return l;
 }
 
 /**
@@ -119,16 +123,13 @@ void movimentos(ESTADO* e) {
  * @param l   Lista de Estados
  * @param pos Jogada a ser apresentada
  */
-ESTADO* posicao(ESTADO* e, LISTA l, int pos) {
+LISTA posicao(ESTADO* e, LISTA l, int pos) {
   int jog = getnumJogadas(e);
-  LISTA aux = l;
-
-  while(jog>pos && aux) {
-    aux = aux->next;
+  while(jog>pos && !lista_esta_vazia(l)) {
+    l = remove_cabeca(l);
     jog--;
   }
-
-  return aux->value;
+  return l;
 }
 
 /**

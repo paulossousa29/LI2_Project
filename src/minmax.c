@@ -130,7 +130,6 @@ COORDENADA bot(ESTADO *e) {
   for(aux = l;aux!= NULL;aux = proximo(aux)) {
     c2 = (COORDENADA*)devolve_cabeca(aux);
     a = jogadaBot(*e,c2);
-    printf(".\n" );
     t = isOver(&a);
     if(t == getjogAtual(e))
       return *c2;

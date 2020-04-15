@@ -115,6 +115,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
   buffer[0] = 'a';
 
   gamestart(e);
+  l = insere_cabeca(l, (void*)duplicaEstado(e));
 
   printa(e); // imprime o estado inicial
 
@@ -139,7 +140,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         line = strsep(&buffer, "\n");
 
         if(toCord(c, col, line)) {
-          place(e, l, c);
+          l = place(e, l, c);
           printa(e);
         }
       }
@@ -166,7 +167,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
     else if(strcmp(s, "jog") == 0) {
       COORDENADA caux = bot(e);
-      place(e, l, &caux);
+      l = place(e, l, &caux);
       printa(e);
       printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), 8 - getLine(&caux));
     }
@@ -174,7 +175,9 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     else if(strcmp(s, "pos") == 0) {
       s = strsep(&buffer, "\n");
 
-      posicao(e, l, atoi(s));
+      if(atoi(s) >= 0 && atoi(s) <= getnumJogadas(e))
+        l = posicao(e, l, atoi(s));
+      e = (ESTADO*)devolve_cabeca(l);
 
       printa(e);
     }
