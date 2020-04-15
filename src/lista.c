@@ -34,6 +34,8 @@ LISTA insere_cabeca(LISTA l, void *valor) {
 }
 
 void *devolve_cabeca(LISTA l) {
+  //printf("%d\n", ((COORDENADA*)l->value)->linha);
+
     return l->value;
 }
 

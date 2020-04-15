@@ -5,27 +5,31 @@
 
 #include "minmax.h"
 
-CVAL jogadasValidas(ESTADO *e) {
-  CVAL cr;
+LISTA jogadasValidas(ESTADO *e) {
+  //CVAL cr;
+  LISTA list;
   int l = getultimaJogLinha(e);
   int c = getultimaJogColuna(e);
-  int i = 0, l2 = l,c2;
+  int l2 = l - 1,c2;
+  COORDENADA coord;
+  list = initLista();
 
-  if(l2 == 1) l2++;
+  if(l == 0) l2++;
 
-  for(l2 = l - 1;l2 <= l + 1 && l2 < 9;l2++) {
+  for(;l2 <= l + 1 && l2 < 8;l2++) {
     for(c2 = c - 1;c2 <= c + 1;c2++)
       if(c2 >= 0 && c2 <=7 && getCasa(e, l2, c2) == VAZIO) {
-        cr.coords[i].linha = l2;
-        cr.coords[i].coluna = c2;
-        i++;
+        coord.linha = l2;
+        coord.coluna = c2;
+        list = insere_cabeca(list,(void*)duplicaCOORD(&coord));
       }
   }
-  cr.validas = i;
-  return cr;
+  return list;
 }
 
 ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
+  //printf("%d\n", c -> linha);
+  //printf("%d.\n", c -> coluna);
   setCasa(&e,PRETA,getultimaJogLinha(&e),getultimaJogColuna(&e));
   setCasa(&e,BRANCA,c->linha, c->coluna);
   setUltimaJog(&e, c->linha, c->coluna);
@@ -39,12 +43,12 @@ ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
 }
 
 int pertoFim(COORDENADA c,int jogador) {
-  if(((c.linha == 8 && c.coluna == 6) || (c.linha == 7 && c.coluna == 6) ||
-    (c.linha == 7 && c.coluna == 7)) && jogador == 1)
+  if(((c.linha == 0 && c.coluna == 6) || (c.linha == 1 && c.coluna == 6) ||
+    (c.linha == 1 && c.coluna == 7)) && jogador == 1)
     return 1;
 
-  if(((c.linha == 2 && c.coluna == 0) || (c.linha == 2 && c.coluna == 1) ||
-    (c.linha == 1 && c.coluna == 1)) && jogador == 2)
+  if(((c.linha == 6 && c.coluna == 0) || (c.linha == 6 && c.coluna == 1) ||
+    (c.linha == 7 && c.coluna == 1)) && jogador == 2)
     return 1;
 
   return 0;
@@ -62,33 +66,33 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
           p = 8;
   else if((pertoFim(c,j)))
           p = 2;
-  else if((j == 2 && c.linha == l + 1 && c.coluna == cl + 1) ||
-          (j == 1 && c.linha == l - 1 && c.coluna == cl - 1))
+  else if((j == 2 && c.linha == l - 1 && c.coluna == cl + 1) ||
+          (j == 1 && c.linha == l + 1 && c.coluna == cl - 1))
           p = 7;
   else if((l == c.linha) && ((j == 2 && c.coluna == cl + 1) ||
           (j == 1 && c.coluna == cl - 1)))
           p = 5;
-  else if((cl == c.coluna) && ((j == 2 && c.linha == l + 1) ||
-          (j == 1 && c.linha == l - 1)))
+  else if((cl == c.coluna) && ((j == 2 && c.linha == l - 1) ||
+          (j == 1 && c.linha == l + 1)))
           p = 6;
-  else if((c.linha == l + 1 && c.coluna == cl - 1) ||
-          (c.linha == l - 1 && c.coluna == cl + 1))
+  else if((c.linha == l - 1 && c.coluna == cl - 1) ||
+          (c.linha == l + 1 && c.coluna == cl + 1))
           p = 4;
   else p = 3;
 
   return p;
 }
 
-int minmax(CVAL cr,ESTADO e,int isMax,int p) {
-  int pontos,max,min;
+int minmax(LISTA l,ESTADO e,int isMax,int p) {
+  int pontos,max = -1000,min = 1000;
   ESTADO a;
+  LISTA aux;
 
   if (isMax) {
-    max = -100;
-    for(int i = 0;i < cr.validas;i++) {
-      a = jogadaBot(e, &cr.coords[i]);
+    for(aux = l;aux;aux = proximo(aux)) {
+      a = jogadaBot(e, (COORDENADA*)devolve_cabeca(aux));
       if(!p || isOver(&a))
-        pontos = avaliaJogada(e,  cr.coords[i]);
+        pontos = avaliaJogada(e, *(COORDENADA*)devolve_cabeca(aux));
       else
         pontos = minmax(jogadasValidas(&a),a,0,p-1);
 
@@ -99,11 +103,10 @@ int minmax(CVAL cr,ESTADO e,int isMax,int p) {
     pontos = max;
   }
   else {
-    min = 100;
-    for(int i = 0;i < cr.validas;i++) {
-      a = jogadaBot(e, &cr.coords[i]);
+    for(aux = l;aux;aux = proximo(aux)) {
+      a = jogadaBot(e, (COORDENADA*)devolve_cabeca(aux));
       if(!p || isOver(&a))
-        pontos = avaliaJogada(e,  cr.coords[i]) - 7;
+        pontos = avaliaJogada(e, *(COORDENADA*)devolve_cabeca(aux)) - 7;
       else
         pontos = minmax(jogadasValidas(&a),a,1,p-1);
 
@@ -116,29 +119,32 @@ int minmax(CVAL cr,ESTADO e,int isMax,int p) {
 }
 
 COORDENADA bot(ESTADO *e) {
-  CVAL cr;
-  COORDENADA c;
+  LISTA l,aux;
+  COORDENADA c,*c2;
   int r = 1, t;
   int best = -100,curr,p;
   ESTADO a;
 
-  cr = jogadasValidas(e);
+  l = jogadasValidas(e);
 
-  for(int i = 0; i < cr.validas && r;i++) {
+  for(aux = l;aux;aux = proximo(aux)) {
+    //printf(".\n" );
+    c2 = (COORDENADA*)devolve_cabeca(aux);
+    a = jogadaBot(*e,c2);
     t = isOver(&a);
     if(t == getjogAtual(e))
-      return cr.coords[i];
-    else if (t != 0 || getnumJogadas(e) < 5)
-      curr = avaliaJogada(*e,cr.coords[i]);
-    else {
-      a = jogadaBot(*e,&cr.coords[i]);
-      curr = minmax(jogadasValidas(&a),a,0,3);
-    }
+      return *(COORDENADA*)devolve_cabeca(aux);
 
-    if(curr > best || (curr == best && avaliaJogada(*e,  cr.coords[i]) > p)) {
+    else if (t != 0 || getnumJogadas(e) < 5)
+      curr = avaliaJogada(*e,*(COORDENADA*)devolve_cabeca(aux));
+
+    else{printf(",,\n" );
+      curr = minmax(jogadasValidas(&a),a,0,3);printf(",,\n" );}
+      //printf("-\n" );
+    if(curr > best || (curr == best && avaliaJogada(*e, *(COORDENADA*)devolve_cabeca(aux)) > p)) {
       best = curr;
-      c =   cr.coords[i];
-      p = avaliaJogada(*e,  cr.coords[i]);
+      c =   *(COORDENADA*)devolve_cabeca(aux);
+      p = avaliaJogada(*e, *(COORDENADA*)devolve_cabeca(aux));
     }
     //printf("%d%c%d\n", curr,'a' +   cr.coords[i].coluna,  cr.coords[i].linha);
   }

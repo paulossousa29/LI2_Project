@@ -79,7 +79,7 @@ void place(ESTADO* e, LISTA l, COORDENADA* c)
 
     else {
       setJog2(e, getnumJogadas(e)-1, getLine(c), getCol(c));
-      l = insere_cabeca(l, e);
+      l = insere_cabeca(l, duplicaEstado(e));
       setJogAtual(e, 1);
     }
   }
@@ -126,7 +126,7 @@ void movimentos(ESTADO* e) {
 void posicao(ESTADO* e, LISTA l, int pos) {
   int jog = getnumJogadas(e);
   LISTA aux = l;
-  
+
   while(jog>pos && aux) {
     aux = aux->next;
     jog--;
@@ -145,18 +145,16 @@ int isOver(ESTADO* e) {
   int l = getultimaJogLinha(e);
   int l2 = l - 1, c2;
 
-  printf("%d\n", l);
-
   if (getCasa(e, 7, 0) == BRANCA)
     return 1;
 
   else if (getCasa(e, 0, 7) == BRANCA)
     return 2;
 
-  if(l==0) 
+  if(l==0)
     l2++;
 
-  for(l2; l2<=l+1 && l2<8; l2++)
+  for(;l2<=l+1 && l2<8; l2++)
     for(c2 = c-1; c2<=c+1; c2++)
       if(c2 >= 0 && c2<8 && getCasa(e, l2, c2) == VAZIO) {
         return 0;
