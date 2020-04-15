@@ -21,7 +21,9 @@ LISTA jogadasValidas(ESTADO *e) {
       if(c2 >= 0 && c2 <=7 && getCasa(e, l2, c2) == VAZIO) {
         coord.linha = l2;
         coord.coluna = c2;
-        insere_cabeca(list,&coord);
+        insere_cabeca(list,(void*)&coord);
+        printf("%d\n", ((COORDENADA*)list->value)->linha);
+        //printf("%d\n", ((COORDENADA*)devolve_cabeca(list))->linha);
       }
   }
   return list;
@@ -118,24 +120,23 @@ int minmax(LISTA l,ESTADO e,int isMax,int p) {
 
 COORDENADA bot(ESTADO *e) {
   LISTA l,aux;
-  COORDENADA c;
+  COORDENADA c,*c2;
   int r = 1, t;
   int best = -100,curr,p;
   ESTADO a;
 
   l = jogadasValidas(e);
-
+printf("%d.\n",(*(COORDENADA**)l->value)->linha);
   for(aux = l;aux;aux = proximo(aux)) {
     t = isOver(&a);
     if(t == getjogAtual(e))
       return *(COORDENADA*)devolve_cabeca(aux);
-    else if (t != 0 || getnumJogadas(e) < 5)
-      curr = avaliaJogada(*e,*(COORDENADA*)devolve_cabeca(aux));
+    else if (t != 0 || getnumJogadas(e) < 5){c2 = (COORDENADA*)devolve_cabeca(aux);printf("%d\n",c2->linha);
+      curr = avaliaJogada(*e,*(COORDENADA*)devolve_cabeca(aux));}
     else {
       a = jogadaBot(*e,(COORDENADA*)devolve_cabeca(aux));
       curr = minmax(jogadasValidas(&a),a,0,3);
     }
-
     if(curr > best || (curr == best && avaliaJogada(*e, *(COORDENADA*)devolve_cabeca(aux)) > p)) {
       best = curr;
       c =   *(COORDENADA*)devolve_cabeca(aux);
