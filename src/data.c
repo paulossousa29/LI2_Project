@@ -24,6 +24,13 @@ void gamestart(ESTADO *e) {
     e->jogador_atual = 1;
 }
 
+COORDENADA* duplicaCOORD(COORDENADA *c) {
+  COORDENADA *new = malloc(sizeof(COORDENADA));
+  new -> linha = c -> linha;
+  new -> coluna = c -> coluna;
+
+  return new;
+}
 /**
  * @brief   Função que inicializa um Estado
  * @return  Apontador para Estado
