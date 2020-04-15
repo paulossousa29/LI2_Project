@@ -31,6 +31,31 @@ COORDENADA* duplicaCOORD(COORDENADA *c) {
 
   return new;
 }
+
+ESTADO* duplicaEstado(ESTADO* e) {
+  int i, j;
+  
+  ESTADO* new = malloc(sizeof(ESTADO));
+
+  new->num_jogadas = e->num_jogadas;
+  new->jogador_atual = e->jogador_atual;
+  new->ultima_jogada.linha = e->ultima_jogada.linha;
+  new->ultima_jogada.coluna = e->ultima_jogada.coluna;
+
+  for(i=0; i<7; i++)
+    for(j=0; j<7; j++)
+      new->tab[i][j] = e->tab[i][j];
+
+  for(i=0; i<new->num_jogadas; i++) {
+    new->jogadas[i].jogador1.linha = e->jogadas[i].jogador1.linha;
+    new->jogadas[i].jogador1.coluna = e->jogadas[i].jogador1.coluna;
+    new->jogadas[i].jogador2.linha = e->jogadas[i].jogador2.linha;
+    new->jogadas[i].jogador2.coluna = e->jogadas[i].jogador2.coluna;
+  }
+
+  return new;
+}
+
 /**
  * @brief   Função que inicializa um Estado
  * @return  Apontador para Estado

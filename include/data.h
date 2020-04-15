@@ -43,6 +43,7 @@ void gamestart(ESTADO *e);
 ESTADO* initEstado();
 COORDENADA* initCoordenada();
 COORDENADA* duplicaCOORD(COORDENADA *c);
+ESTADO* duplicaEstado(ESTADO* e);
 
 void setJogAtual(ESTADO *e, int jog);
 void setNJogadas(ESTADO *e,int n);
