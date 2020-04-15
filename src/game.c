@@ -99,11 +99,7 @@ void movimentos(ESTADO* e) {
 
   for(i=1; i<=getnumJogadas(e); i++) {
 
-    if(i < 10)
-      printf("0%d: ",i);
-
-    else
-      printf("%d: ",i);
+    printf("%2d: ",i);
 
     if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
       printf("%c%d\n",getultimaJogColuna(e) + 'a', '8' - getultimaJogLinha(e));
@@ -123,7 +119,7 @@ void movimentos(ESTADO* e) {
  * @param l   Lista de Estados
  * @param pos Jogada a ser apresentada
  */
-void posicao(ESTADO* e, LISTA l, int pos) {
+ESTADO* posicao(ESTADO* e, LISTA l, int pos) {
   int jog = getnumJogadas(e);
   LISTA aux = l;
 
@@ -132,7 +128,7 @@ void posicao(ESTADO* e, LISTA l, int pos) {
     jog--;
   }
 
-  e = aux->value;
+  return aux->value;
 }
 
 /**
