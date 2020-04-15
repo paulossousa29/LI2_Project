@@ -11,7 +11,7 @@
  */
 LISTA initLista() {
     LISTA new = malloc(sizeof(LISTA));
-    
+
     new->value = NULL;
     new->next = NULL;
 
@@ -34,12 +34,14 @@ LISTA insere_cabeca(LISTA l, void *valor) {
 }
 
 void *devolve_cabeca(LISTA l) {
+  COORDENADA *c = (COORDENADA*)l->value;
+  printf("%d\n", c->linha);
     return l->value;
 }
 
 /**
- * @brief   Função devolve a cauda da Lista 
- * @param l Lista com a cauda a devolver     
+ * @brief   Função devolve a cauda da Lista
+ * @param l Lista com a cauda a devolver
  * @return  Nova Lista com a cauda da Lista l
  */
 LISTA proximo(LISTA l) {
