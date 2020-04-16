@@ -71,3 +71,15 @@ int lista_esta_vazia(LISTA l) {
 
     return res;
 }
+
+LISTA freeLista(LISTA l) {
+    LISTA aux = l;
+
+    while(aux!=NULL) {
+        aux = l->next;
+        free(l);
+        l = aux;
+    }
+
+    return l;
+}

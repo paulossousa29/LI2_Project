@@ -69,8 +69,10 @@ void printa(ESTADO *e)
  */
 int temEspaco(char *s) {
   int r = 0;
+
   for(int i = 0; s[i]!='\0' && !r; i++)
-    if(s[i] == ' ') r = 1;
+    if(s[i] == ' ') 
+      r = 1;
 
   return r;
 }
@@ -101,6 +103,34 @@ int replay() {
 }
 
 /**
+ * @brief   Função que imprime a Lista de Movimentos
+ * @param e Apontador para Estado
+ */
+void movimentos(ESTADO* e) {
+  int i;
+
+  printf("\nMovimentos:\n");
+
+  if(getnumJogadas(e) == 0)
+    printf("Não existem jogadas\n");
+
+  for(i=1; i<=getnumJogadas(e); i++) {
+
+    printf("%2d: ",i);
+
+    if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
+      printf("%c%d\n",getultimaJogColuna(e) + 'a', '8' - getultimaJogLinha(e));
+    }
+
+    else {
+      printf("%c%d %c%d\n",
+      getJog1Col(e, i) + 'a', '8' - getJog1Line(e, i),
+      getJog2Col(e, i) + 'a', '8' - getJog2Line(e, i));
+    }
+  }
+}
+
+/**
  * @brief   Função que executa o interpretador de comandos
  * @param e Apontador para Estado
  * @param c Apontador para Coordenada
@@ -113,14 +143,14 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
   char* s = NULL;
   char *line = NULL, *col = NULL;
   buffer[0] = 'a';
+  LISTA aux;
 
   gamestart(e);
   l = insere_cabeca(l, (void*)duplicaEstado(e));
 
   printa(e); // imprime o estado inicial
 
-  while(1)
-  {
+  while(1) {
     menu();
     fgets(buffer, MAX, stdin);
 
@@ -135,14 +165,21 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     if(strcmp(s, "coordenada") == 0) {
       if(!temEspaco(buffer))
         printf("coordenada inválida\n");
+
       else {
         col = strsep(&buffer, " ");
         line = strsep(&buffer, "\n");
 
         if(toCord(c, col, line)) {
-          l = place(e, l, c);
-          printa(e);
+          if((aux=place(e, l, c)) != NULL){
+            l = aux;
+            printa(e);
+          }
+          else
+            printf("Posição inválida.\n");
         }
+        else
+          printf("Argumentos inválidos\n");
       }
     }
 
@@ -156,6 +193,10 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
       s = strsep(&buffer, "\n");
 
       input(e, s);
+
+      l = freeLista(l);
+      l = insere_cabeca(l, (void*)duplicaEstado(e));
+
       printa(e);
     }
 
@@ -174,12 +215,16 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
     else if(strcmp(s, "pos") == 0) {
       s = strsep(&buffer, "\n");
+      j = atoi(s);
 
-      if(atoi(s) >= 0 && atoi(s) <= getnumJogadas(e))
-        l = posicao(e, l, atoi(s));
-      e = (ESTADO*)devolve_cabeca(l);
+      if(j>=0 && j<=getnumJogadas(e)) {
+        l = posicao(e, l, j);
+        e = (ESTADO*)devolve_cabeca(l);
+        printa(e);
+      }
 
-      printa(e);
+      else
+        printf("\nImpossível voltar à posição %d\n", j);
     }
 
     else if((strcmp(s, "q") == 0) || (strcmp(s, "Q") == 0)) {
@@ -203,7 +248,11 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
       else {
         printf("\nNovo Jogo\n");
+
         gamestart(e);
+        l = freeLista(l);
+        l = insere_cabeca(l, (void*)duplicaEstado(e));
+
         printa(e);
       }
     }

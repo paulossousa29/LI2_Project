@@ -14,5 +14,6 @@ LISTA proximo(LISTA l);
 LISTA remove_cabeca(LISTA l);
 int lista_esta_vazia(LISTA l);
 void *devolve_cabeca(LISTA l);
+LISTA freeLista(LISTA l);
 
 #endif

@@ -121,7 +121,7 @@ int minmax(LISTA l,ESTADO e,int isMax,int p) {
 COORDENADA bot(ESTADO *e) {
   LISTA l,aux;
   COORDENADA c,*c2;
-  int r = 1, t;
+  int t;
   int best = -100,curr,p;
   ESTADO a;
 

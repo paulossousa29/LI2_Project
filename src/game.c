@@ -12,12 +12,10 @@
  * @param line  Inteiro com a linha
  * @return      Inteiro com resultado booleano
  */
-int toCord(COORDENADA* c, char* col, char* line)
-{
-  if(col[1]!='\0' || line[1]!='\0') {
-    printf("Argumentos inválidos\n");
+int toCord(COORDENADA* c, char* col, char* line) {
+  if(col[1]!='\0' || line[1]!='\0') 
     return 0;
-  }
+  
 
   setCoord(c, '8' - line[0], col[0] - 'a');
 
@@ -31,12 +29,10 @@ int toCord(COORDENADA* c, char* col, char* line)
  * @param line  Inteiro com a coluna
  * @return      Inteiro com resultado booleano
  */
-int isValid(ESTADO* e, int col, int line)
-{
-  if (col < 0 || col > 7 || line < 0 || line > 7) {
-    printf("A posição não faz parte da grelha\n");
-    return -1;
-  }
+int isValid(ESTADO* e, int col, int line) {
+  if (col < 0 || col > 7 || line < 0 || line > 7) 
+    return 0;
+
   int l = getultimaJogLinha(e);
   int c = getultimaJogColuna(e);
 
@@ -45,17 +41,10 @@ int isValid(ESTADO* e, int col, int line)
     (c == col && (line == l + 1 || line == l - 1))||
     (line == l + 1 && (col == c - 1 || col == c + 1))||
     (line == l - 1 && (col == c - 1 || col == c + 1)))
-      return 0;
-
-    else {
-      printf("A posição %c %d não é adjacente %c %d\n", col + 'a', 8 - line,c+'a',l);
-    }
+      return 1;
   }
 
-  else
-    printf("A posição %c %d é inválida\n", col + 'a', 8 - line);
-
-  return -1;
+  return 0;
 }
 
 /**
@@ -64,9 +53,8 @@ int isValid(ESTADO* e, int col, int line)
  * @param l Lista de Estados
  * @param c Apontador para Coordenada
  */
-LISTA place(ESTADO* e, LISTA l, COORDENADA* c)
-{
-  if(!(isValid(e, getCol(c), getLine(c)))) {
+LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
+  if(isValid(e, getCol(c), getLine(c))) {
     setCasa(e, PRETA, getultimaJogLinha(e), getultimaJogColuna(e));
     setCasa(e, BRANCA, getLine(c), getCol(c));
     setUltimaJog(e, getLine(c), getCol(c));
@@ -84,37 +72,13 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c)
       l = insere_cabeca(l, (void*)duplicaEstado(e));
       setJogAtual(e, 1);
     }
+
+    return l;
   }
 
-  return l;
-}
-
-/**
- * @brief   Função que imprime a Lista de Movimentos
- * @param e Apontador para Estado
- */
-void movimentos(ESTADO* e) {
-  int i;
-
-  printf("\nMovimentos:\n");
-
-  if(getnumJogadas(e) == 0)
-    printf("Não existem jogadas\n");
-
-  for(i=1; i<=getnumJogadas(e); i++) {
-
-    printf("%2d: ",i);
-
-    if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
-      printf("%c%d\n",getultimaJogColuna(e) + 'a', '8' - getultimaJogLinha(e));
-    }
-
-    else {
-      printf("%c%d %c%d\n",
-      getJog1Col(e, i) + 'a', '8' - getJog1Line(e, i),
-      getJog2Col(e, i) + 'a', '8' - getJog2Line(e, i));
-    }
-  }
+  else
+    return NULL;
+  
 }
 
 /**
@@ -125,10 +89,12 @@ void movimentos(ESTADO* e) {
  */
 LISTA posicao(ESTADO* e, LISTA l, int pos) {
   int jog = getnumJogadas(e);
+
   while(jog>pos && !lista_esta_vazia(l)) {
     l = remove_cabeca(l);
     jog--;
   }
+
   return l;
 }
 
@@ -153,9 +119,8 @@ int isOver(ESTADO* e) {
 
   for(;l2<=l+1 && l2<8; l2++)
     for(c2 = c-1; c2<=c+1; c2++)
-      if(c2 >= 0 && c2<8 && getCasa(e, l2, c2) == VAZIO) {
+      if(c2 >= 0 && c2<8 && getCasa(e, l2, c2) == VAZIO)
         return 0;
-      }
 
   if(getjogAtual(e) == 1)
     return 2;
