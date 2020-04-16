@@ -7,4 +7,4 @@ typedef struct cval{
 } CVAL;
 
 COORDENADA bot(ESTADO *e);
-int minmax(LISTA l,ESTADO e,int isMax,int p);
+//int minmax(LISTA l,ESTADO e,int isMax,int p,);

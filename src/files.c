@@ -54,21 +54,16 @@ void output(ESTADO* e, char* name)
   fprintf(ftable, " \n");
 
   for(i = 1;i <= getnumJogadas(e);i++) {
-    if(i < 10)
-      fprintf(ftable, "0%d: ",i);
-    else
-      fprintf(ftable, "%d: ",i);
+      fprintf(ftable, "%02d: ",i);
 
-    if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
-      fprintf(ftable, "%c%d\n", getultimaJogColuna(e) + 'a', '8' - getultimaJogLinha(e));
-    }
+    if(i == getnumJogadas(e) && getjogAtual(e) == 2)
+      fprintf(ftable, "%c%d\n", getultimaJogColuna(e) + 'a', 8 - getultimaJogLinha(e));
     else {
       fprintf(ftable, "%c%d %c%d\n",
-      getJog1Col(e, i) + 'a', '8' - getJog1Line(e, i),
-      getJog2Col(e, i) + 'a', '8' - getJog2Line(e, i));
+      getJog1Col(e, i) + 'a', 8 - getJog1Line(e, i),
+      getJog2Col(e, i) + 'a', 8 - getJog2Line(e, i));
     }
   }
-
   printf("Ficheiro %s gravado\n", name);
 
   fclose(ftable);
@@ -82,7 +77,7 @@ void output(ESTADO* e, char* name)
  */
 void input(ESTADO* e, char* name)
 {
-  int i, j;
+  int i, j,jogada;
   char buffer[MAX], aux[MAX]="files/";
 
   strcat(aux, name);
@@ -110,8 +105,6 @@ void input(ESTADO* e, char* name)
       }
     }
     else if (i >= 9) {
-      int jogada = 0;
-
       if(buffer[0] == '0')
         jogada = buffer[1] - '0';
       else

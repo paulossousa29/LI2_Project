@@ -5,6 +5,11 @@
 
 #include "minmax.h"
 
+/**
+ * @brief   Função que cria uma lista de coordenadas válidas
+ * @param e Apontador para estado
+ @return    Lista de estados
+ */
 LISTA jogadasValidas(ESTADO *e) {
   LISTA list;
   int l = getultimaJogLinha(e);
@@ -32,20 +37,20 @@ ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
   setUltimaJog(&e, c->linha, c->coluna);
 
   if(getjogAtual(&e) == 1)
-    setJogAtual(&e, 1);
-  else
     setJogAtual(&e, 2);
+  else
+    setJogAtual(&e, 1);
 
   return e;
 }
 
 int pertoFim(COORDENADA c,int jogador) {
   if(((c.linha == 0 && c.coluna == 6) || (c.linha == 1 && c.coluna == 6) ||
-    (c.linha == 1 && c.coluna == 7)) && jogador == 1)
-    return 1;
+    (c.linha == 1 && c.coluna == 7)))
+    return 2;
 
   if(((c.linha == 6 && c.coluna == 0) || (c.linha == 6 && c.coluna == 1) ||
-    (c.linha == 7 && c.coluna == 1)) && jogador == 2)
+    (c.linha == 7 && c.coluna == 1)))
     return 1;
 
   return 0;
@@ -61,7 +66,7 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
     p = 1;
   else if(p == j)
           p = 8;
-  else if((pertoFim(c,j)))
+  else if((p = pertoFim(c,j)) != 0 && p != j)
           p = 2;
   else if((j == 2 && c.linha == l - 1 && c.coluna == cl + 1) ||
           (j == 1 && c.linha == l + 1 && c.coluna == cl - 1))
@@ -80,38 +85,40 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
   return p;
 }
 
-int minmax(LISTA l,ESTADO e,int isMax,int p) {
-  int pontos,max = -1000,min = 1000;
+int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
+  int pontos,max = -1000,min = 1000,r = 1;
   ESTADO a;
   COORDENADA *c;
   LISTA aux;
 
   if (isMax) {
-    for(aux = l;aux;aux = proximo(aux)) {
+    for(aux = l;aux && r;aux = proximo(aux)) {
       c = (COORDENADA*)devolve_cabeca(aux);
       a = jogadaBot(e, c);
       if(!p || isOver(&a))
         pontos = avaliaJogada(e, *c);
       else
-        pontos = minmax(jogadasValidas(&a),a,0,p-1);
+        pontos = minmax(jogadasValidas(&a),a,0,p-1,alpha,beta);
 
       if(pontos > max)
         max = pontos;
-      //printf("-%d%c%d \n", pontos,'a' + cr.coords[i].coluna,cr.coords[i].linha);
-    }
+      if(max >= beta) r = 0;
+      if(alpha <= max) alpha = max;
     pontos = max;
   }
   else {
-    for(aux = l;aux;aux = proximo(aux)) {
+    for(aux = l;aux && r;aux = proximo(aux)) {
       c = (COORDENADA*)devolve_cabeca(aux);
       a = jogadaBot(e, c);
       if(!p || isOver(&a))
-        pontos = avaliaJogada(e, *c) - 7;
+        pontos = 9 - avaliaJogada(e, *c);
       else
-        pontos = minmax(jogadasValidas(&a),a,1,p-1);
+        pontos = minmax(jogadasValidas(&a),a,1,p-1,alpha,beta);
 
       if(pontos < min)
         min = pontos;
+      if(min <= alpha) r = 0;
+      if(beta >= min) beta = min;
     }
     pontos = min;
   }
@@ -122,7 +129,7 @@ COORDENADA bot(ESTADO *e) {
   LISTA l,aux;
   COORDENADA c,*c2;
   int t;
-  int best = -100,curr,p;
+  int best = -100,curr,p,alpha = -1000,beta = 1000;
   ESTADO a;
 
   l = jogadasValidas(e);
@@ -134,18 +141,18 @@ COORDENADA bot(ESTADO *e) {
     if(t == getjogAtual(e))
       return *c2;
 
-    else if (t != 0 || getnumJogadas(e) < 5)
+    else if (t != 0 || getnumJogadas(e) < 4)
       curr = avaliaJogada(*e,*c2);
 
     else
-      curr = minmax(jogadasValidas(&a),a,0,3);
+      curr = minmax(jogadasValidas(&a),a,0,15,alpha,beta);
 
     if(curr > best || (curr == best && avaliaJogada(*e, *c2) > p)) {
       best = curr;
       c =   *c2;
       p = avaliaJogada(*e, *c2);
     }
-    //printf("%d%c%d\n", curr,'a' +   cr.coords[i].coluna,  cr.coords[i].linha);
+    printf("%d%c%d\n", curr,'a' +   c2->coluna, 8 - c2->linha);
   }
   return c;
 }

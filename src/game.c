@@ -13,9 +13,9 @@
  * @return      Inteiro com resultado booleano
  */
 int toCord(COORDENADA* c, char* col, char* line) {
-  if(col[1]!='\0' || line[1]!='\0') 
+  if(col[1]!='\0' || line[1]!='\0')
     return 0;
-  
+
 
   setCoord(c, '8' - line[0], col[0] - 'a');
 
@@ -30,7 +30,7 @@ int toCord(COORDENADA* c, char* col, char* line) {
  * @return      Inteiro com resultado booleano
  */
 int isValid(ESTADO* e, int col, int line) {
-  if (col < 0 || col > 7 || line < 0 || line > 7) 
+  if (col < 0 || col > 7 || line < 0 || line > 7)
     return 0;
 
   int l = getultimaJogLinha(e);
@@ -52,6 +52,7 @@ int isValid(ESTADO* e, int col, int line) {
  * @param e Apontador para Estado
  * @param l Lista de Estados
  * @param c Apontador para Coordenada
+  @return   Lista de estados
  */
 LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
   if(isValid(e, getCol(c), getLine(c))) {
@@ -61,13 +62,13 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
 
     if(getjogAtual(e) == 1) {
       setNJogadas(e,getnumJogadas(e)+1);
-      setJog1(e, getnumJogadas(e)-1, getLine(c), getCol(c));
+      setJog1(e, getnumJogadas(e), getLine(c), getCol(c));
       setJogAtual(e, 2);
       l = insere_cabeca(l, (void*)duplicaEstado(e));
     }
 
     else {
-      setJog2(e, getnumJogadas(e)-1, getLine(c), getCol(c));
+      setJog2(e, getnumJogadas(e), getLine(c), getCol(c));
       l = remove_cabeca(l);
       l = insere_cabeca(l, (void*)duplicaEstado(e));
       setJogAtual(e, 1);
@@ -78,7 +79,7 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
 
   else
     return NULL;
-  
+
 }
 
 /**
@@ -86,6 +87,7 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
  * @param e   Apontador para Estado
  * @param l   Lista de Estados
  * @param pos Jogada a ser apresentada
+ @return      Lista de estados
  */
 LISTA posicao(ESTADO* e, LISTA l, int pos) {
   int jog = getnumJogadas(e);

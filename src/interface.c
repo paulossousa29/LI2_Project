@@ -71,7 +71,7 @@ int temEspaco(char *s) {
   int r = 0;
 
   for(int i = 0; s[i]!='\0' && !r; i++)
-    if(s[i] == ' ') 
+    if(s[i] == ' ')
       r = 1;
 
   return r;
@@ -116,7 +116,7 @@ void movimentos(ESTADO* e) {
 
   for(i=1; i<=getnumJogadas(e); i++) {
 
-    printf("%2d: ",i);
+    printf("%02d: ",i);
 
     if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
       printf("%c%d\n",getultimaJogColuna(e) + 'a', '8' - getultimaJogLinha(e));
