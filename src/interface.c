@@ -4,6 +4,7 @@
  */
 
  #include "interface.h"
+ #include "time.h"
 
 /**
  * @brief Função que imprime o menu de comandos
@@ -59,9 +60,18 @@ void printa(ESTADO *e)
       }
       printf("\n");
     }
-    printf("(%d) Jogador: %d\n", getnumJogadas(e), getjogAtual(e));
+    //printf("(%d) Jogador: %d\n", getnumJogadas(e), getjogAtual(e));
 }
 
+/**
+ * @brief     Informações sobre estado do jogo
+ * @param pl  jogador atual
+ * @param nj  numero da jogada
+ * @param com nºcomandos introduzidos
+ */
+void prompt(int pl,int nj,int com) {
+  printf("#%02d PL%d (%d)\n", com,pl,nj);
+}
 /**
  * @brief   Função que verifica se uma String tem espaço
  * @param s String a testa
@@ -119,13 +129,13 @@ void movimentos(ESTADO* e) {
     printf("%02d: ",i);
 
     if(i == getnumJogadas(e) && getjogAtual(e) == 2) {
-      printf("%c%d\n",getultimaJogColuna(e) + 'a', '8' - getultimaJogLinha(e));
+      printf("%c%d\n",getultimaJogColuna(e) + 'a', 8 - getultimaJogLinha(e));
     }
 
     else {
       printf("%c%d %c%d\n",
-      getJog1Col(e, i) + 'a', '8' - getJog1Line(e, i),
-      getJog2Col(e, i) + 'a', '8' - getJog2Line(e, i));
+      getJog1Col(e, i) + 'a', 8 - getJog1Line(e, i),
+      getJog2Col(e, i) + 'a', 8 - getJog2Line(e, i));
     }
   }
 }
@@ -137,7 +147,7 @@ void movimentos(ESTADO* e) {
  */
 void execute(ESTADO* e, LISTA l, COORDENADA* c)
 {
-  int j, r;
+  int j, n = 0;
   char *buffer = NULL;
   buffer = malloc(MAX*sizeof(char));
   char* s = NULL;
@@ -149,6 +159,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
   l = insere_cabeca(l, (void*)duplicaEstado(e));
 
   printa(e); // imprime o estado inicial
+  prompt(1,0,n++);
 
   while(1) {
     menu();
@@ -171,10 +182,10 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         line = strsep(&buffer, "\n");
 
         if(toCord(c, col, line)) {
-          if((aux=place(e, l, c)) != NULL){
+          if((aux=place(e, l, c)) != NULL)
             l = aux;
-            printa(e);
-          }
+            //printa(e);
+
           else
             printf("Posição inválida.\n");
         }
@@ -197,11 +208,11 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
       l = freeLista(l);
       l = insere_cabeca(l, (void*)duplicaEstado(e));
 
-      printa(e);
+      //printa(e);
     }
 
-    else if(strcmp(s, "tabuleiro") == 0)
-      printa(e);
+    else if(strcmp(s, "tabuleiro") == 0);
+      //printa(e);
 
     else if(strcmp(s, "movs") == 0)
       movimentos(e);
@@ -209,7 +220,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     else if(strcmp(s, "jog") == 0) {
       COORDENADA caux = bot(e);
       l = place(e, l, &caux);
-      printa(e);
+      //printa(e);
       printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), 8 - getLine(&caux));
     }
 
@@ -220,7 +231,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
       if(j>=0 && j<=getnumJogadas(e)) {
         l = posicao(e, l, j);
         e = (ESTADO*)devolve_cabeca(l);
-        printa(e);
+        //printa(e);
       }
 
       else
@@ -235,13 +246,14 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     else
       printf("Comando Inválido\n");
 
+    printa(e);
+    prompt(getjogAtual(e),getnumJogadas(e),n++);
+
     // O teste do jogo acabar tem de estar fora, porque se não só na jogada a seguir é que valida
     if ((j = isOver(e))) {
       printf("\nO vencedor é o jogador %d\n", j);
 
-      r = replay();
-
-      if(r==0) {
+      if(replay()==0) {
         printf("\nA Sair do Jogo!\n");
         return;
       }
@@ -253,7 +265,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         l = freeLista(l);
         l = insere_cabeca(l, (void*)duplicaEstado(e));
 
-        printa(e);
+        //printa(e);
       }
     }
   }

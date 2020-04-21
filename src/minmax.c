@@ -8,7 +8,7 @@
 /**
  * @brief   Função que cria uma lista de coordenadas válidas
  * @param e Apontador para estado
- @return    Lista de estados
+ @return    Lista ligada de coordenadas válidas
  */
 LISTA jogadasValidas(ESTADO *e) {
   LISTA list;
@@ -31,6 +31,12 @@ LISTA jogadasValidas(ESTADO *e) {
   return list;
 }
 
+/**
+ * @brief   Função que simula uma jogada do bot
+ * @param e Estado
+ * @param c Apontador para coordenada a jogar
+ @return    Estado
+ */
 ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
   setCasa(&e,PRETA,getultimaJogLinha(&e),getultimaJogColuna(&e));
   setCasa(&e,BRANCA,c->linha, c->coluna);
@@ -44,7 +50,12 @@ ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
   return e;
 }
 
-int pertoFim(COORDENADA c,int jogador) {
+/**
+ * @brief   Função que analisa se a coordenada esta perto do 1 ou do 2
+ * @param c Coordenada a jogar
+ @return    Int que é 1 se perto do 1,2 se perto de 2 ou 0
+ */
+int pertoFim(COORDENADA c) {
   if(((c.linha == 0 && c.coluna == 6) || (c.linha == 1 && c.coluna == 6) ||
     (c.linha == 1 && c.coluna == 7)))
     return 2;
@@ -56,6 +67,12 @@ int pertoFim(COORDENADA c,int jogador) {
   return 0;
 }
 
+/**
+ * @brief   Função que atribiu uma pontuação a uma jogada
+* @param e  Estado
+ * @param c Coordenada a jogar
+ @return    Int correspondente à pontuação da jogada
+ */
 int avaliaJogada(ESTADO e,COORDENADA c) {
   int j = getjogAtual(&e),p;
   ESTADO a = jogadaBot(e,&c);
@@ -66,7 +83,7 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
     p = 1;
   else if(p == j)
           p = 8;
-  else if((p = pertoFim(c,j)) != 0 && p != j)
+  else if((p = pertoFim(c)) != 0 && p != j)
           p = 2;
   else if((j == 2 && c.linha == l - 1 && c.coluna == cl + 1) ||
           (j == 1 && c.linha == l + 1 && c.coluna == cl - 1))
@@ -85,6 +102,13 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
   return p;
 }
 
+/**
+ * @brief       Algoritmo minmax com alpha-beta pruning
+ * @param e     Estado
+ * @param l     Lista ligada de coordenadas válidas
+ * @param isMax Int que é 1 para maximizar a pontuçao ou 0 para minimizar
+ @return        Int correspondente à pontuação da melhor jogada
+ */
 int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
   int pontos,max = -1000,min = 1000,r = 1;
   ESTADO a;
@@ -104,7 +128,8 @@ int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
         max = pontos;
       if(max >= beta) r = 0;
       if(alpha <= max) alpha = max;
-    pontos = max;
+      pontos = max;
+    }
   }
   else {
     for(aux = l;aux && r;aux = proximo(aux)) {
@@ -125,6 +150,11 @@ int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
   return pontos;
 }
 
+/**
+ * @brief       Funçao que implementa a estratégia do bot
+ * @param e     Apontador para o estado
+ @return        Coordenada onde o bot deve jogar
+ */
 COORDENADA bot(ESTADO *e) {
   LISTA l,aux;
   COORDENADA c,*c2;
@@ -145,14 +175,14 @@ COORDENADA bot(ESTADO *e) {
       curr = avaliaJogada(*e,*c2);
 
     else
-      curr = minmax(jogadasValidas(&a),a,0,15,alpha,beta);
+      curr = minmax(jogadasValidas(&a),a,0,11,alpha,beta);
 
     if(curr > best || (curr == best && avaliaJogada(*e, *c2) > p)) {
       best = curr;
       c =   *c2;
       p = avaliaJogada(*e, *c2);
     }
-    printf("%d%c%d\n", curr,'a' +   c2->coluna, 8 - c2->linha);
+    //printf("%d%c%d\n", curr,'a' +   c2->coluna, 8 - c2->linha);
   }
   return c;
 }
