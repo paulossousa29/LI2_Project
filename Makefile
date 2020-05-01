@@ -12,15 +12,21 @@ SOURCES := $(wildcard $(SRC)/*.c)
 
 NAME = program
 
+NAME2 = bot
+
 OBJECTS := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
+
+all: program bot
+	doxygen Doxyfile
+	@echo Documentação gerada
 
 program: $(OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDE) -o $(NAME) $(OBJECTS)
-	@echo Compilado
+	@echo Jogo Compilado
 
-all: program
-	doxygen Doxyfile
-	@echo Documentação gerada
+bot: $(OBJECTS)
+	$(CC) $(CFLAGS) $(INCLUDE) -o $(NAME2) $(OBJECTS)
+	@echo Bot Compilado
 
 .PHONY: clean
 clean:
