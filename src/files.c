@@ -11,7 +11,7 @@
  * @param e     Apontador para o Estado
  * @param name  Nome do ficheiro
  */
-void output(ESTADO* e, char* name)
+int output(ESTADO* e, char* name)
 {
   int i, j;
   char aux[MAX]="files/";
@@ -22,8 +22,7 @@ void output(ESTADO* e, char* name)
   FILE* ftable = fopen(aux, "w");
 
   if(ftable == NULL) {
-    printf("Erro\n");
-    return;
+    return -1;
   }
 
   for (i=0; i<8; i++) {
@@ -64,9 +63,10 @@ void output(ESTADO* e, char* name)
       getJog2Col(e, i) + 'a', 8 - getJog2Line(e, i));
     }
   }
-  printf("Ficheiro %s gravado\n", name);
 
   fclose(ftable);
+
+  return 0;
 }
 
 /**
@@ -75,7 +75,7 @@ void output(ESTADO* e, char* name)
  * @param name  Nome do ficheiro
  *
  */
-void input(ESTADO* e, char* name)
+int input(ESTADO* e, char* name)
 {
   int i, j,jogada;
   char buffer[MAX], aux[MAX]="files/";
@@ -85,8 +85,7 @@ void input(ESTADO* e, char* name)
   FILE* ftable = fopen(aux, "r");
 
   if(ftable == NULL) {
-    printf("Nome de ficheiro inválido\n");
-    return;
+    return -1;
   }
 
   for (i=0; fgets(buffer, MAX, ftable); i++) {
@@ -125,4 +124,6 @@ void input(ESTADO* e, char* name)
   }
 
   fclose(ftable);
+
+  return 0;
 }

@@ -4,7 +4,7 @@
 #include "data.h"
 
 // Functions
-void input(ESTADO* e, char* name);
-void output(ESTADO* e, char* name);
+int input(ESTADO* e, char* name);
+int output(ESTADO* e, char* name);
 
 #endif

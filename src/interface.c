@@ -15,7 +15,6 @@ void menu()
   printf("- coordenada <coluna> <linha>\n");
   printf("- gr <nome>\n");
   printf("- ler <nome>\n");
-  printf("- tabuleiro\n");
   printf("- movs\n");
   printf("- jog\n");
   printf("- pos <numero_da_jogada>\n");
@@ -147,7 +146,7 @@ void movimentos(ESTADO* e) {
  */
 void execute(ESTADO* e, LISTA l, COORDENADA* c)
 {
-  int j, n = 0;
+  int j, n = 0, res=0;
   char *buffer = NULL;
   buffer = malloc(MAX*sizeof(char));
   char* s = NULL;
@@ -158,10 +157,10 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
   gamestart(e);
   l = insere_cabeca(l, (void*)duplicaEstado(e));
 
-  printa(e); // imprime o estado inicial
-  prompt(1,0,n++);
-
   while(1) {
+    printa(e);
+    prompt(getjogAtual(e),getnumJogadas(e),n++);
+
     menu();
     fgets(buffer, MAX, stdin);
 
@@ -184,7 +183,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         if(toCord(c, col, line)) {
           if((aux=place(e, l, c)) != NULL)
             l = aux;
-            //printa(e);
 
           else
             printf("Posição inválida.\n");
@@ -197,22 +195,30 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     else if(strcmp(s, "gr") == 0) {
       s = strsep(&buffer, "\n");
 
-      output(e,s);
+      res = output(e,s);
+
+      if(res==-1)
+        printf("Erro ao gravaro ficheiro\n");
+
+      else
+        printf("Ficheiro %s gravado\n", s);
     }
 
     else if(strcmp(s, "ler") == 0) {
       s = strsep(&buffer, "\n");
 
-      input(e, s);
+      res = input(e, s);
 
-      l = freeLista(l);
-      l = insere_cabeca(l, (void*)duplicaEstado(e));
+      if(res==0) {
+        l = freeLista(l);
+        l = insere_cabeca(l, (void*)duplicaEstado(e));
 
-      //printa(e);
+        printf("Ficheiro %s lido\n", s);
+      }
+
+      else 
+        printf("Erro ao ler o ficheiro\n");
     }
-
-    else if(strcmp(s, "tabuleiro") == 0);
-      //printa(e);
 
     else if(strcmp(s, "movs") == 0)
       movimentos(e);
@@ -220,7 +226,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     else if(strcmp(s, "jog") == 0) {
       COORDENADA caux = bot(e);
       l = place(e, l, &caux);
-      //printa(e);
+
       printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), 8 - getLine(&caux));
     }
 
@@ -231,7 +237,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
       if(j>=0 && j<=getnumJogadas(e)) {
         l = posicao(e, l, j);
         e = (ESTADO*)devolve_cabeca(l);
-        //printa(e);
       }
 
       else
@@ -245,9 +250,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
     else
       printf("Comando Inválido\n");
-
-    printa(e);
-    prompt(getjogAtual(e),getnumJogadas(e),n++);
 
     // O teste do jogo acabar tem de estar fora, porque se não só na jogada a seguir é que valida
     if ((j = isOver(e))) {
@@ -264,8 +266,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         gamestart(e);
         l = freeLista(l);
         l = insere_cabeca(l, (void*)duplicaEstado(e));
-
-        //printa(e);
       }
     }
   }

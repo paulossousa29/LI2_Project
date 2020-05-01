@@ -182,7 +182,7 @@ COORDENADA bot(ESTADO *e) {
       c =   *c2;
       p = avaliaJogada(*e, *c2);
     }
-    //printf("%d%c%d\n", curr,'a' +   c2->coluna, 8 - c2->linha);
   }
+  
   return c;
 }
