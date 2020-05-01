@@ -184,7 +184,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         if(toCord(c, col, line)) {
           if((aux=place(e, l, c)) != NULL)
             l = aux;
-            //printa(e);
 
           else
             printf("Posição inválida.\n");
@@ -208,11 +207,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
       l = freeLista(l);
       l = insere_cabeca(l, (void*)duplicaEstado(e));
 
-      //printa(e);
     }
-
-    else if(strcmp(s, "tabuleiro") == 0);
-      //printa(e);
 
     else if(strcmp(s, "movs") == 0)
       movimentos(e);
@@ -220,7 +215,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     else if(strcmp(s, "jog") == 0) {
       COORDENADA caux = bot(e);
       l = place(e, l, &caux);
-      //printa(e);
       printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), 8 - getLine(&caux));
     }
 
@@ -231,7 +225,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
       if(j>=0 && j<=getnumJogadas(e)) {
         l = posicao(e, l, j);
         e = (ESTADO*)devolve_cabeca(l);
-        //printa(e);
       }
 
       else

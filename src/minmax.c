@@ -222,7 +222,6 @@ COORDENADA bot(ESTADO *e) {
   int t,pf = 9,n;
   int best = -100,curr,p,alpha = -1000,beta = 1000;
   ESTADO a;
-  clock_t start_t,end_t;
 
   l = jogadasValidas(e);
 
@@ -251,10 +250,7 @@ COORDENADA bot(ESTADO *e) {
       c =   *c2;
       p = avaliaJogada(*e, *c2);
     }
-    //printf("%d%c%d\n", curr,'a' +   c2->coluna, 8 - c2->linha);
   }
-  end_t = clock();
-  printf("%.4f\n",(double) (end_t - start_t) / CLOCKS_PER_SEC);
 
   return c;
 }
