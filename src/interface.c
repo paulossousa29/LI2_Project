@@ -226,7 +226,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     else if(strcmp(s, "jog") == 0) {
       COORDENADA caux = bot(e);
       l = place(e, l, &caux);
-
       printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), 8 - getLine(&caux));
     }
 
@@ -264,6 +263,8 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         printf("\nNovo Jogo\n");
 
         gamestart(e);
+        printa(e);
+        prompt(getjogAtual(e),getnumJogadas(e),n++);
         l = freeLista(l);
         l = insere_cabeca(l, (void*)duplicaEstado(e));
       }

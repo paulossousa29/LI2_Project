@@ -103,7 +103,7 @@ int input(ESTADO* e, char* name)
           setCasa(e,VAZIO,i,j);;
       }
     }
-    else if (i >= 9) {
+    else if (i >= 9 && strlen(buffer) > 3) {
       if(buffer[0] == '0')
         jogada = buffer[1] - '0';
       else
