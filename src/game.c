@@ -69,7 +69,8 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
 
     else {
       setJog2(e, getnumJogadas(e), getLine(c), getCol(c));
-      l = remove_cabeca(l);
+      if(!lista_esta_vazia(l))
+        l = remove_cabeca(l);
       l = insere_cabeca(l, (void*)duplicaEstado(e));
       setJogAtual(e, 1);
     }

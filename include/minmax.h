@@ -1,5 +1,7 @@
 #include "data.h"
 #include "game.h"
+#include "math.h"
+
 
 typedef struct cval{
     int validas;
@@ -7,4 +9,4 @@ typedef struct cval{
 } CVAL;
 
 COORDENADA bot(ESTADO *e);
-//int minmax(LISTA l,ESTADO e,int isMax,int p,);
+COORDENADA bot2(ESTADO *e);
