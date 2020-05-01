@@ -1,33 +1,45 @@
-/**
- * @file  interface.c
- * @brief Ficheiro com funções que devolvem resultados visuais para o utilizador
- */
-
  #include "interface.h"
  #include "time.h"
 
-/**
- * @brief Função que imprime o menu de comandos
- */
 void menu()
 {
-  printf("\nSelecione a sua opção:\n");
-  printf("- coordenada <coluna> <linha>\n");
-  printf("- gr <nome>\n");
-  printf("- ler <nome>\n");
-  printf("- movs\n");
-  printf("- jog\n");
-  printf("- jog2\n");
-  printf("- pos <numero_da_jogada>\n");
-  printf("- Q\n");
-  printf("\nIntroduza o seu comando: ");
+  printf("-------------------------------------------------\n");
+  printf("                     MENU\n");
+  printf("-------------------------------------------------\n");
+  printf("            Jogar | coordenada <coluna> <linha>\n");
+  printf("      Gravar Jogo | gr <nome>\n");
+  printf("         Ler Jogo | ler <nome>\n");
+  printf("       Movimentos | movs\n");
+  printf("   Jogada (Fácil) | jog\n");
+  printf(" Jogada (Difícil) | jog2\n");
+  printf("          Posição | pos <numero_da_jogada>\n");
+  printf("      Mostar Menu | menu\n");
+  printf("             Sair | Q\n");
+  printf("-------------------------------------------------\n");
 }
 
-/**
- * @brief   Função que imprime o estado do jogo
- * @param e Apontador para o estado
- */
-void printa(ESTADO *e)
+void inicio() {
+  system("clear");
+
+  printf("   ____      _    ____ _____ ____   ___  ____   \n");
+  printf("  |  _ \\    / \\  / ___|_   _|  _ \\ / _ \\/ ___|  \n");
+  printf("  | |_) |  / _ \\ \\___ \\ | | | |_) | | | \\___ \\  \n");
+  printf("  |  _ <  / ___ \\ ___) || | |  _ <| |_| |___) | \n");
+  printf("  |_| \\_\\/_/   \\_\\____/ |_| |_| \\_\\\\___/|____/  \n\n");
+
+  menu();
+
+  printf("  Bem-vindo ao Rastros. Para jogar utilize os \n");
+  printf("  comandos descritos no menu.\n");
+  printf("  Para continuar pressione qualquer tecla.\n");
+  printf("-------------------------------------------------\n");
+
+  getchar();
+
+  system("clear");
+}
+
+void printa(ESTADO *e, int com)
 {
     int i, j;
     char c = ' ';
@@ -60,23 +72,10 @@ void printa(ESTADO *e)
       }
       printf("\n");
     }
-    //printf("(%d) Jogador: %d\n", getnumJogadas(e), getjogAtual(e));
+
+    printf("#%02d PL%d (%d)\n", com, getjogAtual(e), getnumJogadas(e));
 }
 
-/**
- * @brief     Informações sobre estado do jogo
- * @param pl  jogador atual
- * @param nj  numero da jogada
- * @param com nºcomandos introduzidos
- */
-void prompt(int pl,int nj,int com) {
-  printf("#%02d PL%d (%d)\n", com,pl,nj);
-}
-/**
- * @brief   Função que verifica se uma String tem espaço
- * @param s String a testa
- * @return  Inteiro com resultado booleano
- */
 int temEspaco(char *s) {
   int r = 0;
 
@@ -87,10 +86,6 @@ int temEspaco(char *s) {
   return r;
 }
 
-/**
- * @brief   Função que pergunta ao utilizador se quer voltar a jogar
- * @return  Inteiro com resultado booleano
- */
 int replay() {
   char* buffer = NULL;
   buffer = malloc(sizeof(char) * MAX);
@@ -112,10 +107,6 @@ int replay() {
   }
 }
 
-/**
- * @brief   Função que imprime a Lista de Movimentos
- * @param e Apontador para Estado
- */
 void movimentos(ESTADO* e) {
   int i;
 
@@ -140,11 +131,6 @@ void movimentos(ESTADO* e) {
   }
 }
 
-/**
- * @brief   Função que executa o interpretador de comandos
- * @param e Apontador para Estado
- * @param c Apontador para Coordenada
- */
 void execute(ESTADO* e, LISTA l, COORDENADA* c)
 {
   int j, n = 0, res=0;
@@ -155,15 +141,18 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
   buffer[0] = 'a';
   LISTA aux;
 
+  inicio();
+
   gamestart(e);
   l = insere_cabeca(l, (void*)duplicaEstado(e));
 
   while(1) {
-    printa(e);
-    prompt(getjogAtual(e),getnumJogadas(e),n++);
-
-    menu();
+    printa(e, n++);
+    
+    printf("\nIntroduza o seu comando: ");
     fgets(buffer, MAX, stdin);
+
+    printf("\n");
 
     // Intrepertação do comando
     if(!temEspaco(buffer))
@@ -249,6 +238,9 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         printf("\nImpossível voltar à posição %d\n", j);
     }
 
+    else if((strcmp(s, "menu") == 0)) 
+      menu();
+
     else if((strcmp(s, "q") == 0) || (strcmp(s, "Q") == 0)) {
       printf("\nA Sair do Jogo!\n");
       return;
@@ -259,7 +251,8 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
     // O teste do jogo acabar tem de estar fora, porque se não só na jogada a seguir é que valida
     if ((j = isOver(e))) {
-      printa(e);
+      
+      printa(e, n++);
       prompt(getjogAtual(e),getnumJogadas(e),n++);
       printf("\nO vencedor é o jogador %d\n", j);
 
@@ -269,7 +262,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
       }
 
       else {
-        printf("\nNovo Jogo\n");
+        inicio();
 
         gamestart(e);
         l = freeLista(l);

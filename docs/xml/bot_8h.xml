@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="bot_8h" kind="file" language="C++">
+    <compoundname>bot.h</compoundname>
+    <includes refid="data_8h" local="yes">data.h</includes>
+    <includes refid="game_8h" local="yes">game.h</includes>
+    <includes local="yes">math.h</includes>
+    <includedby refid="interface_8h" local="yes">include/interface.h</includedby>
+    <includedby refid="bot_8c" local="yes">src/bot.c</includedby>
+    <includedby refid="competicao_8c" local="yes">src/competicao.c</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>lista.h</label>
+        <link refid="lista_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdlib.h</label>
+      </node>
+      <node id="2">
+        <label>data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>string.h</label>
+      </node>
+      <node id="7">
+        <label>game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>math.h</label>
+      </node>
+      <node id="6">
+        <label>ctype.h</label>
+      </node>
+      <node id="3">
+        <label>stdio.h</label>
+      </node>
+      <node id="1">
+        <label>include/bot.h</label>
+        <link refid="bot_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/interface.h</label>
+        <link refid="interface_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="4">
+        <label>src/competicao.c</label>
+        <link refid="competicao_8c"/>
+      </node>
+      <node id="1">
+        <label>include/bot.h</label>
+        <link refid="bot_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="bot_8h_1a1fc68de410f185fc0ece6cbd5047ba5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref></type>
+        <definition>COORDENADA bot</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>bot</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Funçao que implementa a estratégia fácil do bot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Coordenada onde o bot deve jogar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/bot.h" line="18" column="12" bodyfile="src/bot.c" bodystart="246" bodyend="265" declfile="include/bot.h" declline="18" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1a745f8f629306c6b4ae9756eeeb0dcaae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref></type>
+        <definition>COORDENADA bot2</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>bot2</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Funçao que implementa a estratégia dificil do bot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Coordenada onde o bot deve jogar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/bot.h" line="25" column="12" bodyfile="src/bot.c" bodystart="209" bodyend="244" declfile="include/bot.h" declline="25" declcolumn="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Módulo que contém a implementação das funções para os BOTs. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>__bot_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__bot_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="data_8h" kindref="compound">data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="game_8h" kindref="compound">game.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;math.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><ref refid="structcoordenada" kindref="compound">COORDENADA</ref><sp/><ref refid="bot_8h_1a1fc68de410f185fc0ece6cbd5047ba5c" kindref="member">bot</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="structcoordenada" kindref="compound">COORDENADA</ref><sp/><ref refid="bot_8h_1a745f8f629306c6b4ae9756eeeb0dcaae" kindref="member">bot2</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/bot.h"/>
+  </compounddef>
+</doxygen>

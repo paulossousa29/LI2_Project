@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerfile refid="bot_8c">bot.c</innerfile>
+    <innerfile refid="competicao_8c">competicao.c</innerfile>
+    <innerfile refid="data_8c">data.c</innerfile>
+    <innerfile refid="files_8c">files.c</innerfile>
+    <innerfile refid="game_8c">game.c</innerfile>
+    <innerfile refid="interface_8c">interface.c</innerfile>
+    <innerfile refid="lista_8c">lista.c</innerfile>
+    <innerfile refid="main_8c">main.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/"/>
+  </compounddef>
+</doxygen>

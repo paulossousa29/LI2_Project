@@ -1,14 +1,10 @@
-/**
- * @file    minmax.c
- * @brief   Módulo que contém a implementação das funções que utilizam a eurística minmax
- */
 
-#include "minmax.h"
+#include "bot.h"
 
 /**
  * @brief   Função que cria uma lista de coordenadas válidas
  * @param e Apontador para estado
- @return    Lista ligada de coordenadas válidas
+ * @return    Lista ligada de coordenadas válidas
  */
 LISTA jogadasValidas(ESTADO *e) {
   LISTA list;
@@ -35,7 +31,7 @@ LISTA jogadasValidas(ESTADO *e) {
  * @brief   Função que simula uma jogada do bot
  * @param e Estado
  * @param c Apontador para coordenada a jogar
- @return    Estado
+ * @return  Estado
  */
 ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
   setCasa(&e,PRETA,getultimaJogLinha(&e),getultimaJogColuna(&e));
@@ -55,7 +51,7 @@ ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
 /**
  * @brief   Função que analisa se a coordenada esta perto do 1 ou do 2
  * @param c Coordenada a jogar
- @return    Int que é 1 se perto do 1,2 se perto de 2 ou 0
+ * @return    Int que é 1 se perto do 1,2 se perto de 2 ou 0
  */
 int pertoFim(COORDENADA c) {
   if(((c.linha == 0 && c.coluna == 6) || (c.linha == 1 && c.coluna == 6) ||
@@ -75,7 +71,7 @@ int pertoFim(COORDENADA c) {
  * @param cl Coluna ultima_jogada
  * @param c  Coordenada a jogar
  * @param j  Jogador atual
- @return     Int correspondente à pontuação da jogada
+ * @return     Int correspondente à pontuação da jogada
  */
 int avalia(int l,int cl,COORDENADA c,int j) {
   int p;
@@ -117,7 +113,7 @@ int avalia(int l,int cl,COORDENADA c,int j) {
  * @brief     Função que atribiu uma pontuação a uma jogada
  * @param e   Estado
  * @param c   Coordenada a jogar
- @return      Int correspondente à pontuação da jogada
+ * @return      Int correspondente à pontuação da jogada
  */
 int avaliaJogada(ESTADO e,COORDENADA c) {
   int j = getjogAtual(&e),p,n = getnumJogadas(&e);
@@ -166,7 +162,7 @@ int avaliaJogada(ESTADO e,COORDENADA c) {
  * @param e     Estado
  * @param l     Lista ligada de coordenadas válidas
  * @param isMax Int que é 1 para maximizar a pontuçao ou 0 para minimizar
- @return        Int correspondente à pontuação da melhor jogada
+ * @return        Int correspondente à pontuação da melhor jogada
  */
 int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
   int pontos,max = -1000,min = 1000,r = 1;
@@ -210,11 +206,6 @@ int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
   return pontos;
 }
 
-/**
- * @brief       Funçao que implementa a estratégia do bot
- * @param e     Apontador para o estado
- @return        Coordenada onde o bot deve jogar
- */
 COORDENADA bot2(ESTADO *e) {
   LISTA l,aux;
   COORDENADA c,*c2;

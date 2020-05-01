@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structcoordenada" kind="struct" language="C++" prot="public">
+    <compoundname>coordenada</compoundname>
+    <includes refid="data_8h" local="no">data.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structcoordenada_1a014866d591155c7da4225e7fbd9ce8f4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int coordenada::coluna</definition>
+        <argsstring></argsstring>
+        <name>coluna</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="30" column="9" bodyfile="include/data.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcoordenada_1a46c597981d7c9c75bee2ba3d998304fb" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int coordenada::linha</definition>
+        <argsstring></argsstring>
+        <name>linha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="31" column="9" bodyfile="include/data.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Tipo de dados para a Coordenada. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/data.h" line="29" column="25" bodyfile="include/data.h" bodystart="29" bodyend="32"/>
+    <listofallmembers>
+      <member refid="structcoordenada_1a014866d591155c7da4225e7fbd9ce8f4" prot="public" virt="non-virtual"><scope>coordenada</scope><name>coluna</name></member>
+      <member refid="structcoordenada_1a46c597981d7c9c75bee2ba3d998304fb" prot="public" virt="non-virtual"><scope>coordenada</scope><name>linha</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

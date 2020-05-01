@@ -1,16 +1,5 @@
-/**
- * @file  files.c
- * @brief Ficheiro que contêm as funções que tratam do input e output de ficheiros
- */
-
 #include "files.h"
 
-
-/**
- * @brief       Função que escreve o estado do jogo num ficheiro
- * @param e     Apontador para o Estado
- * @param name  Nome do ficheiro
- */
 int output(ESTADO* e, char* name)
 {
   int i, j;
@@ -69,12 +58,6 @@ int output(ESTADO* e, char* name)
   return 0;
 }
 
-/**
- * @brief       Função que lê o estado de jogo de um ficheiro
- * @param e     Apontador para o Estado
- * @param name  Nome do ficheiro
- *
- */
 int input(ESTADO* e, char* name)
 {
   int i, j,jogada;

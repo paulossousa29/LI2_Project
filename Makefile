@@ -35,12 +35,7 @@ clean:
 	rm -r $(OBJ)
 	rm -f program
 	rm -f bot
-	@echo Objetos e Executável Apagados
-
-.PHONY: cleanall
-cleanall: clean
-	rm -r docs/html
-	@echo Documentação Apagada
+	@echo Objetos e Executáveis Apagados
 
 .PHONY: help
 help:

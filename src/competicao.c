@@ -1,8 +1,19 @@
+/**
+ * @file    competicao.c
+ * @brief   Função com a main do bot
+ */
+
 #include "data.h"
 #include "game.h"
-#include "minmax.h"
+#include "bot.h"
 #include "files.h"
 
+/**
+ * @brief       Função main do bot
+ * @param argc  Número de argumentos do programa
+ * @param argv  Array de argumentos do programa
+ * @return      Inteiro com o resultado de erro
+ */
 int main(int argc, char* argv[]) {
     int res;
 

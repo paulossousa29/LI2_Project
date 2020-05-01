@@ -1,17 +1,5 @@
-/**
- * @file  game.c
- * @brief Ficheiro com funções da lógica do programa
- */
-
 #include "game.h"
 
-/**
- * @brief       Função que passa o input do utilizador para uma Coordenada
- * @param c     Apontador para Coordenada
- * @param col   Inteiro com a coluna
- * @param line  Inteiro com a linha
- * @return      Inteiro com resultado booleano
- */
 int toCord(COORDENADA* c, char* col, char* line) {
   if(col[1]!='\0' || line[1]!='\0')
     return 0;
@@ -22,13 +10,6 @@ int toCord(COORDENADA* c, char* col, char* line) {
   return 1;
 }
 
-/**
- * @brief       Função que verifica se uma coordenada é válida
- * @param e     Apontador para Estado
- * @param col   Inteiro com a linha
- * @param line  Inteiro com a coluna
- * @return      Inteiro com resultado booleano
- */
 int isValid(ESTADO* e, int col, int line) {
   if (col < 0 || col > 7 || line < 0 || line > 7)
     return 0;
@@ -47,13 +28,6 @@ int isValid(ESTADO* e, int col, int line) {
   return 0;
 }
 
-/**
- * @brief   Função que efetua uma jogada
- * @param e Apontador para Estado
- * @param l Lista de Estados
- * @param c Apontador para Coordenada
-  @return   Lista de estados
- */
 LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
   if(isValid(e, getCol(c), getLine(c))) {
     setCasa(e, PRETA, getultimaJogLinha(e), getultimaJogColuna(e));
@@ -83,13 +57,6 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
 
 }
 
-/**
- * @brief     Função que imprime o estado numa determinada posição
- * @param e   Apontador para Estado
- * @param l   Lista de Estados
- * @param pos Jogada a ser apresentada
- @return      Lista de estados
- */
 LISTA posicao(ESTADO* e, LISTA l, int pos) {
   int jog = getnumJogadas(e);
 
@@ -101,11 +68,6 @@ LISTA posicao(ESTADO* e, LISTA l, int pos) {
   return l;
 }
 
-/**
- * @brief   Função que verifica se o jogo acabou
- * @param e Apontador para Estado
- * @return  Inteiro com resultado booleano
- */
 int isOver(ESTADO* e) {
   int c = getultimaJogColuna(e);
   int l = getultimaJogLinha(e);

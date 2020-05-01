@@ -1,10 +1,14 @@
 /**
  * @file  main.c
- * @brief Ficheiro que contêm a função main
+ * @brief Ficheiro que contêm a função main do jogo
  */
 
 #include "interface.h"
 
+/**
+ * @brief   Função main do jogo
+ * @return  Inteiro com resultado de erro
+ */
 int main()
 {
   ESTADO* e = initEstado();
