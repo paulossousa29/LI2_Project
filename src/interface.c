@@ -17,6 +17,7 @@ void menu()
   printf("- ler <nome>\n");
   printf("- movs\n");
   printf("- jog\n");
+  printf("- jog2\n");
   printf("- pos <numero_da_jogada>\n");
   printf("- Q\n");
   printf("\nIntroduza o seu comando: ");
@@ -216,7 +217,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         printf("Ficheiro %s lido\n", s);
       }
 
-      else 
+      else
         printf("Erro ao ler o ficheiro\n");
     }
 
@@ -225,6 +226,12 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
     else if(strcmp(s, "jog") == 0) {
       COORDENADA caux = bot(e);
+      l = place(e, l, &caux);
+      printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), 8 - getLine(&caux));
+    }
+
+    else if(strcmp(s, "jog2") == 0) {
+      COORDENADA caux = bot2(e);
       l = place(e, l, &caux);
       printf("O Bot jogou na posição %c %d\n", 'a' + getCol(&caux), 8 - getLine(&caux));
     }
@@ -252,6 +259,8 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
     // O teste do jogo acabar tem de estar fora, porque se não só na jogada a seguir é que valida
     if ((j = isOver(e))) {
+      printa(e);
+      prompt(getjogAtual(e),getnumJogadas(e),n++);
       printf("\nO vencedor é o jogador %d\n", j);
 
       if(replay()==0) {
@@ -263,8 +272,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         printf("\nNovo Jogo\n");
 
         gamestart(e);
-        printa(e);
-        prompt(getjogAtual(e),getnumJogadas(e),n++);
         l = freeLista(l);
         l = insere_cabeca(l, (void*)duplicaEstado(e));
       }

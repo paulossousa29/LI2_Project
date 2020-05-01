@@ -4,7 +4,6 @@
  */
 
 #include "minmax.h"
-#include "time.h"
 
 /**
  * @brief   Função que cria uma lista de coordenadas válidas
@@ -216,7 +215,7 @@ int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
  * @param e     Apontador para o estado
  @return        Coordenada onde o bot deve jogar
  */
-COORDENADA bot(ESTADO *e) {
+COORDENADA bot2(ESTADO *e) {
   LISTA l,aux;
   COORDENADA c,*c2;
   int t,pf = 9,n;
@@ -251,4 +250,25 @@ COORDENADA bot(ESTADO *e) {
     }
   }
   return c;
+}
+
+COORDENADA bot(ESTADO *e) {
+  LISTA l = jogadasValidas(e),aux;
+  COORDENADA *c,cbest;
+  int score,min = 1000;
+  int l1 = 0,cl = 7,l2 = 7,c2 = 0,j = getjogAtual(e);
+
+  for(aux = l;aux!= NULL;aux = proximo(aux)) {
+    c = (COORDENADA*)devolve_cabeca(aux);
+    if(j == 2)
+      score = sqrt(pow(l1 - c->linha,2)+pow(cl - c->coluna,2));
+    else
+      score = sqrt(pow(l2 - c->linha,2)+pow(c2 - c->coluna,2));
+
+    if(score < min) {
+      min = score;
+      cbest = *c;
+    }
+  }
+  return cbest;
 }
