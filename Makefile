@@ -2,7 +2,7 @@ CC = gcc
 
 INCLUDE = -I include
 
-CFLAGS = -O3 -Wall -g
+CFLAGS = -std=gnu11 -Wall -Wextra -pedantic-errors -O
 
 SRC := src
 
