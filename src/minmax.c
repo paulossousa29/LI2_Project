@@ -4,6 +4,7 @@
  */
 
 #include "minmax.h"
+#include "time.h"
 
 /**
  * @brief   Função que cria uma lista de coordenadas válidas
@@ -44,8 +45,10 @@ ESTADO jogadaBot(ESTADO e,COORDENADA *c) {
 
   if(getjogAtual(&e) == 1)
     setJogAtual(&e, 2);
-  else
+  else {
     setJogAtual(&e, 1);
+    setNJogadas(&e,getnumJogadas(&e)+1);
+  }
 
   return e;
 }
@@ -68,37 +71,94 @@ int pertoFim(COORDENADA c) {
 }
 
 /**
- * @brief   Função que atribiu uma pontuação a uma jogada
-* @param e  Estado
- * @param c Coordenada a jogar
- @return    Int correspondente à pontuação da jogada
+ * @brief    Função que atribiu uma pontuação a uma jogada
+ * @param l  Linha ultima_jogada
+ * @param cl Coluna ultima_jogada
+ * @param c  Coordenada a jogar
+ * @param j  Jogador atual
+ @return     Int correspondente à pontuação da jogada
+ */
+int avalia(int l,int cl,COORDENADA c,int j) {
+  int p;
+  if(c.linha == l - 1) {
+    if(c.coluna == cl - 1){
+      if((l == 0 && cl < 4 && j == 2) || (cl == 7 && l < 5 && j == 1)) p = 7;
+      else p = 5;
+    }
+    else if(c.coluna == cl + 1){
+      if(j == 1) p = 6;
+      else p = 4;
+    }
+    else {
+      if(j == 1) p = 7;
+      else p = 4;
+    }
+  }
+  else if(c.linha == l + 1){
+    if(c.coluna == cl - 1){
+      if(j == 2) p = 6;
+      else p = 4;
+    }
+    else if(c.coluna == cl + 1){
+      if((cl == 0 && l > 4 && j == 2) || (l == 0 && cl > 4 && j == 1)) p = 7;
+      else p = 5;
+    }
+    else {
+      if(j == 1) p = 4;
+      else p = 7;
+    }
+  }
+  else {
+    if((c.coluna == cl - 1 && j == 2) || (c.coluna == cl + 1 && j == 1)) p = 5;
+    else p = 4;
+  }
+    return p;
+}
+/**
+ * @brief     Função que atribiu uma pontuação a uma jogada
+ * @param e   Estado
+ * @param c   Coordenada a jogar
+ @return      Int correspondente à pontuação da jogada
  */
 int avaliaJogada(ESTADO e,COORDENADA c) {
-  int j = getjogAtual(&e),p;
+  int j = getjogAtual(&e),p,n = getnumJogadas(&e);
   ESTADO a = jogadaBot(e,&c);
   int l = getultimaJogLinha(&e),cl = getultimaJogColuna(&e);
 
   p = isOver(&a);
-  if(p != j && p)
-    p = 1;
-  else if(p == j)
-          p = 8;
-  else if((p = pertoFim(c)) != 0 && p != j)
-          p = 2;
-  else if((j == 2 && c.linha == l - 1 && c.coluna == cl + 1) ||
-          (j == 1 && c.linha == l + 1 && c.coluna == cl - 1))
-          p = 7;
-  else if((l == c.linha) && ((j == 2 && c.coluna == cl + 1) ||
-          (j == 1 && c.coluna == cl - 1)))
-          p = 5;
-  else if((cl == c.coluna) && ((j == 2 && c.linha == l - 1) ||
-          (j == 1 && c.linha == l + 1)))
-          p = 6;
-  else if((c.linha == l - 1 && c.coluna == cl - 1) ||
-          (c.linha == l + 1 && c.coluna == cl + 1))
-          p = 4;
-  else p = 3;
-
+  if(p != j && p) p = 1;
+  else if(p == j) p = 8;
+  else if(n < 5) p = avalia(l,cl,c,j);
+  else {
+      if(c.linha == l - 1) {
+        if(c.coluna == cl - 1){
+          if(j == 2) p = 7;
+          else p = 5;
+        }
+        else{
+          if(j == 1) p = 6;
+          else p = 4;
+        }
+      }
+      else if(c.linha == l + 1){
+        if(c.coluna == cl - 1){
+          if(j == 2) p = 6;
+          else p = 4;
+        }
+        else if(c.coluna == cl + 1){
+          if(j == 1) p = 7;
+          else p = 5;
+        }
+        else {
+          if(j == 1) p = 4;
+          else p = 6;
+        }
+      }
+      else {
+        if((c.coluna == cl - 1 && j == 2) || (c.coluna == cl + 1 && j == 1)) p = 4;
+        else p = 7;
+      }
+    }
   return p;
 }
 
@@ -147,6 +207,7 @@ int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
     }
     pontos = min;
   }
+
   return pontos;
 }
 
@@ -158,9 +219,10 @@ int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
 COORDENADA bot(ESTADO *e) {
   LISTA l,aux;
   COORDENADA c,*c2;
-  int t;
+  int t,pf = 9,n;
   int best = -100,curr,p,alpha = -1000,beta = 1000;
   ESTADO a;
+  clock_t start_t,end_t;
 
   l = jogadasValidas(e);
 
@@ -168,14 +230,21 @@ COORDENADA bot(ESTADO *e) {
     c2 = (COORDENADA*)devolve_cabeca(aux);
     a = jogadaBot(*e,c2);
     t = isOver(&a);
+    n = getnumJogadas(e);
+    start_t = clock();
+
     if(t == getjogAtual(e))
       return *c2;
 
-    else if (t != 0 || getnumJogadas(e) < 4)
+    else if (t != 0 || n < 3)
       curr = avaliaJogada(*e,*c2);
 
-    else
-      curr = minmax(jogadasValidas(&a),a,0,11,alpha,beta);
+    else {
+      if(n > 5) pf = 11;
+      if(n > 11) pf = 13;
+      if(n > 18) pf = 15;
+      curr = minmax(jogadasValidas(&a),a,0,pf,alpha,beta);
+    }
 
     if(curr > best || (curr == best && avaliaJogada(*e, *c2) > p)) {
       best = curr;
@@ -184,5 +253,8 @@ COORDENADA bot(ESTADO *e) {
     }
     //printf("%d%c%d\n", curr,'a' +   c2->coluna, 8 - c2->linha);
   }
+  end_t = clock();
+  printf("%.4f\n",(double) (end_t - start_t) / CLOCKS_PER_SEC);
+
   return c;
 }

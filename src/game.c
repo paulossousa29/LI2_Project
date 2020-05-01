@@ -92,7 +92,7 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
 LISTA posicao(ESTADO* e, LISTA l, int pos) {
   int jog = getnumJogadas(e);
 
-  while(jog>pos && !lista_esta_vazia(l)) {
+  while(jog>pos && !lista_esta_vazia(l->next)) {
     l = remove_cabeca(l);
     jog--;
   }

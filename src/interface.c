@@ -262,6 +262,8 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         printf("\nNovo Jogo\n");
 
         gamestart(e);
+        printa(e);
+        prompt(getjogAtual(e),getnumJogadas(e),n++);
         l = freeLista(l);
         l = insere_cabeca(l, (void*)duplicaEstado(e));
 
