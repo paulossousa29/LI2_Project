@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.18">
+  <compounddef id="structlista" kind="struct" language="C++" prot="public">
+    <compoundname>lista</compoundname>
+    <includes refid="lista_8h" local="no">lista.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structlista_1aabcfbfc745a9d97684f3cc83786f638e" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* lista::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/lista.h" line="15" column="10" bodyfile="include/lista.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlista_1a03e6d0ed2ba4b439580ef0dcdb0b20c4" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structlista" kindref="compound">lista</ref> *</type>
+        <definition>struct lista* lista::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/lista.h" line="16" column="17" bodyfile="include/lista.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Estrutura da Lista Ligada. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>lista</label>
+        <link refid="structlista"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/lista.h" line="14" column="1" bodyfile="include/lista.h" bodystart="14" bodyend="17"/>
+    <listofallmembers>
+      <member refid="structlista_1a03e6d0ed2ba4b439580ef0dcdb0b20c4" prot="public" virt="non-virtual"><scope>lista</scope><name>next</name></member>
+      <member refid="structlista_1aabcfbfc745a9d97684f3cc83786f638e" prot="public" virt="non-virtual"><scope>lista</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

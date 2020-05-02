@@ -1,0 +1,1333 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.18">
+  <compounddef id="data_8h" kind="file" language="C++">
+    <compoundname>data.h</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">ctype.h</includes>
+    <includedby refid="bot_8h" local="yes">include/bot.h</includedby>
+    <includedby refid="game_8h" local="yes">include/game.h</includedby>
+    <includedby refid="lista_8h" local="yes">include/lista.h</includedby>
+    <includedby refid="files_8h" local="yes">include/files.h</includedby>
+    <includedby refid="interface_8h" local="yes">include/interface.h</includedby>
+    <includedby refid="competicao_8c" local="yes">src/competicao.c</includedby>
+    <includedby refid="data_8c" local="yes">src/data.c</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>stdlib.h</label>
+      </node>
+      <node id="1">
+        <label>include/data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>string.h</label>
+      </node>
+      <node id="5">
+        <label>ctype.h</label>
+      </node>
+      <node id="2">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13">
+        <label>src/data.c</label>
+        <link refid="data_8c"/>
+      </node>
+      <node id="7">
+        <label>src/competicao.c</label>
+        <link refid="competicao_8c"/>
+      </node>
+      <node id="1">
+        <label>include/data.h</label>
+        <link refid="data_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/files.h</label>
+        <link refid="files_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/interface.c</label>
+        <link refid="interface_8c"/>
+      </node>
+      <node id="3">
+        <label>include/interface.h</label>
+        <link refid="interface_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/bot.h</label>
+        <link refid="bot_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="6">
+        <label>src/bot.c</label>
+        <link refid="bot_8c"/>
+      </node>
+      <node id="12">
+        <label>src/lista.c</label>
+        <link refid="lista_8c"/>
+      </node>
+      <node id="10">
+        <label>src/game.c</label>
+        <link refid="game_8c"/>
+      </node>
+      <node id="11">
+        <label>include/lista.h</label>
+        <link refid="lista_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structcoordenada" prot="public">coordenada</innerclass>
+    <innerclass refid="structjogada" prot="public">jogada</innerclass>
+    <innerclass refid="structestado" prot="public">estado</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="data_8h_1a392fb874e547e582e9c66a08a1f23326" prot="public" static="no">
+        <name>MAX</name>
+        <initializer>40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="14" column="9" bodyfile="include/data.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="data_8h_1a217878fa84ef5b04d2455a05f58cf8fc" prot="public" static="no">
+        <name>SMAX</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="15" column="9" bodyfile="include/data.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="data_8h_1aba91601f16d4c485b2d9b8c429f27039" prot="public" static="no" strong="no">
+        <type></type>
+        <name>CASA</name>
+        <enumvalue id="data_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" prot="public">
+          <name>VAZIO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="data_8h_1aba91601f16d4c485b2d9b8c429f27039ad24485fddec75419fd4a0cc9edda0ca5" prot="public">
+          <name>BRANCA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="data_8h_1aba91601f16d4c485b2d9b8c429f27039a007278eb3827d19891b47cdd3ac8846d" prot="public">
+          <name>PRETA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Tipo de dados para a casa. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="20" column="1" bodyfile="include/data.h" bodystart="20" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="data_8h_1a601c74b8070bf74a5fce60993be37a1a" prot="public" static="no">
+        <type>struct <ref refid="structcoordenada" kindref="compound">coordenada</ref></type>
+        <definition>typedef struct coordenada COORDENADA</definition>
+        <argsstring></argsstring>
+        <name>COORDENADA</name>
+        <briefdescription>
+<para>Tipo de dados para a Coordenada. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="32" column="11"/>
+      </memberdef>
+      <memberdef kind="typedef" id="data_8h_1a8de0a779e79818ed3ec5badb60e2b6f3" prot="public" static="no">
+        <type>struct <ref refid="structjogada" kindref="compound">jogada</ref></type>
+        <definition>typedef struct jogada JOGADA</definition>
+        <argsstring></argsstring>
+        <name>JOGADA</name>
+        <briefdescription>
+<para>Tipo de dados para a Jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="41" column="7"/>
+      </memberdef>
+      <memberdef kind="typedef" id="data_8h_1a94c221d29a1760f008b7834093259b7d" prot="public" static="no">
+        <type><ref refid="data_8h_1a8de0a779e79818ed3ec5badb60e2b6f3" kindref="member">JOGADA</ref></type>
+        <definition>typedef JOGADA JOGADAS[32]</definition>
+        <argsstring>[32]</argsstring>
+        <name>JOGADAS</name>
+        <briefdescription>
+<para>Tipo de dados para as Jogadas. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="46" column="16" bodyfile="include/data.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="data_8h_1ad15b54b95711863ce69153d1292ea6ee" prot="public" static="no">
+        <type>struct <ref refid="structestado" kindref="compound">estado</ref></type>
+        <definition>typedef struct estado ESTADO</definition>
+        <argsstring></argsstring>
+        <name>ESTADO</name>
+        <briefdescription>
+<para>Tipo de dados para o Estado. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="57" column="7"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="data_8h_1a3ac758a76da6d1651ea581f99cf67ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gamestart</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>gamestart</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que inicia um novo jogo. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="64" column="6" bodyfile="src/data.c" bodystart="11" bodyend="24" declfile="include/data.h" declline="64" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a4d2e063e65af48a1936cf3e30915279a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+        <definition>ESTADO* initEstado</definition>
+        <argsstring>()</argsstring>
+        <name>initEstado</name>
+        <briefdescription>
+<para>Função que inicializa um Estado. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Apontador para Estado </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="70" column="8" bodyfile="src/data.c" bodystart="30" bodyend="34" declfile="include/data.h" declline="70" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a277cb9d6afb43f2244c1d0d0f276ae3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref> *</type>
+        <definition>COORDENADA* initCoordenada</definition>
+        <argsstring>()</argsstring>
+        <name>initCoordenada</name>
+        <briefdescription>
+<para>Função que inicializa uma Coordenada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Apontador para Coordenada </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="76" column="12" bodyfile="src/data.c" bodystart="40" bodyend="44" declfile="include/data.h" declline="76" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1ade7217350b6e11f5a52559dfd648569d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref> *</type>
+        <definition>COORDENADA* duplicaCOORD</definition>
+        <argsstring>(COORDENADA *c)</argsstring>
+        <name>duplicaCOORD</name>
+        <param>
+          <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref> *</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Função que duplica uma Coordenada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Coordenada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Apontador para Coordenada Duplicada </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="83" column="12" bodyfile="src/data.c" bodystart="51" bodyend="57" declfile="include/data.h" declline="83" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a62daf2d1a613ac004116ae29ae3604d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+        <definition>ESTADO* duplicaEstado</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>duplicaEstado</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que duplica um Estado. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Apontador para Estado Duplicado </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="90" column="8" bodyfile="src/data.c" bodystart="64" bodyend="86" declfile="include/data.h" declline="90" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a9f2ad67faac6f900f98d8be1fca23888" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setJogAtual</definition>
+        <argsstring>(ESTADO *e, int jog)</argsstring>
+        <name>setJogAtual</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>jog</declname>
+        </param>
+        <briefdescription>
+<para>Função que altera o Jogador Atual. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="96" column="6" bodyfile="src/data.c" bodystart="101" bodyend="103" declfile="include/data.h" declline="96" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a47d11624344d1d9f4dbf0309ef108ba8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setNJogadas</definition>
+        <argsstring>(ESTADO *e, int n)</argsstring>
+        <name>setNJogadas</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>Função que incrementa o Numero de jogadas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="102" column="6" bodyfile="src/data.c" bodystart="118" bodyend="120" declfile="include/data.h" declline="102" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a5336f66b2bb057cf7e170112f3c7fd38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setCasa</definition>
+        <argsstring>(ESTADO *e, CASA a, int col, int linha)</argsstring>
+        <name>setCasa</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="data_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+          <defname>linha</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>linha</declname>
+          <defname>col</defname>
+        </param>
+        <briefdescription>
+<para>Função que altera o estado de uma Casa. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Novo estado da casa </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>linha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a linha </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a coluna </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="111" column="6" bodyfile="src/data.c" bodystart="140" bodyend="142" declfile="include/data.h" declline="111" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1af9a037ddcfad52f620ded38f8439bf20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setUltimaJog</definition>
+        <argsstring>(ESTADO *e, int linha, int col)</argsstring>
+        <name>setUltimaJog</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>linha</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+<para>Função que altera a última jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>linha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a linha </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a coluna </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="119" column="6" bodyfile="src/data.c" bodystart="168" bodyend="171" declfile="include/data.h" declline="119" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a63857b286e7a2b6976ae7b9e9d919a2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setJog1</definition>
+        <argsstring>(ESTADO *e, int i, int line, int col)</argsstring>
+        <name>setJog1</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+<para>Função que atualiza adiciona a Jogada do Jogador 1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com Jogada </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a linha </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a coluna </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="128" column="6" bodyfile="src/data.c" bodystart="220" bodyend="223" declfile="include/data.h" declline="128" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1abc99e6e3fb0bb28704a34d0579bab8ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setJog2</definition>
+        <argsstring>(ESTADO *e, int i, int line, int col)</argsstring>
+        <name>setJog2</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+<para>Função que atualiza adiciona a Jogada do Jogador 2. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com Jogada </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a linha </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a coluna </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="137" column="6" bodyfile="src/data.c" bodystart="232" bodyend="235" declfile="include/data.h" declline="137" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a8abf1f3f00b064fdb4ca749ac3e5a5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setCoord</definition>
+        <argsstring>(COORDENADA *c, int line, int col)</argsstring>
+        <name>setCoord</name>
+        <param>
+          <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref> *</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+<para>Função atualiza uma coordenada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Coordenada </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a linha </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a coluna </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="145" column="6" bodyfile="src/data.c" bodystart="261" bodyend="264" declfile="include/data.h" declline="145" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1ae4579b6149ea093f43e160390cd36900" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getjogAtual</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>getjogAtual</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que devolve o Jogador Atual. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com o Jogador </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="152" column="5" bodyfile="src/data.c" bodystart="93" bodyend="95" declfile="include/data.h" declline="152" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a73212dee2129f7313013163deebd63ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getnumJogadas</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>getnumJogadas</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que devolve o Numero de jogadas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com o Numero de jogadas </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="159" column="5" bodyfile="src/data.c" bodystart="110" bodyend="112" declfile="include/data.h" declline="159" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1aa692da98ec15ab69f0479c3ecbf1fefe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getCol</definition>
+        <argsstring>(COORDENADA *c)</argsstring>
+        <name>getCol</name>
+        <param>
+          <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref> *</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Devolve a coluna de uma coordenada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Coordenada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com a coluna </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="166" column="5" bodyfile="src/data.c" bodystart="242" bodyend="244" declfile="include/data.h" declline="166" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1af3a7c6c165e46a4f40b98e4779394467" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getLine</definition>
+        <argsstring>(COORDENADA *c)</argsstring>
+        <name>getLine</name>
+        <param>
+          <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref> *</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Devolve a linha de uma coordenada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Coordenada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com a linha </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="173" column="5" bodyfile="src/data.c" bodystart="251" bodyend="253" declfile="include/data.h" declline="173" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a5eccc07c37b49fbb24a69e2a8f1750c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref></type>
+        <definition>CASA getCasa</definition>
+        <argsstring>(ESTADO *e, int col, int linha)</argsstring>
+        <name>getCasa</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+          <defname>linha</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>linha</declname>
+          <defname>col</defname>
+        </param>
+        <briefdescription>
+<para>Função que devolve o estado de uma Casa. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>linha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a linha </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a coluna </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Estado da casa </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="182" column="6" bodyfile="src/data.c" bodystart="129" bodyend="131" declfile="include/data.h" declline="182" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a79ad1b25cb67c42a842733a86b1ea12e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getultimaJogLinha</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>getultimaJogLinha</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que devolve a linha da última jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com a linha </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="189" column="5" bodyfile="src/data.c" bodystart="149" bodyend="151" declfile="include/data.h" declline="189" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1af1e8b529a6a344c4ce5f4193fba08821" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getultimaJogColuna</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>getultimaJogColuna</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que devolve a coluna da última jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com a coluna </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="196" column="5" bodyfile="src/data.c" bodystart="158" bodyend="160" declfile="include/data.h" declline="196" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1ab1065f2706f1ed110c9c6d988a5a498e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getJog1Col</definition>
+        <argsstring>(ESTADO *e, int i)</argsstring>
+        <name>getJog1Col</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Devolve a coluna do Jogador 1 numa jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com Jogada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com a coluna </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="204" column="5" bodyfile="src/data.c" bodystart="179" bodyend="181" declfile="include/data.h" declline="204" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a9b84568131eb4f5210a8153fb2d91b83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getJog1Line</definition>
+        <argsstring>(ESTADO *e, int i)</argsstring>
+        <name>getJog1Line</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Devolve a linha do Jogador 1 numa jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com Jogada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com a linha </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="212" column="5" bodyfile="src/data.c" bodystart="189" bodyend="191" declfile="include/data.h" declline="212" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a2ba2ec2527b8c34e30c1fdf07db22144" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getJog2Col</definition>
+        <argsstring>(ESTADO *e, int i)</argsstring>
+        <name>getJog2Col</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Devolve a coluna do Jogador 2 numa jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com Jogada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com a coluna </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="220" column="5" bodyfile="src/data.c" bodystart="199" bodyend="201" declfile="include/data.h" declline="220" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1ada414dc6a18c41e8fc59383131873f8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getJog2Line</definition>
+        <argsstring>(ESTADO *e, int i)</argsstring>
+        <name>getJog2Line</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Devolve a linha do Jogador 2 numa jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com Jogada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Inteiro com a linha </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="228" column="5" bodyfile="src/data.c" bodystart="209" bodyend="211" declfile="include/data.h" declline="228" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a60253966a6c914a958d4ef236b829cd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref></type>
+        <definition>COORDENADA getJogada1</definition>
+        <argsstring>(ESTADO *e, int i)</argsstring>
+        <name>getJogada1</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Função devolve Coordenada de uma jogada do Jogador 1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a Jogada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Coordenada do Jogador 1 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="236" column="12" bodyfile="src/data.c" bodystart="273" bodyend="275" declfile="include/data.h" declline="236" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="data_8h_1a46404fd345b103bd1e41f24f3935873f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref></type>
+        <definition>COORDENADA getJogada2</definition>
+        <argsstring>(ESTADO *e, int i)</argsstring>
+        <name>getJogada2</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Função devolve Coordenada de uma jogada do Jogador 2. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inteiro com a Jogada </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Coordenada do Jogador 2 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/data.h" line="244" column="12" bodyfile="src/data.c" bodystart="283" bodyend="285" declfile="include/data.h" declline="244" declcolumn="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Ficheiro contém funções que tratam dos dados do programa. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>__data_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__data_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctype.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX<sp/>40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMAX<sp/>20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="data_8h_1aba91601f16d4c485b2d9b8c429f27039" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>VAZIO,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>BRANCA,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>PRETA</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}<sp/><ref refid="data_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="structcoordenada" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structcoordenada" kindref="compound">coordenada</ref>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>coluna;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha;</highlight></codeline>
+<codeline lineno="32" refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" refkind="member"><highlight class="normal">}<ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="structjogada" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structjogada" kindref="compound">jogada</ref>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcoordenada" kindref="compound">COORDENADA</ref><sp/>jogador1;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcoordenada" kindref="compound">COORDENADA</ref><sp/>jogador2;</highlight></codeline>
+<codeline lineno="41" refid="data_8h_1a8de0a779e79818ed3ec5badb60e2b6f3" refkind="member"><highlight class="normal">}<ref refid="data_8h_1a8de0a779e79818ed3ec5badb60e2b6f3" kindref="member">JOGADA</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="data_8h_1a94c221d29a1760f008b7834093259b7d" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="structjogada" kindref="compound">JOGADA</ref><sp/><ref refid="data_8h_1a94c221d29a1760f008b7834093259b7d" kindref="member">JOGADAS</ref>[32];</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structestado" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structestado" kindref="compound">estado</ref>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref><sp/>tab[8][8];</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcoordenada" kindref="compound">COORDENADA</ref><sp/>ultima_jogada;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data_8h_1a94c221d29a1760f008b7834093259b7d" kindref="member">JOGADAS</ref><sp/>jogadas;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_jogadas;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>jogador_atual;</highlight></codeline>
+<codeline lineno="57" refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" refkind="member"><highlight class="normal">}<ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a3ac758a76da6d1651ea581f99cf67ac7" kindref="member">gamestart</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/><ref refid="data_8h_1a4d2e063e65af48a1936cf3e30915279a" kindref="member">initEstado</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><ref refid="structcoordenada" kindref="compound">COORDENADA</ref>*<sp/><ref refid="data_8h_1a277cb9d6afb43f2244c1d0d0f276ae3d" kindref="member">initCoordenada</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><ref refid="structcoordenada" kindref="compound">COORDENADA</ref>*<sp/><ref refid="data_8h_1ade7217350b6e11f5a52559dfd648569d" kindref="member">duplicaCOORD</ref>(<ref refid="structcoordenada" kindref="compound">COORDENADA</ref><sp/>*c);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/><ref refid="data_8h_1a62daf2d1a613ac004116ae29ae3604d1" kindref="member">duplicaEstado</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a9f2ad67faac6f900f98d8be1fca23888" kindref="member">setJogAtual</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>jog);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a47d11624344d1d9f4dbf0309ef108ba8" kindref="member">setNJogadas</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a5336f66b2bb057cf7e170112f3c7fd38" kindref="member">setCasa</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e,<sp/><ref refid="data_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data_8h_1af9a037ddcfad52f620ded38f8439bf20" kindref="member">setUltimaJog</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a63857b286e7a2b6976ae7b9e9d919a2c" kindref="member">setJog1</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data_8h_1abc99e6e3fb0bb28704a34d0579bab8ce" kindref="member">setJog2</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a8abf1f3f00b064fdb4ca749ac3e5a5bd" kindref="member">setCoord</ref>(<ref refid="structcoordenada" kindref="compound">COORDENADA</ref>*<sp/>c,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1ae4579b6149ea093f43e160390cd36900" kindref="member">getjogAtual</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a73212dee2129f7313013163deebd63ed" kindref="member">getnumJogadas</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1aa692da98ec15ab69f0479c3ecbf1fefe" kindref="member">getCol</ref>(<ref refid="structcoordenada" kindref="compound">COORDENADA</ref>*<sp/>c);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1af3a7c6c165e46a4f40b98e4779394467" kindref="member">getLine</ref>(<ref refid="structcoordenada" kindref="compound">COORDENADA</ref>*<sp/>c);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><ref refid="data_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref><sp/><ref refid="data_8h_1a5eccc07c37b49fbb24a69e2a8f1750c7" kindref="member">getCasa</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a79ad1b25cb67c42a842733a86b1ea12e" kindref="member">getultimaJogLinha</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1af1e8b529a6a344c4ce5f4193fba08821" kindref="member">getultimaJogColuna</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1ab1065f2706f1ed110c9c6d988a5a498e" kindref="member">getJog1Col</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a9b84568131eb4f5210a8153fb2d91b83" kindref="member">getJog1Line</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1a2ba2ec2527b8c34e30c1fdf07db22144" kindref="member">getJog2Col</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data_8h_1ada414dc6a18c41e8fc59383131873f8d" kindref="member">getJog2Line</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><ref refid="structcoordenada" kindref="compound">COORDENADA</ref><sp/><ref refid="data_8h_1a60253966a6c914a958d4ef236b829cd7" kindref="member">getJogada1</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><ref refid="structcoordenada" kindref="compound">COORDENADA</ref><sp/><ref refid="data_8h_1a46404fd345b103bd1e41f24f3935873f" kindref="member">getJogada2</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/data.h"/>
+  </compounddef>
+</doxygen>
