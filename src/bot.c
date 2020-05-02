@@ -1,4 +1,7 @@
-
+/**
+ * @file    bot.c
+ * @brief   Módulo que contém a implementação das funções para os BOTs
+ */
 #include "bot.h"
 
 /**
@@ -206,6 +209,11 @@ int minmax(LISTA l,ESTADO e,int isMax,int p,int alpha,int beta) {
   return pontos;
 }
 
+/**
+ * @brief       Funçao que implementa a estratégia dificil do bot
+ * @param e     Apontador para o estado
+ * @return      Coordenada onde o bot deve jogar
+ */
 COORDENADA bot2(ESTADO *e) {
   LISTA l,aux;
   COORDENADA c,*c2;
@@ -243,6 +251,11 @@ COORDENADA bot2(ESTADO *e) {
   return c;
 }
 
+/**
+ * @brief       Funçao que implementa a estratégia fácil do bot
+ * @param e     Apontador para o estado
+ * @return      Coordenada onde o bot deve jogar
+ */
 COORDENADA bot(ESTADO *e) {
   LISTA l = jogadasValidas(e),aux;
   COORDENADA *c,cbest;

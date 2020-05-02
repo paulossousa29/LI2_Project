@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_96',['main',['../competicao_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;competicao.c'],['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.c']]]
+  ['lista_5festa_5fvazia_114',['lista_esta_vazia',['../lista_8h.html#a7e919af230d184128c5465451ea64a79',1,'lista_esta_vazia(LISTA l):&#160;lista.c'],['../lista_8c.html#a7e919af230d184128c5465451ea64a79',1,'lista_esta_vazia(LISTA l):&#160;lista.c']]]
 ];

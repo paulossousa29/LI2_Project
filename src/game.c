@@ -93,9 +93,40 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c) {
 LISTA posicao(ESTADO* e, LISTA l, int pos) {
   int jog = getnumJogadas(e);
 
-  while(jog>pos && !lista_esta_vazia(l->next)) {
+  while(jog>pos && !lista_esta_vazia(proximo(l))) {
     l = remove_cabeca(l);
     jog--;
+  }
+
+  return l;
+}
+
+/**
+ * @brief   Função que cria uma Lista de Estados a partir de um estado
+ * @param e Apontador para Estado
+ * @param l Lista
+ * @return  Lista preenchida
+ */
+LISTA criaListaEstados(ESTADO *e, LISTA l) {
+  int i;
+  ESTADO* aux = initEstado();
+  COORDENADA* c = initCoordenada();
+  
+  l = insere_cabeca(l, duplicaEstado(e));
+
+  for(i=0; i<getnumJogadas(e) - 1; i++){
+    c->coluna = getJog1Col(e, i);
+    c->linha = getJog1Line(e, i);
+    l = place(aux, l, c);
+
+    c->coluna = getJog2Col(e, i);
+    c->linha = getJog2Line(e, i);
+    l = place(aux, l, c);
+  }
+  
+  if(getjogAtual(e)==2) {
+    *c = getJogada1(e, i);
+    l = place(aux, l, c);
   }
 
   return l;
@@ -130,3 +161,4 @@ int isOver(ESTADO* e) {
 
   return 1;
 }
+

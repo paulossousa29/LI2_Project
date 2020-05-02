@@ -44,8 +44,10 @@
         <link refid="interface_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>src/main.c</label>
         <link refid="main_8c"/>
       </node>
@@ -54,10 +56,14 @@
         <link refid="files_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="4">
+      <node id="3">
+        <label>src/interface.c</label>
+        <link refid="interface_8c"/>
+      </node>
+      <node id="5">
         <label>src/competicao.c</label>
         <link refid="competicao_8c"/>
       </node>
@@ -103,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/files.h" line="17" column="5" bodyfile="src/files.c" bodystart="3" bodyend="59" declfile="include/files.h" declline="17" declcolumn="5"/>
+        <location file="include/files.h" line="17" column="5" bodyfile="src/files.c" bodystart="13" bodyend="69" declfile="include/files.h" declline="17" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="files_8h_1a7e39bce082fbaba916a4facfe53c0844" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -145,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/files.h" line="25" column="5" bodyfile="src/files.c" bodystart="61" bodyend="112" declfile="include/files.h" declline="25" declcolumn="5"/>
+        <location file="include/files.h" line="25" column="5" bodyfile="src/files.c" bodystart="77" bodyend="128" declfile="include/files.h" declline="25" declcolumn="5"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

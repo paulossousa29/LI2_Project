@@ -33,7 +33,7 @@ LISTA insere_cabeca(LISTA l, void *valor);
 /**
  * @brief           Função que devolve a cabeça da lista
  * @param l         Lista
- * @return void*    Apontador para a cabeça da lista
+ * @return void*    Apontador para o valor
  */
 void *devolve_cabeca(LISTA l);
 

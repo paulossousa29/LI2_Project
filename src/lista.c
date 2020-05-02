@@ -28,9 +28,12 @@ LISTA insere_cabeca(LISTA l, void *valor) {
     return new;
 }
 
+/**
+ * @brief           Função que devolve a cabeça da lista
+ * @param l         Lista
+ * @return void*    Apontador para o valor
+ */
 void *devolve_cabeca(LISTA l) {
-  //printf("%d\n", ((COORDENADA*)l->value)->linha);
-
     return l->value;
 }
 
@@ -72,6 +75,11 @@ int lista_esta_vazia(LISTA l) {
     return res;
 }
 
+/**
+ * @brief       Função que liberta todo o espaço ocupado por uma lista
+ * @param l     Lista a libertar
+ * @return      Lista vazia
+ */
 LISTA freeLista(LISTA l) {
     LISTA aux = l;
 

@@ -68,6 +68,7 @@
     <member refid="game_8h_1a8ec319358270df59817f802ca8ad897d" kind="function"><name>toCord</name></member>
     <member refid="game_8h_1a1fcf38b1202ebc400dbb9299f62b59b8" kind="function"><name>place</name></member>
     <member refid="game_8h_1afbe22fe94592f9161bb1ee5ffa9bb704" kind="function"><name>posicao</name></member>
+    <member refid="game_8h_1a549196fd2ac88a0250ef9e2fd27ba57c" kind="function"><name>criaListaEstados</name></member>
     <member refid="game_8h_1a53e06921cd2eb691d73cb3b9110c27e5" kind="function"><name>isOver</name></member>
   </compound>
   <compound refid="interface_8h" kind="file"><name>interface.h</name>
@@ -132,6 +133,7 @@
     <member refid="game_8c_1a8201dfc9130160c37c0847fd2cfd121e" kind="function"><name>isValid</name></member>
     <member refid="game_8c_1a1fcf38b1202ebc400dbb9299f62b59b8" kind="function"><name>place</name></member>
     <member refid="game_8c_1afbe22fe94592f9161bb1ee5ffa9bb704" kind="function"><name>posicao</name></member>
+    <member refid="game_8c_1a549196fd2ac88a0250ef9e2fd27ba57c" kind="function"><name>criaListaEstados</name></member>
     <member refid="game_8c_1a53e06921cd2eb691d73cb3b9110c27e5" kind="function"><name>isOver</name></member>
   </compound>
   <compound refid="interface_8c" kind="file"><name>interface.c</name>

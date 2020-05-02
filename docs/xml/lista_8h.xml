@@ -46,16 +46,28 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="4">
         <label>include/interface.h</label>
         <link refid="interface_8h"/>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>src/main.c</label>
         <link refid="main_8c"/>
+      </node>
+      <node id="5">
+        <label>src/interface.c</label>
+        <link refid="interface_8c"/>
+      </node>
+      <node id="8">
+        <label>src/game.c</label>
+        <link refid="game_8c"/>
       </node>
       <node id="2">
         <label>include/game.h</label>
@@ -64,10 +76,16 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="9">
+        <label>src/lista.c</label>
+        <link refid="lista_8c"/>
+      </node>
+      <node id="7">
         <label>src/competicao.c</label>
         <link refid="competicao_8c"/>
       </node>
@@ -76,7 +94,7 @@
         <link refid="bot_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -113,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/lista.h" line="23" column="7" bodyfile="src/lista.c" bodystart="3" bodyend="5" declfile="include/lista.h" declline="23" declcolumn="7"/>
+        <location file="include/lista.h" line="23" column="7" bodyfile="src/lista.c" bodystart="12" bodyend="14" declfile="include/lista.h" declline="23" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1a6ec793087950b61f792d8e184bf04d9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="lista_8h_1acfb1dbdea7214f3efb9334ffef161dad" kindref="member">LISTA</ref></type>
@@ -155,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/lista.h" line="31" column="7" bodyfile="src/lista.c" bodystart="7" bodyend="14" declfile="include/lista.h" declline="31" declcolumn="7"/>
+        <location file="include/lista.h" line="31" column="7" bodyfile="src/lista.c" bodystart="22" bodyend="29" declfile="include/lista.h" declline="31" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1af90a7ac214fd566bfb7288d744c94185" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void *</type>
@@ -179,13 +197,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>void* Apontador para a cabeça da lista </para>
+<simplesect kind="return"><para>void* Apontador para o valor </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/lista.h" line="38" column="6" bodyfile="src/lista.c" bodystart="16" bodyend="18" declfile="include/lista.h" declline="38" declcolumn="6"/>
+        <location file="include/lista.h" line="38" column="6" bodyfile="src/lista.c" bodystart="36" bodyend="38" declfile="include/lista.h" declline="38" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1affb39e37aef63ab00b6df8f9336f6673" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="lista_8h_1acfb1dbdea7214f3efb9334ffef161dad" kindref="member">LISTA</ref></type>
@@ -215,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/lista.h" line="45" column="7" bodyfile="src/lista.c" bodystart="20" bodyend="22" declfile="include/lista.h" declline="45" declcolumn="7"/>
+        <location file="include/lista.h" line="45" column="7" bodyfile="src/lista.c" bodystart="45" bodyend="47" declfile="include/lista.h" declline="45" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1a18d863cdb6eb3e2ede74559c4d70b4e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="lista_8h_1acfb1dbdea7214f3efb9334ffef161dad" kindref="member">LISTA</ref></type>
@@ -245,7 +263,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/lista.h" line="52" column="7" bodyfile="src/lista.c" bodystart="24" bodyend="32" declfile="include/lista.h" declline="52" declcolumn="7"/>
+        <location file="include/lista.h" line="52" column="7" bodyfile="src/lista.c" bodystart="54" bodyend="62" declfile="include/lista.h" declline="52" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1a7e919af230d184128c5465451ea64a79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -275,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/lista.h" line="59" column="5" bodyfile="src/lista.c" bodystart="34" bodyend="41" declfile="include/lista.h" declline="59" declcolumn="5"/>
+        <location file="include/lista.h" line="59" column="5" bodyfile="src/lista.c" bodystart="69" bodyend="76" declfile="include/lista.h" declline="59" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1a3b297e808da2a4f43ca3d5792dc5153b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="lista_8h_1acfb1dbdea7214f3efb9334ffef161dad" kindref="member">LISTA</ref></type>
@@ -305,7 +323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/lista.h" line="66" column="7" bodyfile="src/lista.c" bodystart="43" bodyend="53" declfile="include/lista.h" declline="66" declcolumn="7"/>
+        <location file="include/lista.h" line="66" column="7" bodyfile="src/lista.c" bodystart="78" bodyend="88" declfile="include/lista.h" declline="66" declcolumn="7"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

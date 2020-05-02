@@ -1,24 +1,25 @@
-\hypertarget{game_8h}{}\doxysection{Referência ao ficheiro include/game.h}
-\label{game_8h}\index{include/game.h@{include/game.h}}
+\hypertarget{game_8c}{}\doxysection{Referência ao ficheiro src/game.c}
+\label{game_8c}\index{src/game.c@{src/game.c}}
 
 
 Ficheiro com funções da lógica do programa.  
 
 
-{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}lista.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}game.\+h\char`\"{}}\newline
 \doxysubsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{game_8h_a8ec319358270df59817f802ca8ad897d}{to\+Cord}} (\mbox{\hyperlink{data_8h_a601c74b8070bf74a5fce60993be37a1a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} $\ast$c, char $\ast$col, char $\ast$line)
+int \mbox{\hyperlink{game_8c_a8ec319358270df59817f802ca8ad897d}{to\+Cord}} (\mbox{\hyperlink{data_8h_a601c74b8070bf74a5fce60993be37a1a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} $\ast$c, char $\ast$col, char $\ast$line)
 \begin{DoxyCompactList}\small\item\em Função que passa o input do utilizador para uma Coordenada. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} \mbox{\hyperlink{game_8h_a1fcf38b1202ebc400dbb9299f62b59b8}{place}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} l, \mbox{\hyperlink{data_8h_a601c74b8070bf74a5fce60993be37a1a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} $\ast$c)
+int \mbox{\hyperlink{game_8c_a8201dfc9130160c37c0847fd2cfd121e}{is\+Valid}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, int col, int line)
+\begin{DoxyCompactList}\small\item\em Função que verifica se uma coordenada é válida. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} \mbox{\hyperlink{game_8c_a1fcf38b1202ebc400dbb9299f62b59b8}{place}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} l, \mbox{\hyperlink{data_8h_a601c74b8070bf74a5fce60993be37a1a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} $\ast$c)
 \begin{DoxyCompactList}\small\item\em Função que efetua uma jogada. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} \mbox{\hyperlink{game_8h_afbe22fe94592f9161bb1ee5ffa9bb704}{posicao}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} l, int pos)
+\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} \mbox{\hyperlink{game_8c_afbe22fe94592f9161bb1ee5ffa9bb704}{posicao}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} l, int pos)
 \begin{DoxyCompactList}\small\item\em Função que imprime o estado numa determinada posição. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} \mbox{\hyperlink{game_8h_a549196fd2ac88a0250ef9e2fd27ba57c}{cria\+Lista\+Estados}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} l)
+\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} \mbox{\hyperlink{game_8c_a549196fd2ac88a0250ef9e2fd27ba57c}{cria\+Lista\+Estados}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} l)
 \begin{DoxyCompactList}\small\item\em Função que cria uma Lista de Estados a partir de um estado. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{game_8h_a53e06921cd2eb691d73cb3b9110c27e5}{is\+Over}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e)
+int \mbox{\hyperlink{game_8c_a53e06921cd2eb691d73cb3b9110c27e5}{is\+Over}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Função que verifica se o jogo acabou. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -28,9 +29,9 @@ Ficheiro com funções da lógica do programa.
 
 
 \doxysubsection{Documentação das funções}
-\mbox{\Hypertarget{game_8h_a549196fd2ac88a0250ef9e2fd27ba57c}\label{game_8h_a549196fd2ac88a0250ef9e2fd27ba57c}} 
-\index{game.h@{game.h}!criaListaEstados@{criaListaEstados}}
-\index{criaListaEstados@{criaListaEstados}!game.h@{game.h}}
+\mbox{\Hypertarget{game_8c_a549196fd2ac88a0250ef9e2fd27ba57c}\label{game_8c_a549196fd2ac88a0250ef9e2fd27ba57c}} 
+\index{game.c@{game.c}!criaListaEstados@{criaListaEstados}}
+\index{criaListaEstados@{criaListaEstados}!game.c@{game.c}}
 \doxysubsubsection{\texorpdfstring{criaListaEstados()}{criaListaEstados()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} cria\+Lista\+Estados (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}}}]{l }\end{DoxyParamCaption})}
 
@@ -48,9 +49,9 @@ Função que cria uma Lista de Estados a partir de um estado.
 \begin{DoxyReturn}{Retorna}
 Lista preenchida 
 \end{DoxyReturn}
-\mbox{\Hypertarget{game_8h_a53e06921cd2eb691d73cb3b9110c27e5}\label{game_8h_a53e06921cd2eb691d73cb3b9110c27e5}} 
-\index{game.h@{game.h}!isOver@{isOver}}
-\index{isOver@{isOver}!game.h@{game.h}}
+\mbox{\Hypertarget{game_8c_a53e06921cd2eb691d73cb3b9110c27e5}\label{game_8c_a53e06921cd2eb691d73cb3b9110c27e5}} 
+\index{game.c@{game.c}!isOver@{isOver}}
+\index{isOver@{isOver}!game.c@{game.c}}
 \doxysubsubsection{\texorpdfstring{isOver()}{isOver()}}
 {\footnotesize\ttfamily int is\+Over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
 
@@ -66,9 +67,31 @@ Função que verifica se o jogo acabou.
 \begin{DoxyReturn}{Retorna}
 Inteiro com resultado booleano 
 \end{DoxyReturn}
-\mbox{\Hypertarget{game_8h_a1fcf38b1202ebc400dbb9299f62b59b8}\label{game_8h_a1fcf38b1202ebc400dbb9299f62b59b8}} 
-\index{game.h@{game.h}!place@{place}}
-\index{place@{place}!game.h@{game.h}}
+\mbox{\Hypertarget{game_8c_a8201dfc9130160c37c0847fd2cfd121e}\label{game_8c_a8201dfc9130160c37c0847fd2cfd121e}} 
+\index{game.c@{game.c}!isValid@{isValid}}
+\index{isValid@{isValid}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{isValid()}{isValid()}}
+{\footnotesize\ttfamily int is\+Valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{int}]{col,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se uma coordenada é válida. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Apontador para Estado \\
+\hline
+{\em col} & Inteiro com a linha \\
+\hline
+{\em line} & Inteiro com a coluna \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Inteiro com resultado booleano 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_a1fcf38b1202ebc400dbb9299f62b59b8}\label{game_8c_a1fcf38b1202ebc400dbb9299f62b59b8}} 
+\index{game.c@{game.c}!place@{place}}
+\index{place@{place}!game.c@{game.c}}
 \doxysubsubsection{\texorpdfstring{place()}{place()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} place (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}}}]{l,  }\item[{\mbox{\hyperlink{data_8h_a601c74b8070bf74a5fce60993be37a1a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} $\ast$}]{c }\end{DoxyParamCaption})}
 
@@ -88,9 +111,9 @@ Função que efetua uma jogada.
 \begin{DoxyReturn}{Retorna}
 Lista de estados 
 \end{DoxyReturn}
-\mbox{\Hypertarget{game_8h_afbe22fe94592f9161bb1ee5ffa9bb704}\label{game_8h_afbe22fe94592f9161bb1ee5ffa9bb704}} 
-\index{game.h@{game.h}!posicao@{posicao}}
-\index{posicao@{posicao}!game.h@{game.h}}
+\mbox{\Hypertarget{game_8c_afbe22fe94592f9161bb1ee5ffa9bb704}\label{game_8c_afbe22fe94592f9161bb1ee5ffa9bb704}} 
+\index{game.c@{game.c}!posicao@{posicao}}
+\index{posicao@{posicao}!game.c@{game.c}}
 \doxysubsubsection{\texorpdfstring{posicao()}{posicao()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} posicao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}}}]{l,  }\item[{int}]{pos }\end{DoxyParamCaption})}
 
@@ -110,9 +133,9 @@ Função que imprime o estado numa determinada posição.
 \begin{DoxyReturn}{Retorna}
 Lista de estados 
 \end{DoxyReturn}
-\mbox{\Hypertarget{game_8h_a8ec319358270df59817f802ca8ad897d}\label{game_8h_a8ec319358270df59817f802ca8ad897d}} 
-\index{game.h@{game.h}!toCord@{toCord}}
-\index{toCord@{toCord}!game.h@{game.h}}
+\mbox{\Hypertarget{game_8c_a8ec319358270df59817f802ca8ad897d}\label{game_8c_a8ec319358270df59817f802ca8ad897d}} 
+\index{game.c@{game.c}!toCord@{toCord}}
+\index{toCord@{toCord}!game.c@{game.c}}
 \doxysubsubsection{\texorpdfstring{toCord()}{toCord()}}
 {\footnotesize\ttfamily int to\+Cord (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_a601c74b8070bf74a5fce60993be37a1a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} $\ast$}]{c,  }\item[{char $\ast$}]{col,  }\item[{char $\ast$}]{line }\end{DoxyParamCaption})}
 

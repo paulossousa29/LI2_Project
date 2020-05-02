@@ -40,12 +40,14 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="7">
+      <node id="9">
         <label>include/lista.h</label>
         <link refid="lista_8h"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -53,46 +55,68 @@
         <link refid="interface_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>src/main.c</label>
         <link refid="main_8c"/>
       </node>
-      <node id="8">
+      <node id="11">
         <label>include/files.h</label>
         <link refid="files_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
+      </node>
+      <node id="12">
+        <label>src/data.c</label>
+        <link refid="data_8c"/>
+      </node>
+      <node id="4">
+        <label>src/interface.c</label>
+        <link refid="interface_8c"/>
+      </node>
+      <node id="8">
+        <label>src/game.c</label>
+        <link refid="game_8c"/>
       </node>
       <node id="1">
         <label>include/data.h</label>
         <link refid="data_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="7">
         <label>include/game.h</label>
         <link refid="game_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="10">
+        <label>src/lista.c</label>
+        <link refid="lista_8c"/>
+      </node>
+      <node id="6">
         <label>src/competicao.c</label>
         <link refid="competicao_8c"/>
       </node>
@@ -101,7 +125,7 @@
         <link refid="bot_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -252,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="64" column="6" bodyfile="src/data.c" bodystart="3" bodyend="16" declfile="include/data.h" declline="64" declcolumn="6"/>
+        <location file="include/data.h" line="64" column="6" bodyfile="src/data.c" bodystart="11" bodyend="24" declfile="include/data.h" declline="64" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a4d2e063e65af48a1936cf3e30915279a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
@@ -269,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="70" column="8" bodyfile="src/data.c" bodystart="19" bodyend="23" declfile="include/data.h" declline="70" declcolumn="8"/>
+        <location file="include/data.h" line="70" column="8" bodyfile="src/data.c" bodystart="30" bodyend="34" declfile="include/data.h" declline="70" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a277cb9d6afb43f2244c1d0d0f276ae3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref> *</type>
@@ -286,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="76" column="12" bodyfile="src/data.c" bodystart="25" bodyend="29" declfile="include/data.h" declline="76" declcolumn="12"/>
+        <location file="include/data.h" line="76" column="12" bodyfile="src/data.c" bodystart="40" bodyend="44" declfile="include/data.h" declline="76" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1ade7217350b6e11f5a52559dfd648569d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref> *</type>
@@ -316,7 +340,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="83" column="12" bodyfile="src/data.c" bodystart="31" bodyend="37" declfile="include/data.h" declline="83" declcolumn="12"/>
+        <location file="include/data.h" line="83" column="12" bodyfile="src/data.c" bodystart="51" bodyend="57" declfile="include/data.h" declline="83" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a62daf2d1a613ac004116ae29ae3604d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
@@ -346,7 +370,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="90" column="8" bodyfile="src/data.c" bodystart="39" bodyend="61" declfile="include/data.h" declline="90" declcolumn="8"/>
+        <location file="include/data.h" line="90" column="8" bodyfile="src/data.c" bodystart="64" bodyend="86" declfile="include/data.h" declline="90" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a9f2ad67faac6f900f98d8be1fca23888" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -378,7 +402,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="96" column="6" bodyfile="src/data.c" bodystart="67" bodyend="69" declfile="include/data.h" declline="96" declcolumn="6"/>
+        <location file="include/data.h" line="96" column="6" bodyfile="src/data.c" bodystart="101" bodyend="103" declfile="include/data.h" declline="96" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a47d11624344d1d9f4dbf0309ef108ba8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -410,7 +434,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="102" column="6" bodyfile="src/data.c" bodystart="75" bodyend="77" declfile="include/data.h" declline="102" declcolumn="6"/>
+        <location file="include/data.h" line="102" column="6" bodyfile="src/data.c" bodystart="118" bodyend="120" declfile="include/data.h" declline="102" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a5336f66b2bb057cf7e170112f3c7fd38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -428,10 +452,12 @@
         <param>
           <type>int</type>
           <declname>col</declname>
+          <defname>linha</defname>
         </param>
         <param>
           <type>int</type>
           <declname>linha</declname>
+          <defname>col</defname>
         </param>
         <briefdescription>
 <para>Função que altera o estado de uma Casa. </para>
@@ -474,7 +500,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="111" column="6" bodyfile="src/data.c" bodystart="83" bodyend="85" declfile="include/data.h" declline="111" declcolumn="6"/>
+        <location file="include/data.h" line="111" column="6" bodyfile="src/data.c" bodystart="140" bodyend="142" declfile="include/data.h" declline="111" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1af9a037ddcfad52f620ded38f8439bf20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -526,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="119" column="6" bodyfile="src/data.c" bodystart="95" bodyend="98" declfile="include/data.h" declline="119" declcolumn="6"/>
+        <location file="include/data.h" line="119" column="6" bodyfile="src/data.c" bodystart="168" bodyend="171" declfile="include/data.h" declline="119" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a63857b286e7a2b6976ae7b9e9d919a2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -590,7 +616,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="128" column="6" bodyfile="src/data.c" bodystart="116" bodyend="119" declfile="include/data.h" declline="128" declcolumn="6"/>
+        <location file="include/data.h" line="128" column="6" bodyfile="src/data.c" bodystart="220" bodyend="223" declfile="include/data.h" declline="128" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1abc99e6e3fb0bb28704a34d0579bab8ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -654,7 +680,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="137" column="6" bodyfile="src/data.c" bodystart="121" bodyend="124" declfile="include/data.h" declline="137" declcolumn="6"/>
+        <location file="include/data.h" line="137" column="6" bodyfile="src/data.c" bodystart="232" bodyend="235" declfile="include/data.h" declline="137" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a8abf1f3f00b064fdb4ca749ac3e5a5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -706,7 +732,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="145" column="6" bodyfile="src/data.c" bodystart="134" bodyend="137" declfile="include/data.h" declline="145" declcolumn="6"/>
+        <location file="include/data.h" line="145" column="6" bodyfile="src/data.c" bodystart="261" bodyend="264" declfile="include/data.h" declline="145" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1ae4579b6149ea093f43e160390cd36900" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -736,7 +762,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="152" column="5" bodyfile="src/data.c" bodystart="63" bodyend="65" declfile="include/data.h" declline="152" declcolumn="5"/>
+        <location file="include/data.h" line="152" column="5" bodyfile="src/data.c" bodystart="93" bodyend="95" declfile="include/data.h" declline="152" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a73212dee2129f7313013163deebd63ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -766,7 +792,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="159" column="5" bodyfile="src/data.c" bodystart="71" bodyend="73" declfile="include/data.h" declline="159" declcolumn="5"/>
+        <location file="include/data.h" line="159" column="5" bodyfile="src/data.c" bodystart="110" bodyend="112" declfile="include/data.h" declline="159" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1aa692da98ec15ab69f0479c3ecbf1fefe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -796,7 +822,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="166" column="5" bodyfile="src/data.c" bodystart="126" bodyend="128" declfile="include/data.h" declline="166" declcolumn="5"/>
+        <location file="include/data.h" line="166" column="5" bodyfile="src/data.c" bodystart="242" bodyend="244" declfile="include/data.h" declline="166" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1af3a7c6c165e46a4f40b98e4779394467" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -826,7 +852,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="173" column="5" bodyfile="src/data.c" bodystart="130" bodyend="132" declfile="include/data.h" declline="173" declcolumn="5"/>
+        <location file="include/data.h" line="173" column="5" bodyfile="src/data.c" bodystart="251" bodyend="253" declfile="include/data.h" declline="173" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a5eccc07c37b49fbb24a69e2a8f1750c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="data_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref></type>
@@ -840,10 +866,12 @@
         <param>
           <type>int</type>
           <declname>col</declname>
+          <defname>linha</defname>
         </param>
         <param>
           <type>int</type>
           <declname>linha</declname>
+          <defname>col</defname>
         </param>
         <briefdescription>
 <para>Função que devolve o estado de uma Casa. </para>
@@ -880,7 +908,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="182" column="6" bodyfile="src/data.c" bodystart="79" bodyend="81" declfile="include/data.h" declline="182" declcolumn="6"/>
+        <location file="include/data.h" line="182" column="6" bodyfile="src/data.c" bodystart="129" bodyend="131" declfile="include/data.h" declline="182" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a79ad1b25cb67c42a842733a86b1ea12e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -910,7 +938,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="189" column="5" bodyfile="src/data.c" bodystart="87" bodyend="89" declfile="include/data.h" declline="189" declcolumn="5"/>
+        <location file="include/data.h" line="189" column="5" bodyfile="src/data.c" bodystart="149" bodyend="151" declfile="include/data.h" declline="189" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1af1e8b529a6a344c4ce5f4193fba08821" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -940,7 +968,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="196" column="5" bodyfile="src/data.c" bodystart="91" bodyend="93" declfile="include/data.h" declline="196" declcolumn="5"/>
+        <location file="include/data.h" line="196" column="5" bodyfile="src/data.c" bodystart="158" bodyend="160" declfile="include/data.h" declline="196" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1ab1065f2706f1ed110c9c6d988a5a498e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -982,7 +1010,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="204" column="5" bodyfile="src/data.c" bodystart="100" bodyend="102" declfile="include/data.h" declline="204" declcolumn="5"/>
+        <location file="include/data.h" line="204" column="5" bodyfile="src/data.c" bodystart="179" bodyend="181" declfile="include/data.h" declline="204" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a9b84568131eb4f5210a8153fb2d91b83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1024,7 +1052,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="212" column="5" bodyfile="src/data.c" bodystart="104" bodyend="106" declfile="include/data.h" declline="212" declcolumn="5"/>
+        <location file="include/data.h" line="212" column="5" bodyfile="src/data.c" bodystart="189" bodyend="191" declfile="include/data.h" declline="212" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a2ba2ec2527b8c34e30c1fdf07db22144" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1066,7 +1094,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="220" column="5" bodyfile="src/data.c" bodystart="108" bodyend="110" declfile="include/data.h" declline="220" declcolumn="5"/>
+        <location file="include/data.h" line="220" column="5" bodyfile="src/data.c" bodystart="199" bodyend="201" declfile="include/data.h" declline="220" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1ada414dc6a18c41e8fc59383131873f8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1108,7 +1136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="228" column="5" bodyfile="src/data.c" bodystart="112" bodyend="114" declfile="include/data.h" declline="228" declcolumn="5"/>
+        <location file="include/data.h" line="228" column="5" bodyfile="src/data.c" bodystart="209" bodyend="211" declfile="include/data.h" declline="228" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a60253966a6c914a958d4ef236b829cd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref></type>
@@ -1150,7 +1178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="236" column="12" bodyfile="src/data.c" bodystart="139" bodyend="141" declfile="include/data.h" declline="236" declcolumn="12"/>
+        <location file="include/data.h" line="236" column="12" bodyfile="src/data.c" bodystart="273" bodyend="275" declfile="include/data.h" declline="236" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="data_8h_1a46404fd345b103bd1e41f24f3935873f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="data_8h_1a601c74b8070bf74a5fce60993be37a1a" kindref="member">COORDENADA</ref></type>
@@ -1192,7 +1220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/data.h" line="244" column="12" bodyfile="src/data.c" bodystart="143" bodyend="145" declfile="include/data.h" declline="244" declcolumn="12"/>
+        <location file="include/data.h" line="244" column="12" bodyfile="src/data.c" bodystart="283" bodyend="285" declfile="include/data.h" declline="244" declcolumn="12"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -234,7 +234,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
       if(res==0) {
         l = freeLista(l);
-        l = insere_cabeca(l, (void*)duplicaEstado(e));
+        l = criaListaEstados(e, l);
 
         printf("Ficheiro %s lido\n", s);
       }
@@ -286,7 +286,6 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
     if ((j = isOver(e))) {
 
       printa(e, n++);
-      prompt(getjogAtual(e),getnumJogadas(e),n++);
       printf("\nO vencedor é o jogador %d\n", j);
 
       if(replay()==0) {

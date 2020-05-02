@@ -54,10 +54,20 @@
         <link refid="interface_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>src/main.c</label>
         <link refid="main_8c"/>
+      </node>
+      <node id="4">
+        <label>src/interface.c</label>
+        <link refid="interface_8c"/>
+      </node>
+      <node id="7">
+        <label>src/game.c</label>
+        <link refid="game_8c"/>
       </node>
       <node id="1">
         <label>include/game.h</label>
@@ -66,10 +76,12 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>src/competicao.c</label>
         <link refid="competicao_8c"/>
       </node>
@@ -78,7 +90,7 @@
         <link refid="bot_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -135,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/game.h" line="19" column="5" bodyfile="src/game.c" bodystart="3" bodyend="11" declfile="include/game.h" declline="19" declcolumn="5"/>
+        <location file="include/game.h" line="19" column="5" bodyfile="src/game.c" bodystart="15" bodyend="23" declfile="include/game.h" declline="19" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="game_8h_1a1fcf38b1202ebc400dbb9299f62b59b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="lista_8h_1acfb1dbdea7214f3efb9334ffef161dad" kindref="member">LISTA</ref></type>
@@ -189,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/game.h" line="28" column="7" bodyfile="src/game.c" bodystart="31" bodyend="58" declfile="include/game.h" declline="28" declcolumn="7"/>
+        <location file="include/game.h" line="28" column="7" bodyfile="src/game.c" bodystart="57" bodyend="84" declfile="include/game.h" declline="28" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="game_8h_1afbe22fe94592f9161bb1ee5ffa9bb704" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="lista_8h_1acfb1dbdea7214f3efb9334ffef161dad" kindref="member">LISTA</ref></type>
@@ -243,7 +255,49 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/game.h" line="37" column="7" bodyfile="src/game.c" bodystart="60" bodyend="69" declfile="include/game.h" declline="37" declcolumn="7"/>
+        <location file="include/game.h" line="37" column="7" bodyfile="src/game.c" bodystart="93" bodyend="102" declfile="include/game.h" declline="37" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="game_8h_1a549196fd2ac88a0250ef9e2fd27ba57c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="lista_8h_1acfb1dbdea7214f3efb9334ffef161dad" kindref="member">LISTA</ref></type>
+        <definition>LISTA criaListaEstados</definition>
+        <argsstring>(ESTADO *e, LISTA l)</argsstring>
+        <name>criaListaEstados</name>
+        <param>
+          <type><ref refid="data_8h_1ad15b54b95711863ce69153d1292ea6ee" kindref="member">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="lista_8h_1acfb1dbdea7214f3efb9334ffef161dad" kindref="member">LISTA</ref></type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+<para>Função que cria uma Lista de Estados a partir de um estado. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para Estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>l</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lista </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Lista preenchida </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/game.h" line="45" column="7" bodyfile="src/game.c" bodystart="110" bodyend="133" declfile="include/game.h" declline="45" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="game_8h_1a53e06921cd2eb691d73cb3b9110c27e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -273,7 +327,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/game.h" line="44" column="5" bodyfile="src/game.c" bodystart="71" bodyend="94" declfile="include/game.h" declline="44" declcolumn="5"/>
+        <location file="include/game.h" line="52" column="5" bodyfile="src/game.c" bodystart="140" bodyend="163" declfile="include/game.h" declline="52" declcolumn="5"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -295,9 +349,11 @@
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><ref refid="structlista" kindref="compound">LISTA</ref><sp/><ref refid="game_8h_1afbe22fe94592f9161bb1ee5ffa9bb704" kindref="member">posicao</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e,<sp/><ref refid="structlista" kindref="compound">LISTA</ref><sp/>l,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pos);</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="game_8h_1a53e06921cd2eb691d73cb3b9110c27e5" kindref="member">isOver</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><ref refid="structlista" kindref="compound">LISTA</ref><sp/><ref refid="game_8h_1a549196fd2ac88a0250ef9e2fd27ba57c" kindref="member">criaListaEstados</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref><sp/>*e,<sp/><ref refid="structlista" kindref="compound">LISTA</ref><sp/>l);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="game_8h_1a53e06921cd2eb691d73cb3b9110c27e5" kindref="member">isOver</ref>(<ref refid="structestado" kindref="compound">ESTADO</ref>*<sp/>e);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/game.h"/>
   </compounddef>

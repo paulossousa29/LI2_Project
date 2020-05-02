@@ -37,6 +37,14 @@ LISTA place(ESTADO* e, LISTA l, COORDENADA* c);
 LISTA posicao(ESTADO* e, LISTA l, int pos);
 
 /**
+ * @brief   Função que cria uma Lista de Estados a partir de um estado
+ * @param e Apontador para Estado
+ * @param l Lista
+ * @return  Lista preenchida
+ */
+LISTA criaListaEstados(ESTADO *e, LISTA l);
+
+/**
  * @brief   Função que verifica se o jogo acabou
  * @param e Apontador para Estado
  * @return  Inteiro com resultado booleano

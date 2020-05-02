@@ -1,0 +1,116 @@
+\hypertarget{interface_8c}{}\doxysection{Referência ao ficheiro src/interface.c}
+\label{interface_8c}\index{src/interface.c@{src/interface.c}}
+
+
+Ficheiro com funções que devolvem resultados visuais para o utilizador.  
+
+
+{\ttfamily \#include \char`\"{}interface.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}time.\+h\char`\"{}}\newline
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_8c_a2a0e843767aeea4f433a28b9c54f573a}\label{interface_8c_a2a0e843767aeea4f433a28b9c54f573a}} 
+void \mbox{\hyperlink{interface_8c_a2a0e843767aeea4f433a28b9c54f573a}{menu}} ()
+\begin{DoxyCompactList}\small\item\em Função que imprime o menu de comandos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{interface_8c_ab48f9eb07b98acb1545f008c4ff8c384}\label{interface_8c_ab48f9eb07b98acb1545f008c4ff8c384}} 
+void \mbox{\hyperlink{interface_8c_ab48f9eb07b98acb1545f008c4ff8c384}{inicio}} ()
+\begin{DoxyCompactList}\small\item\em Função que imprime o menu de início. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_af243ae7e64e504feeb80c033dcd27a82}{printa}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, int com)
+\begin{DoxyCompactList}\small\item\em Função que imprime o estado do jogo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_8c_a7c72122313ba18a6cd7d98e856f2bb55}{tem\+Espaco}} (char $\ast$s)
+\begin{DoxyCompactList}\small\item\em Função que verifica se uma String tem espaço. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_8c_a4b2118c857a4ebed5f8a196453b72c3a}{replay}} ()
+\begin{DoxyCompactList}\small\item\em Função que pergunta ao utilizador se quer voltar a jogar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_acbc064f5e208515bc1b58b731cc17c94}{movimentos}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que imprime a Lista de Movimentos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_a5213df2727637266f2ef60103da2ee83}{execute}} (\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}} l, \mbox{\hyperlink{data_8h_a601c74b8070bf74a5fce60993be37a1a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Função que executa o interpretador de comandos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Ficheiro com funções que devolvem resultados visuais para o utilizador. 
+
+
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{interface_8c_a5213df2727637266f2ef60103da2ee83}\label{interface_8c_a5213df2727637266f2ef60103da2ee83}} 
+\index{interface.c@{interface.c}!execute@{execute}}
+\index{execute@{execute}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{lista_8h_acfb1dbdea7214f3efb9334ffef161dad}{L\+I\+S\+TA}}}]{l,  }\item[{\mbox{\hyperlink{data_8h_a601c74b8070bf74a5fce60993be37a1a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que executa o interpretador de comandos. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Apontador para Estado \\
+\hline
+{\em c} & Apontador para Coordenada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8c_acbc064f5e208515bc1b58b731cc17c94}\label{interface_8c_acbc064f5e208515bc1b58b731cc17c94}} 
+\index{interface.c@{interface.c}!movimentos@{movimentos}}
+\index{movimentos@{movimentos}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{movimentos()}{movimentos()}}
+{\footnotesize\ttfamily void movimentos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que imprime a Lista de Movimentos. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Apontador para Estado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8c_af243ae7e64e504feeb80c033dcd27a82}\label{interface_8c_af243ae7e64e504feeb80c033dcd27a82}} 
+\index{interface.c@{interface.c}!printa@{printa}}
+\index{printa@{printa}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{printa()}{printa()}}
+{\footnotesize\ttfamily void printa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_ad15b54b95711863ce69153d1292ea6ee}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{int}]{com }\end{DoxyParamCaption})}
+
+
+
+Função que imprime o estado do jogo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Apontador para o estado \\
+\hline
+{\em com} & Nºcomandos introduzidos \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8c_a4b2118c857a4ebed5f8a196453b72c3a}\label{interface_8c_a4b2118c857a4ebed5f8a196453b72c3a}} 
+\index{interface.c@{interface.c}!replay@{replay}}
+\index{replay@{replay}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{replay()}{replay()}}
+{\footnotesize\ttfamily int replay (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função que pergunta ao utilizador se quer voltar a jogar. 
+
+\begin{DoxyReturn}{Retorna}
+Inteiro com resultado booleano 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_8c_a7c72122313ba18a6cd7d98e856f2bb55}\label{interface_8c_a7c72122313ba18a6cd7d98e856f2bb55}} 
+\index{interface.c@{interface.c}!temEspaco@{temEspaco}}
+\index{temEspaco@{temEspaco}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{temEspaco()}{temEspaco()}}
+{\footnotesize\ttfamily int tem\+Espaco (\begin{DoxyParamCaption}\item[{char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se uma String tem espaço. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em s} & String a testa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Inteiro com resultado booleano 
+\end{DoxyReturn}
