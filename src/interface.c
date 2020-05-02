@@ -1,6 +1,13 @@
+/**
+ * @file  interface.c
+ * @brief Ficheiro com funções que devolvem resultados visuais para o utilizador
+ */
  #include "interface.h"
  #include "time.h"
 
+ /**
+  * @brief Função que imprime o menu de comandos
+  */
 void menu()
 {
   printf("-------------------------------------------------\n");
@@ -18,6 +25,9 @@ void menu()
   printf("-------------------------------------------------\n");
 }
 
+/**
+ * @brief Função que imprime o menu de início
+ */
 void inicio() {
   system("clear");
 
@@ -39,6 +49,11 @@ void inicio() {
   system("clear");
 }
 
+/**
+ * @brief     Função que imprime o estado do jogo
+ * @param e   Apontador para o estado
+ * @param com Nºcomandos introduzidos
+ */
 void printa(ESTADO *e, int com)
 {
     int i, j;
@@ -76,6 +91,11 @@ void printa(ESTADO *e, int com)
     printf("#%02d PL%d (%d)\n", com, getjogAtual(e), getnumJogadas(e));
 }
 
+/**
+ * @brief   Função que verifica se uma String tem espaço
+ * @param s String a testa
+ * @return  Inteiro com resultado booleano
+ */
 int temEspaco(char *s) {
   int r = 0;
 
@@ -86,6 +106,10 @@ int temEspaco(char *s) {
   return r;
 }
 
+/**
+ * @brief   Função que pergunta ao utilizador se quer voltar a jogar
+ * @return  Inteiro com resultado booleano
+ */
 int replay() {
   char* buffer = NULL;
   buffer = malloc(sizeof(char) * MAX);
@@ -107,6 +131,10 @@ int replay() {
   }
 }
 
+/**
+ * @brief   Função que imprime a Lista de Movimentos
+ * @param e Apontador para Estado
+ */
 void movimentos(ESTADO* e) {
   int i;
 
@@ -131,6 +159,11 @@ void movimentos(ESTADO* e) {
   }
 }
 
+/**
+ * @brief   Função que executa o interpretador de comandos
+ * @param e Apontador para Estado
+ * @param c Apontador para Coordenada
+ */
 void execute(ESTADO* e, LISTA l, COORDENADA* c)
 {
   int j, n = 0, res=0;
@@ -148,7 +181,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
   while(1) {
     printa(e, n++);
-    
+
     printf("\nIntroduza o seu comando: ");
     fgets(buffer, MAX, stdin);
 
@@ -238,7 +271,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
         printf("\nImpossível voltar à posição %d\n", j);
     }
 
-    else if((strcmp(s, "menu") == 0)) 
+    else if((strcmp(s, "menu") == 0))
       menu();
 
     else if((strcmp(s, "q") == 0) || (strcmp(s, "Q") == 0)) {
@@ -251,7 +284,7 @@ void execute(ESTADO* e, LISTA l, COORDENADA* c)
 
     // O teste do jogo acabar tem de estar fora, porque se não só na jogada a seguir é que valida
     if ((j = isOver(e))) {
-      
+
       printa(e, n++);
       prompt(getjogAtual(e),getnumJogadas(e),n++);
       printf("\nO vencedor é o jogador %d\n", j);
